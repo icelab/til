@@ -15,7 +15,16 @@ Metalsmith(__dirname)
     description: "Today Icelab Learned.",
     topics: topicNames()
   })
-  .use(collections(topicCollectionConfig()))
+  .use(collections(
+    _.extend(topicCollectionConfig(), {
+      "latest": {
+        pattern: "*/*.md",
+        sortBy: "date",
+        reverse: "true",
+        limit: 20
+      }
+    })
+  ))
   .use(topicIndexPages())
   .use(markdown({
     smartypants: true,
@@ -52,8 +61,8 @@ function topicCollectionConfig() {
   return _.reduce(topicNames(), function(memo, topicName) {
     memo[topicName] = {
       pattern: topicName + "/*.md",
-      sortBy: "date",
-      reverse: "true"
+      sortBy: "title",
+      refer: false
     };
     return memo;
   }, {});

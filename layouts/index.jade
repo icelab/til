@@ -5,6 +5,12 @@ html(lang="en")
   body
     != contents
 
+    h2 Latest
+    ul
+      each latest_post in collections.latest
+        li
+          a(href="/" + latest_post.path)= latest_post.title
+
     h2 Topics
     ul
       each topic in topics
