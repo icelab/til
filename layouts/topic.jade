@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+  body
+    h1= title
+
+    ol
+      each post in collections[topic]
+        li
+          a(href="/" + post.path)= post.title
+
+

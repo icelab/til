@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+  body
+    != contents
+
+    h2 Topics
+    ul
+      each topic in topics
+        li
+          a(href="/" + topic)= topic
