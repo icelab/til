@@ -34,7 +34,7 @@ Normally, this is fine, but when working with some content, it may be nicer to u
 We can also make printing hashes a little prettier as well.
 
 ```ruby
-dog = {name: 'poppy' ,breed: 'labrador',colour: 'black'}
+dog = {name: 'poppy',breed: 'labrador',colour: 'black'}
 
 "This is #{dog[:name]}, she is a #{dog[:colour]} #{dog[:breed]}."
 ```
@@ -46,3 +46,5 @@ Becomes:
 ```
 
 Which, to me at least, reads a little nicer.
+
+[Kernel::sprintf](http://apidock.com/ruby/Kernel/sprintf) has a more complete list of formatting strings.
