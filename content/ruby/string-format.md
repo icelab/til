@@ -6,7 +6,7 @@ author: Daniel Nitsikopoulos
 
 I learnt this while putting together the report emails for Ticketscout.
 
-Most of the time, regular string interpolation is all that we need when working with strings. Though sometimes we want a little more control without sacrificing brevity or readability. 
+Most of the time, regular string interpolation is all that we need when working with strings. Though sometimes we want a little more control over the formatting. 
 
 Let's say we have a set of numbers that we want to calculate the average for, then print that average to 1 decimal place.
 
@@ -25,7 +25,7 @@ avg = FLOATS.reduce(0, :+) / FLOATS.size
 "Average is: #{avg.round(1)}" # => "Average is: 25.7
 ```
 
-Normally, this is fine, but when working with some content, it may be nicer to use Ruby's String Format instead.
+Normally, this is fine, but when working with some content, it may be nicer to use Ruby's String Format instead (especially if trying to format more complex numbers).
 
 ```ruby
 "Average is %.1f" % avg # => "Average is 25.7"
