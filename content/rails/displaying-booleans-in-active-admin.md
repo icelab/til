@@ -11,3 +11,6 @@ column :featured do |thing|
   thing.featured? ? status_tag("yes", :ok) : status_tag("no")
 end
 ```
+
+There's a bit more info in the _[Active Admin docs](http://activeadmin.info/docs/12-arbre-components.html#status-tag)_ which shows you how to add classes too!
+
