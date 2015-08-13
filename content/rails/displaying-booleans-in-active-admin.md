@@ -8,6 +8,6 @@ In Active Admin if you want to display a boolean propetry that doesn't directly 
 
 ```
 column :featured do |thing|
-  thing.featured? ? status_tag( "yes", :ok ) : status_tag( "no" )
+  thing.featured? ? status_tag("yes", :ok) : status_tag("no")
 end
 ```
