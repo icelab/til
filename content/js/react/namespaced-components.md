@@ -24,7 +24,7 @@ var Nav = NavComponent;
 And then use them as you would expect to in your JSX:
 ```
 <Nav>
-  <Nax.Prev />
+  <Nav.Prev />
   <Nav.Goto />
   <Nav.Next />
 </Nav>
