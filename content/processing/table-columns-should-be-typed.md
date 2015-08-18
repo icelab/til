@@ -1,5 +1,10 @@
+---
+title: Table columns should be typed
+date: 2015-08-13
+author: Michael Honey
+---
 
-Table columns should be typed as INT or FLOAT if you want to do maths with them:
+Processing.Table columns should be typed as INT or FLOAT if you want to do maths with them:
 
 ```
 table.addColumn("name"); // defaults to STRING
