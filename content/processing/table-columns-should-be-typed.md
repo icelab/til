@@ -12,7 +12,7 @@ table.addColumn("count", Table.INT);
 table.addColumn("height", Table.FLOAT);
 ```
 
-If you _dont_ do that, trying to cast the value on the way out:
+If you _don't_ do that, trying to cast the value on the way out:
 
 ```
 inst.getFloat("total")+1);
