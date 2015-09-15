@@ -36,5 +36,5 @@ end
 *another-process.rb*
 
 ```
-User.connection.execute %Q(NOTIFY "slack_messages", params)
+User.connection.execute %Q(NOTIFY "slack_bot", params)
 ```
