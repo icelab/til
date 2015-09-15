@@ -6,6 +6,8 @@ author: Alex Timofeev
 
 PostgreSQL has its own listen/notify mechanism. It might be useful for cases, when we have to manage messaging between different workers of application, but would prefer to not use extra dependencies such as Redis.
 
+*process.rb*
+
 ```
 CHANNEL       = "slack_bot"
 RESET_CHANNEL = "pg_restart"
@@ -30,6 +32,8 @@ ActiveRecord::Base.connection_pool.with_connection do |connection|
   end
 end
 ```
+
+*another-process.rb*
 
 ```
 User.connection.execute %Q(NOTIFY "slack_messages", params)
