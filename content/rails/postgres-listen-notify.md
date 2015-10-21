@@ -4,7 +4,7 @@ date: 2015-09-15
 author: Alex Timofeev
 ---
 
-PostgreSQL has its own listen/notify mechanism. It might be useful for cases, when we have to manage messaging between different workers of application, but would prefer to not use extra dependencies such as Redis.
+PostgreSQL has its own listen/notify mechanism. It might be useful for cases when we have to manage messaging between different application processes, but would prefer to not use extra dependencies such as Redis.
 
 *process.rb*
 
