@@ -1,6 +1,6 @@
 ---
 title: Set state is asynchronous!
-date: 2015-08-13
+date: 2015-11-19
 author: Narinda Reeders
 ---
 
