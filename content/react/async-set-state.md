@@ -1,5 +1,5 @@
 ---
-title: Set state is asynchronous!
+title: In React setState is not "guaranteed" to be synchronous.
 date: 2015-11-19
 author: Narinda Reeders
 ---
