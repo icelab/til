@@ -1,5 +1,5 @@
 ---
-title: Symbolize-keys
+title: Symbolize keys
 date: 2015-11-19
 author: Jojo Hall
 ---
@@ -37,4 +37,4 @@ Functions.t(:symbolize_keys)[{"foo" => "bar"}]
 ```
 
 If you are using Rails then you can use the method `hash.symbolize_keys` or the destructive version `hash.symbolize_keys!`
-In this situation it's ActiveSupport which makes this method available to us, and it's a part of Rails.
+(both made available via ActiveSupport).
