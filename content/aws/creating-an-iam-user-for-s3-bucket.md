@@ -15,6 +15,7 @@ To do this, first create a user:
 5. When you return to the IAM users list, go to the newly created user and click on their "Permissions" tab. Click on the "Inline Policies" section and create a new policy
 6. Choose to create a "Custom Policy"
 7. Name the policy "my-bucket-s3-access" (or something similarly descriptive) and paste the following into the "Policy Document" area (replacing `my-bucket` with your bucket's name):
+
     ```json
     {
       "Statement": [
