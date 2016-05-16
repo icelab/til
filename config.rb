@@ -72,7 +72,7 @@ page '/*.txt', layout: false
 # Blog configuration -----------------------------------------------------------
 
 activate :blog do |blog|
-  blog.permalink = "/{year}-{month}-{day}-{title}"
+  blog.permalink = "/{title}"
   blog.default_extension = ".md"
 
   # Matcher for blog source files
