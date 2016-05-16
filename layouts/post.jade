@@ -1,7 +1,10 @@
-doctype html
-html(lang="en")
-  head
-    title= title
+
+include partials/head
+
   body
+    include partials/logo
+    include partials/sidebar
+
+    != contents
     h1 This is a post
     != contents

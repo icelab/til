@@ -1,18 +1,22 @@
-doctype html
-html(lang="en")
-  head
-    title= title
+
+include partials/head
+
   body
+    include partials/logo
+    include partials/sidebar
+
     != contents
 
-    h2 Latest
-    ul
+    ul.til-list
       each latest_post in collections.latest
-        li
-          a(href="/" + latest_post.path)= latest_post.title
+        li.til-list__item
 
-    h2 Topics
-    ul
-      each topic in topics
-        li
-          a(href="/" + topic)= topic
+          a.til-list__item-title(href="/" + latest_post.path)= latest_post.title
+
+          .til-list__item-meta
+            = latest_post.author
+            = latest_post.date
+            = latest_post.collection
+
+          .til-list__item-content
+            = latest_post.contents
