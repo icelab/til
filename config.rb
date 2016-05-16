@@ -73,7 +73,7 @@ page '/*.txt', layout: false
 
 activate :blog do |blog|
   blog.permalink = "/{year}-{month}-{day}-{title}"
-  blog.default_extension = ".{markdown,md}"
+  blog.default_extension = ".md"
 
   # Matcher for blog source files
   blog.sources = "posts/{title}.html"
