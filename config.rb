@@ -123,3 +123,11 @@ configure :build do
   # Minify Javascript on build
   # activate :minify_javascript
 end
+
+# Deployment configuration -----------------------------------------------------
+
+activate :deploy do |config|
+  config.deploy_method = :git
+  config.branch = 'gh-pages'
+  config.build_before = true
+end

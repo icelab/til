@@ -15,3 +15,4 @@ gem "tilt-jbuilder"
 
 # Custom
 gem "middleman-blog"
+gem "middleman-deploy", github: "middleman-contrib/middleman-deploy"
