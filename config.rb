@@ -1,4 +1,4 @@
-require 'slim'
+require "slim"
 
 # General configuration --------------------------------------------------------
 
@@ -9,15 +9,15 @@ Time.zone = ENV["TIME_ZONE"] || "Melbourne"
 
 # Set Markdown engine to use redcarpet
 set :markdown_engine, :redcarpet
-set :markdown,        :fenced_code_blocks => true,
-                      :autolink => true,
-                      :smartypants => true,
-                      :hard_wrap => true,
-                      :smart => true,
-                      :superscript => true,
-                      :no_intra_emphasis => true,
-                      :lax_spacing => true,
-                      :with_toc_data => true
+set :markdown,        fenced_code_blocks: true,
+                      autolink: true,
+                      smartypants: true,
+                      hard_wrap: true,
+                      smart: true,
+                      superscript: true,
+                      no_intra_emphasis: true,
+                      lax_spacing: true,
+                      with_toc_data: true
 
 # Helpers ----------------------------------------------------------------------
 
@@ -60,9 +60,9 @@ page "/", layout: "layouts/base"
 page "*", layout: "layouts/blog"
 
 # Pages without layout
-page '/*.xml', layout: false
-page '/*.json', layout: false
-page '/*.txt', layout: false
+page "/*.xml", layout: false
+page "/*.json", layout: false
+page "/*.txt", layout: false
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
@@ -95,12 +95,12 @@ end
 
 # Webpack configuration --------------------------------------------------------
 
-ignore 'assets/**/*.css'
-ignore 'assets/**/*.js'
+ignore "assets/**/*.css"
+ignore "assets/**/*.js"
 
 activate :external_pipeline,
          name: :webpack,
-         command: build? ? 'npm run build' : 'npm run watch',
+         command: build? ? "npm run build" : "npm run watch",
          source: ".tmp/dist",
          latency: 1
 
@@ -128,6 +128,6 @@ end
 
 activate :deploy do |config|
   config.deploy_method = :git
-  config.branch = 'gh-pages'
+  config.branch = "gh-pages"
   config.build_before = true
 end
