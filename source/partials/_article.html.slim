@@ -1,0 +1,10 @@
+h1
+  = link_to article.title, article
+.content data-view-highlight=true
+  = article.body
+.tags
+  - article.tags.each_with_index do |tag, i|
+    = link_to tag, "/tags/#{tag}"
+    - unless i == article.tags.count - 1
+      ',
+

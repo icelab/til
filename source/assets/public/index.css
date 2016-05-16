@@ -1,0 +1,16 @@
+:root {
+  --foo: #ccc;
+}
+
+@import './reset';
+@import 'highlight.js/styles/solarized-light.css';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--foo);
+  font-family: 'Helvetica';
+  font-size: 1.6rem;
+}

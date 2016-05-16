@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    title
+      => current_page.data.title
+      ' —
+      = data.site.name
+    link rel="stylesheet" type="text/css" href=asset_path(:css, "assets/public")
+    script type="text/javascript" src=asset_path(:js, "assets/public")
+  body
+    h1
+      = link_to data.site.name, "/"
+    = yield
+    .tags
+      h2 All tags
+      - blog.tags.each do |tag, articles|
+        = link_to tag, "/tags/#{tag}"

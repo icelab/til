@@ -1,0 +1,9 @@
+= wrap_layout :base do
+  h1 = current_page.title
+  .content data-view-highlight=true
+    = yield
+  .tags
+    - current_page.tags.each_with_index do |tag, i|
+      = link_to tag, "/tags/#{tag}"
+      - unless i == current_page.tags.count - 1
+        ',
