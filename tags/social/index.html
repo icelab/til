@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title> — Today Icelab Learnt</title><link href="/assets/public.css" rel="stylesheet" type="text/css" /><script src="/assets/public.js" type="text/javascript"></script></head><body><h1><a href="/">Today Icelab Learnt</a></h1><h1>Articles tagged social</h1><div class="articles"><h1><a href="/show-opengraph-image-on-first-facebook-share/">Show Open Graph image on first Facebook share</a></h1><div class="content" data-view-highlight=""><p>When you share a URL on Facebook for the first time — specifically, the first time <em>anyone</em> has shared it — it won’t include any of the images on the page and our clients will be :cry:. This happens even if you have included a meta tag that references an image:</p>
+
+<pre><code class="html">&lt;meta property=&quot;og:image&quot; content=&quot;http://foo.com/image.png&quot;&gt;
+</code></pre>
+
+<p>The <em>second</em> time a URL is shared, it’ll work as expected and your chosen <code>og:image</code> will show up in the share preview (along with any other images on the page) — Facebook seem to have shifted this all to a background job or something.</p>
+
+<p>Fear not! There is a solution. If you include the dimensions of your image alongside the <code>og:image</code> meta tag it’ll force Facebook to show the image immediately:</p>
+
+<pre><code class="html">&lt;meta property=&quot;og:image&quot; content=&quot;http://foo.com/image.png&quot;&gt;
+&lt;meta property=&quot;og:image:width&quot; content=&quot;300&quot;&gt;
+&lt;meta property=&quot;og:image:height&quot; content=&quot;400&quot;&gt;
+</code></pre>
+
+<p>These dimensions don’t actually have to be accurate either. On Readings we don’t know the dimensions of images as they’re provided by Erudite without any meta-information, so we do a best-guess approach based on the ratio that book covers (or CD covers) tend to be.</p>
+</div><div class="tags"><a href="/tags/social">social</a></div><h1><a href="/clear-facebook-share-data/">Facebook image display when posting a link</a></h1><div class="content" data-view-highlight=""><p>When sharing links to Facebook, Kinderling were only being given the option to display old images, and couldn’t work out why the new ones weren’t coming through.</p>
+
+<p>As it happens, there are specific metatags required to force Facebook to notice the correct content, explained <a href="https://developers.facebook.com/docs/sharing/webmasters#markup">here</a>.</p>
+
+<p>“Without these tags, the Facebook Crawler will use internal heuristics to make a best guess about the title, description, and preview image for your content.”</p>
+
+<p>To force refresh of a particular item without updating the site itself, you can also use the <a href="https://developers.facebook.com/tools/debug/og/object/">Facebook debugger</a>.</p>
+
+<p>If you go there, input the URL and click “Fetch new scrape information” until the “right” content shows up at the bottom.</p>
+</div><div class="tags"><a href="/tags/social">social</a></div></div><div class="tags"><h2>All tags</h2><a href="/tags/react">react</a><a href="/tags/js">js</a><a href="/tags/ruby">ruby</a><a href="/tags/aws">aws</a><a href="/tags/accessibility">accessibility</a><a href="/tags/social">social</a><a href="/tags/performance">performance</a><a href="/tags/git">git</a><a href="/tags/css">css</a><a href="/tags/rails">rails</a><a href="/tags/slim">slim</a><a href="/tags/seo">seo</a><a href="/tags/postgres">postgres</a><a href="/tags/debugging">debugging</a><a href="/tags/testing">testing</a><a href="/tags/processing">processing</a></div></body></html>

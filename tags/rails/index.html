@@ -1,0 +1,98 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title> — Today Icelab Learnt</title><link href="/assets/public.css" rel="stylesheet" type="text/css" /><script src="/assets/public.js" type="text/javascript"></script></head><body><h1><a href="/">Today Icelab Learnt</a></h1><h1>Articles tagged rails</h1><div class="articles"><h1><a href="/using-arel-to-compare-attributes-of-a-record/">Using Arel to compare attributes of a record</a></h1><div class="content" data-view-highlight=""><p>I was just trying to find a way to run a query and compare the <code>updated_at</code> and <code>created_at</code> attributes of a record and came across this technique:</p>
+
+<pre><code class="ruby">users = User.arel_table
+User.where(users[:created_at].eq(users[:updated_at]))
+</code></pre>
+
+<p>It seems like <code>.gt</code> and <code>.lt</code> also work. While <code>User.where(&quot;created_at = updated_at&quot;)</code> would also work in SQL, we can use Arel to be database agnostic.</p>
+
+<p><em><a href="https://github.com/rails/arel">Arel docs</a></em></p>
+</div><div class="tags"><a href="/tags/rails">rails</a></div><h1><a href="/manually-incrementing-count-columns/">Manually incrementing count columns in rails</a></h1><div class="content" data-view-highlight=""><p>Adding a counter cache column to a model is a common optimisation we make in order to avoid unnecessary queries when trying to aggregate data associated with that particular model. Rails provides us with a number of ways to maintain the counter cache column&rsquo;s value. The first is to follow the rails convention and add <code>counter_cache: true</code> to a <code>belongs_to</code> association and ensure we have a correctly named <code>*_count</code> column.</p>
+
+<p>The other way to do it, is manually. In this case rails provides us with a few convenience methods to increment a given column.</p>
+
+<p>The first is <code>ActiveRecord::Base#increment!(attribute, by)</code>.</p>
+
+<p><code>increment!</code> is defined as:</p>
+
+<pre><code class="ruby">def increment!(attribute, by = 1)
+  increment(attribute, by).update_attribute(attribute, self[attribute])
+end
+</code></pre>
+
+<p>and <code>increment</code> is defined as:</p>
+
+<pre><code class="ruby">def increment(attribute, by = 1)
+  self[attribute] ||= 0
+  self[attribute] += by
+  self
+end
+</code></pre>
+
+<p>Which means that we&rsquo;re first fetching the current attribute&rsquo;s value, incrementing it then passing it on to <code>update_attribute</code> before it can be saved. This method leads to a non-atomic database operation, that is to say that at one point, the count is different in memory than it is in the database (which can lead to race conditions).</p>
+
+<p>The second is <code>ActiveRecord::Base#increment_counter(column_name, record_id)</code>.</p>
+
+<p><code>increment_counter</code> is defined as:</p>
+
+<pre><code class="ruby">def increment_counter(counter_name, id)
+  update_counters(id, counter_name =&gt; 1)
+end
+</code></pre>
+
+<p>which executes SQL like:</p>
+
+<pre><code class="SQL">UPDATE &quot;table_name&quot;
+  SET &quot;counter_name&quot; = &quot;counter_name&quot; + 1
+  WHERE id = 1
+</code></pre>
+
+<p>This means that we now have an atomic operation and the counter cache value is the same across the system.</p>
+
+<p>Docs:</p>
+
+<ul>
+<li><em><a href="http://apidock.com/rails/ActiveRecord/Base/increment!">increment!</a></em></li>
+<li><em>[increment_counter](<a href="http://apidock.com/rails/ActiveRecord/Base/increment">http://apidock.com/rails/ActiveRecord/Base/increment</a></em>counter/class)_</li>
+</ul>
+</div><div class="tags"><a href="/tags/rails">rails</a>, <a href="/tags/ruby">ruby</a></div><h1><a href="/postgres-listen-notify/">PostgreSQL as a message bus</a></h1><div class="content" data-view-highlight=""><p>PostgreSQL has its own listen/notify mechanism. It might be useful for cases when we have to manage messaging between different application processes, but would prefer to not use extra dependencies such as Redis.</p>
+
+<p><em>process.rb</em></p>
+
+<pre><code>CHANNEL       = &quot;slack_bot&quot;
+RESET_CHANNEL = &quot;pg_restart&quot;
+
+ActiveRecord::Base.connection_pool.with_connection do |connection|
+  conn = connection.instance_variable_get(:@connection)
+  begin
+    conn.async_exec &quot;LISTEN #{RESET_CHANNEL}&quot;
+    conn.async_exec &quot;LISTEN #{CHANNEL}&quot;
+    catch(:break_loop) do
+      loop do
+        conn.wait_for_notify do |channel, pid, payload|
+          p [channel, payload]
+          throw :break_loop if channel == RESET_CHANNEL
+        end
+      end
+    end
+  rescue =&gt; error
+    p [:error, error]
+  ensure
+    conn.async_exec &quot;UNLISTEN *&quot;
+  end
+end
+</code></pre>
+
+<p><em>another-process.rb</em></p>
+
+<pre><code>User.connection.execute %Q(NOTIFY &quot;slack_bot&quot;, params)
+</code></pre>
+</div><div class="tags"><a href="/tags/rails">rails</a>, <a href="/tags/postgres">postgres</a></div><h1><a href="/displaying-booleans-in-active-admin/">Displaying booleans in Active Admin</a></h1><div class="content" data-view-highlight=""><p>In Active Admin if you want to display a boolean propetry that doesn&rsquo;t directly map to a database column you can use <code>status_tag</code> to display the value in a fiendly way:</p>
+
+<pre><code>column :featured do |thing|
+  thing.featured? ? status_tag(&quot;yes&quot;, :ok) : status_tag(&quot;no&quot;)
+end
+</code></pre>
+
+<p>There&rsquo;s a bit more info in the <em><a href="http://activeadmin.info/docs/12-arbre-components.html#status-tag">Active Admin docs</a></em> which shows you how to add classes too!</p>
+</div><div class="tags"><a href="/tags/rails">rails</a>, <a href="/tags/ruby">ruby</a></div></div><div class="tags"><h2>All tags</h2><a href="/tags/react">react</a><a href="/tags/js">js</a><a href="/tags/ruby">ruby</a><a href="/tags/aws">aws</a><a href="/tags/accessibility">accessibility</a><a href="/tags/social">social</a><a href="/tags/performance">performance</a><a href="/tags/git">git</a><a href="/tags/css">css</a><a href="/tags/rails">rails</a><a href="/tags/slim">slim</a><a href="/tags/seo">seo</a><a href="/tags/postgres">postgres</a><a href="/tags/debugging">debugging</a><a href="/tags/testing">testing</a><a href="/tags/processing">processing</a></div></body></html>

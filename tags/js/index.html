@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title> — Today Icelab Learnt</title><link href="/assets/public.css" rel="stylesheet" type="text/css" /><script src="/assets/public.js" type="text/javascript"></script></head><body><h1><a href="/">Today Icelab Learnt</a></h1><h1>Articles tagged js</h1><div class="articles"><h1><a href="/async-set-state/">In React setState is not "guaranteed" to be synchronous.</a></h1><div class="content" data-view-highlight=""><p>I discovered recently that if you do something link this in react:</p>
+
+<pre><code class="javascript">this.setState(reallyUseful: true);
+
+if (this.state.reallyUseful) {
+  this.doSomethingAmazing();
+}
+</code></pre>
+
+<p>&hellip; it&rsquo;s not very useful and more often than not nothing amazing happens, just confusion and sadness.</p>
+
+<p>This is because <code>setState</code> it turns out, is asynchronous. Of course most of the time you are doing your amazing things in your render function so everything is sweet but on the odd occasion that you need to pass that value elsewhere, eg: publishing an event, beware!</p>
+
+<p>From the docs:</p>
+
+<blockquote>
+<p>setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.<br>
+There is no guarantee of synchronous operation of calls to setState and calls may be batched for performance gains.</p>
+</blockquote>
+
+<p>Read about <code>setState</code> here: <a href="https://facebook.github.io/react/docs/component-api.html">https://facebook.github.io/react/docs/component-api.html</a></p>
+</div><div class="tags"><a href="/tags/react">react</a>, <a href="/tags/js">js</a></div><h1><a href="/using-viewloader-with-turbolinks/">Using viewloader with turbolinks</a></h1><div class="content" data-view-highlight=""><p>When using viewloader with turbolinks, you want to make sure that viewloader executes once on the initial page load, once when the visitor reaches another page, and once when the visitor goes back in their browser (or forward for that matter).</p>
+
+<p>To achieve this, get viewloader to execute on the <code>ready</code>, <code>page:load</code> and <code>page:restore</code> events:</p>
+
+<pre><code class="javascript">$(document).on(&quot;ready page:load page:restore&quot;, function() {
+  viewloader.execute(views);
+});
+</code></pre>
+
+<p><code>page:restore</code> is fired by <a href="https://github.com/rails/turbolinks">turbolinks</a> whenever &ldquo;A cached body element has been loaded into the DOM&rdquo;.</p>
+</div><div class="tags"><a href="/tags/js">js</a></div><h1><a href="/namespaced-components/">Using namespaced components in React</a></h1><div class="content" data-view-highlight=""><p>The last time I used React we had some pretty awkward workarounds for the fact that components couldn&rsquo;t be namespaced. I was pretty stoked to find this has been fixed now.</p>
+
+<p>So if you have a component <code>myNavComponent</code> you can do:</p>
+
+<pre><code>var NavComponent = React.createClass(...);
+</code></pre>
+
+<p>Define your sub-components as attributes:</p>
+
+<pre><code>NavComponent.Next = React.createClass(...);
+NavComponent.Prev = React.createClass(...);
+NavComponent.Goto = React.createClass(...);
+</code></pre>
+
+<pre><code>var Nav = NavComponent;
+</code></pre>
+
+<p>And then use them as you would expect to in your JSX:</p>
+
+<pre><code>&lt;Nav&gt;
+  &lt;Nav.Prev /&gt;
+  &lt;Nav.Goto /&gt;
+  &lt;Nav.Next /&gt;
+&lt;/Nav&gt;
+</code></pre>
+
+<p><a href="https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components">https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components</a></p>
+</div><div class="tags"><a href="/tags/react">react</a>, <a href="/tags/js">js</a></div></div><div class="tags"><h2>All tags</h2><a href="/tags/react">react</a><a href="/tags/js">js</a><a href="/tags/ruby">ruby</a><a href="/tags/aws">aws</a><a href="/tags/accessibility">accessibility</a><a href="/tags/social">social</a><a href="/tags/performance">performance</a><a href="/tags/git">git</a><a href="/tags/css">css</a><a href="/tags/rails">rails</a><a href="/tags/slim">slim</a><a href="/tags/seo">seo</a><a href="/tags/postgres">postgres</a><a href="/tags/debugging">debugging</a><a href="/tags/testing">testing</a><a href="/tags/processing">processing</a></div></body></html>
