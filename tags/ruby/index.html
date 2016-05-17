@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><title> — Today Icelab Learnt</title><link href="/assets/public.css" rel="stylesheet" type="text/css" /><script src="/assets/public.js" type="text/javascript"></script></head><body><h1><a href="/">Today Icelab Learnt</a></h1><h1>Articles tagged ruby</h1><div class="articles"><h1><a href="/symbolize-keys/">Symbolize keys</a></h1><div class="content" data-view-highlight=""><p>If you&rsquo;re writing plain old Ruby you can symbolize the keys of a hash with the following:</p>
+<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><title> — Today Icelab Learnt</title><link href="/assets/public.css" rel="stylesheet" type="text/css" /><script src="/assets/public.js" type="text/javascript"></script></head><body><aside class="sidebar" id="sidebar"><a class="close-sidebar" href="#">Hide topics &rsaquo;</a><div class="sidebar-topic"><a href="/tags/react">react</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/js">js</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/ruby">ruby</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/aws">aws</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/accessibility">accessibility</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/social">social</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/performance">performance</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/git">git</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/css">css</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/rails">rails</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/slim">slim</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/seo">seo</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/postgres">postgres</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/debugging">debugging</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/testing">testing</a><span class="topic-count"> (<i>1</i>)</span></div><div class="sidebar-topic"><a href="/tags/processing">processing</a><span class="topic-count"> (<i>1</i>)</span></div></aside><div class="header"><a class="header__logo" href="http://www.icelab.com.au"></a><a href="/" class="header__til-text">Today Icelab Learnt</a><a class="header__view-topics open-sidebar" href="#sidebar"> &lsaquo; View topics</a></div><div class="container"><h1>Articles tagged ruby</h1><div class="articles"><div class="article"><a href="/symbolize-keys/" class="article__title">Symbolize keys</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p>If you&rsquo;re writing plain old Ruby you can symbolize the keys of a hash with the following:</p>
 
 <p><code>hash.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}</code></p>
 
@@ -30,12 +30,12 @@ Functions.t(:symbolize_keys)[{&quot;foo&quot; =&gt; &quot;bar&quot;}]
 
 <p>If you are using Rails then you can use the method <code>hash.symbolize_keys</code> or the destructive version <code>hash.symbolize_keys!</code><br>
 (both made available via ActiveSupport).</p>
-</div><div class="tags"><a href="/tags/ruby">ruby</a></div><h1><a href="/pry-is-amazing/">Pry is amazing</a></h1><div class="content" data-view-highlight=""><p><a href="https://github.com/pry/pry">Pry</a> is amazing! It has a whole bunch of helpful shortcuts you can use while working in a session.</p>
+</div><a href="/tags/ruby" class="article__tag">ruby</a></div><div class="article"><a href="/pry-is-amazing/" class="article__title">Pry is amazing</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p><a href="https://github.com/pry/pry">Pry</a> is amazing! It has a whole bunch of helpful shortcuts you can use while working in a session.</p>
 
 <p>I found the <a href="https://github.com/pry/pry/wiki/Exceptions">exception handling shortcuts</a> particularly helpful. <code>_ex_</code> will give you the last raised exception, and <code>wtf?</code> will show you a stacktrace from that exception (which is helpful, since stacktraces aren&rsquo;t normally shown in interactive terminal sessions like this). Hilariously, you can add more question marks or exclamation marks on the end to see more detail.</p>
 
 <p>If you work with Ruby app consoles regularly, you&rsquo;d do yourself a favour to give the <a href="https://github.com/pry/pry/wiki">Pry Wiki</a> a good read!</p>
-</div><div class="tags"><a href="/tags/ruby">ruby</a>, <a href="/tags/debugging">debugging</a></div><h1><a href="/aws-elasticsearch-authentication/">Authenticating with AWS Elasticsearch</a></h1><div class="content" data-view-highlight=""><p>The AWS Elasticseach service offers authentication via an IAM user, or by whitelisting IPs.</p>
+</div><a href="/tags/ruby" class="article__tag">ruby</a><a href="/tags/debugging" class="article__tag">debugging</a></div><div class="article"><a href="/aws-elasticsearch-authentication/" class="article__title">Authenticating with AWS Elasticsearch</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p>The AWS Elasticseach service offers authentication via an IAM user, or by whitelisting IPs.</p>
 
 <p>Here&rsquo;s how to use IAM credentials to sign requests to the service when using Faraday and how to hook that into the Ruby elasticsearch gem.</p>
 
@@ -81,7 +81,7 @@ client = Elasticsearch::Client.new(transport: transport)
 </code></pre>
 
 <p>You can then use the client object as usual, and you&rsquo;ll get automatically signed requests.</p>
-</div><div class="tags"><a href="/tags/ruby">ruby</a>, <a href="/tags/aws">aws</a></div><h1><a href="/manually-incrementing-count-columns/">Manually incrementing count columns in rails</a></h1><div class="content" data-view-highlight=""><p>Adding a counter cache column to a model is a common optimisation we make in order to avoid unnecessary queries when trying to aggregate data associated with that particular model. Rails provides us with a number of ways to maintain the counter cache column&rsquo;s value. The first is to follow the rails convention and add <code>counter_cache: true</code> to a <code>belongs_to</code> association and ensure we have a correctly named <code>*_count</code> column.</p>
+</div><a href="/tags/ruby" class="article__tag">ruby</a><a href="/tags/aws" class="article__tag">aws</a></div><div class="article"><a href="/manually-incrementing-count-columns/" class="article__title">Manually incrementing count columns in rails</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p>Adding a counter cache column to a model is a common optimisation we make in order to avoid unnecessary queries when trying to aggregate data associated with that particular model. Rails provides us with a number of ways to maintain the counter cache column&rsquo;s value. The first is to follow the rails convention and add <code>counter_cache: true</code> to a <code>belongs_to</code> association and ensure we have a correctly named <code>*_count</code> column.</p>
 
 <p>The other way to do it, is manually. In this case rails provides us with a few convenience methods to increment a given column.</p>
 
@@ -129,7 +129,7 @@ end
 <li><em><a href="http://apidock.com/rails/ActiveRecord/Base/increment!">increment!</a></em></li>
 <li><em>[increment_counter](<a href="http://apidock.com/rails/ActiveRecord/Base/increment">http://apidock.com/rails/ActiveRecord/Base/increment</a></em>counter/class)_</li>
 </ul>
-</div><div class="tags"><a href="/tags/rails">rails</a>, <a href="/tags/ruby">ruby</a></div><h1><a href="/displaying-booleans-in-active-admin/">Displaying booleans in Active Admin</a></h1><div class="content" data-view-highlight=""><p>In Active Admin if you want to display a boolean propetry that doesn&rsquo;t directly map to a database column you can use <code>status_tag</code> to display the value in a fiendly way:</p>
+</div><a href="/tags/rails" class="article__tag">rails</a><a href="/tags/ruby" class="article__tag">ruby</a></div><div class="article"><a href="/displaying-booleans-in-active-admin/" class="article__title">Displaying booleans in Active Admin</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p>In Active Admin if you want to display a boolean propetry that doesn&rsquo;t directly map to a database column you can use <code>status_tag</code> to display the value in a fiendly way:</p>
 
 <pre><code>column :featured do |thing|
   thing.featured? ? status_tag(&quot;yes&quot;, :ok) : status_tag(&quot;no&quot;)
@@ -137,7 +137,7 @@ end
 </code></pre>
 
 <p>There&rsquo;s a bit more info in the <em><a href="http://activeadmin.info/docs/12-arbre-components.html#status-tag">Active Admin docs</a></em> which shows you how to add classes too!</p>
-</div><div class="tags"><a href="/tags/rails">rails</a>, <a href="/tags/ruby">ruby</a></div><h1><a href="/dynamic-classnames-in-slim/">Dynamic classnames in Slim</a></h1><div class="content" data-view-highlight=""><p>While glancing through one of Narinda’s pull-requests, I noticed she’d used a syntax for dynamic classnames in <a href="http://slim-lang.com/">Slim</a> that I had not seen before:</p>
+</div><a href="/tags/rails" class="article__tag">rails</a><a href="/tags/ruby" class="article__tag">ruby</a></div><div class="article"><a href="/dynamic-classnames-in-slim/" class="article__title">Dynamic classnames in Slim</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p>While glancing through one of Narinda’s pull-requests, I noticed she’d used a syntax for dynamic classnames in <a href="http://slim-lang.com/">Slim</a> that I had not seen before:</p>
 
 <pre><code class="slim"># Aww yeah
 - dynamic_classname = (truthy_test ? &#39;foo&#39; : &#39;bar&#39;)
@@ -152,7 +152,7 @@ end
 .static-class-name-one class=&quot;static-class-name-two #{dynamic_classname}&quot;
   &#39; Foo or bar?
 </code></pre>
-</div><div class="tags"><a href="/tags/slim">slim</a>, <a href="/tags/ruby">ruby</a></div><h1><a href="/string-format/">Formatting strings with C-like formatting codes.</a></h1><div class="content" data-view-highlight=""><p>I learnt this while putting together the report emails for Ticketscout.</p>
+</div><a href="/tags/slim" class="article__tag">slim</a><a href="/tags/ruby" class="article__tag">ruby</a></div><div class="article"><a href="/string-format/" class="article__title">Formatting strings with C-like formatting codes.</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p>I learnt this while putting together the report emails for Ticketscout.</p>
 
 <p>Most of the time, regular string interpolation is all that we need when working with strings. Though sometimes we want a little more control over the formatting.</p>
 
@@ -192,7 +192,7 @@ avg = FLOATS.reduce(0, :+) / FLOATS.size
 <p>Which, to me at least, reads a little nicer.</p>
 
 <p><a href="http://apidock.com/ruby/Kernel/sprintf">Kernel::sprintf</a> has a more complete list of formatting strings.</p>
-</div><div class="tags"><a href="/tags/ruby">ruby</a></div><h1><a href="/dynamically-adding-class-methods/">Using `Class.new` for dynamically adding class methods</a></h1><div class="content" data-view-highlight=""><p>Say you&rsquo;re building a system where you want to dynamically add some class methods to a class at a particular moment, but without leaving them around for use on the class at other times.</p>
+</div><a href="/tags/ruby" class="article__tag">ruby</a></div><div class="article"><a href="/dynamically-adding-class-methods/" class="article__title">Using `Class.new` for dynamically adding class methods</a><div class="article__meta">Daniel Nitsikopolous, 26 April 2016 </div><div class="article__content" data-view-highlight=""><p>Say you&rsquo;re building a system where you want to dynamically add some class methods to a class at a particular moment, but without leaving them around for use on the class at other times.</p>
 
 <p>This is pretty easy if you create an anonymous subclass whenever you need to use the special class methods:</p>
 
@@ -207,4 +207,4 @@ end
 
 Class.new(MyThing).extend(MyCustomFinders).special_finder
 </code></pre>
-</div><div class="tags"><a href="/tags/ruby">ruby</a></div></div><div class="tags"><h2>All tags</h2><a href="/tags/react">react</a><a href="/tags/js">js</a><a href="/tags/ruby">ruby</a><a href="/tags/aws">aws</a><a href="/tags/accessibility">accessibility</a><a href="/tags/social">social</a><a href="/tags/performance">performance</a><a href="/tags/git">git</a><a href="/tags/css">css</a><a href="/tags/rails">rails</a><a href="/tags/slim">slim</a><a href="/tags/seo">seo</a><a href="/tags/postgres">postgres</a><a href="/tags/debugging">debugging</a><a href="/tags/testing">testing</a><a href="/tags/processing">processing</a></div></body></html>
+</div><a href="/tags/ruby" class="article__tag">ruby</a></div></div></div></body></html>
