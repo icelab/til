@@ -4,9 +4,6 @@ require "slim"
 
 activate :dotenv
 
-# Set time zone
-Time.zone = ENV["TIME_ZONE"] || "Melbourne"
-
 # Set Markdown engine to use redcarpet
 set :markdown_engine, :redcarpet
 set :markdown,        fenced_code_blocks: true,
