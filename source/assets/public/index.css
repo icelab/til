@@ -25,6 +25,8 @@ body {
   font-family: 'FreightTextPro';
   font-size: 1.6rem;
   font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .container {
