@@ -7,6 +7,7 @@ html
       => current_page.data.title
       ' —
       = data.site.name
+    link rel="shortcut icon" href="http://icelab.com.au/workspace/images/favicon.png"
     link rel="stylesheet" type="text/css" href=asset_path(:css, "assets/public")
     script type="text/javascript" src=asset_path(:js, "assets/public")
 
@@ -24,7 +25,10 @@ html
     .header
       a.header__logo href="http://www.icelab.com.au"
       = link_to data.site.name, "/", :class => "header__til-text"
+
       a.header__view-topics.open-sidebar href="#sidebar"  &lsaquo; View topics
+
+      == yield_content(:topic_tag)
 
     .container
       = yield

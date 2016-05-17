@@ -27,7 +27,7 @@
 
 .header__logo:hover {
   transition: all 200ms ease-in-out;
-  transform: scale(.9);
+  transform: scale(.95);
   text-decoration: none;
 }
 
@@ -45,4 +45,14 @@
 .header__view-topics:hover {
   color: var(--pink);
   text-decoration: underline;
+}
+
+.topic-tag {
+  color:  var(--grey);
+  position: absolute;
+  text-align: center;
+  width: 30rem;
+  left: 50%;
+  right: 50%;
+  margin-left: -15rem;
 }

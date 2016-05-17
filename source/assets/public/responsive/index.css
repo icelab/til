@@ -7,15 +7,30 @@
     padding-bottom: 2rem;
   }
   .header__logo {
+    width: 3rem;
+    height: 3rem;
+    background-size: 3rem 3rem;
+    margin-top: -0.8rem;
     margin-right: 1.5rem;
   }
-  .sidebar a {
+
+  .sidebar {
+    padding-top: 2rem;
+  }
+
+  .close-sidebar {
+    margin-bottom: 4rem;
   }
 
   .container {
     width: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .topic-tag {
+    position: static;
+    margin: 5rem auto 0rem;
   }
 
 }

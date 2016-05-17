@@ -56,12 +56,12 @@
 }
 
 .article__content ol, .article__content ul {
-  margin-left: 3rem;
+  margin-left: 4rem;
   margin-bottom: 3rem;
 }
 
 .article__content li {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   list-style-type: disc;
 }
 
@@ -76,6 +76,7 @@
   text-decoration: none;
   border-radius: 0.3rem;
   margin-right: 1.5rem;
+  margin-top: 1rem;
 }
 
 .article__tag:hover {
@@ -83,5 +84,65 @@
   border: 1px solid var(--pink);
   color: var(--pink);
 }
+
+.pagination {
+  margin-bottom: 10rem;
+  font-family: 'National', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: var(--grey-light);
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+.pagination__newer {
+  text-decoration: none;
+  color: var(--pink);
+  margin-right: 2rem;
+}
+
+.pagination__older {
+  text-decoration: none;
+  color: var(--pink);
+  margin-left: 2rem;
+}
+
+.pagination a:hover {
+  color: var(--pink);
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

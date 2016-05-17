@@ -7,7 +7,7 @@
   right: -25rem;
   width: 25rem;
   height: 100%;
-  padding-top: 2rem;
+  padding-top: 3rem;
   overflow-y: auto;
   transition: all .2s ease-in-out;
   background-color: #F9F9F9;
@@ -31,7 +31,7 @@
 }
 
 .close-sidebar {
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
   display: block;
   text-align: center;
 }

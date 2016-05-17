@@ -2,9 +2,17 @@
 pageable: true
 per_page: 12
 ---
-h1
-  ' Articles tagged
-  = tagname
+
+- content_for(:topic_tag) do
+  .topic-tag
+    = tagname
+    span.topic-count
+      |  (
+      i 1
+      |)
+
+- page_articles.each_with_index do |article, i|
+  = partial "partials/article", locals: { article: article }
 
 - if paginate && num_pages > 1
   p
@@ -15,10 +23,6 @@ h1
 
   - if prev_page
     p = link_to 'Previous page', prev_page
-
-.articles
-  - page_articles.each_with_index do |article, i|
-    = partial "partials/article", locals: { article: article }
 
 - if paginate
   - if next_page
