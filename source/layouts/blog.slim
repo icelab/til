@@ -1,12 +1,10 @@
 = wrap_layout :base do
-  h1 = current_page.title
-  .content data-view-highlight=true
-    = yield
-  .tags
+  .article
+    = link_to current_page.title, "/", :class => "article__title"
+    .article__meta
+      'Daniel Nitsikopolous, 26 April 2016
+    .article__content data-view-highlight=true
+      = yield
+
     - current_page.tags.each_with_index do |tag, i|
-      = link_to tag, "/tags/#{tag}"
-      - unless i == current_page.tags.count - 1
-        ',
-
-
-
+      = link_to tag, "/tags/#{tag}", :class => "article__tag"

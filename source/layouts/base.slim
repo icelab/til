@@ -2,6 +2,7 @@ doctype html
 html
   head
     meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     title
       => current_page.data.title
       ' —
@@ -14,7 +15,12 @@ html
     aside#sidebar.sidebar
       a href="#" class="close-sidebar" Hide topics &rsaquo;
       - blog.tags.each do |tag, articles|
-        = link_to "#{tag} <span class='topic-count'>(<i>1</i>)</span>", "/tags/#{tag}"
+        .sidebar-topic
+          a href="/tags/#{tag}" #{tag}
+          span.topic-count
+            |  (
+            i 1
+            |)
     .header
       a.header__logo href="http://www.icelab.com.au"
       = link_to data.site.name, "/", :class => "header__til-text"

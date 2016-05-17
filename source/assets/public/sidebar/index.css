@@ -7,31 +7,33 @@
   right: -25rem;
   width: 25rem;
   height: 100%;
-  padding-top: 3rem;
+  padding-top: 2rem;
   overflow-y: auto;
   transition: all .2s ease-in-out;
   background-color: #F9F9F9;
   box-shadow: -15px 0px 0px 0px rgba(255,255,255,0.5);
 }
 
-.sidebar a {
+.sidebar-topic {
   display: block;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.sidebar a {
   font-family: 'Anonymous Pro', serif;
   font-size: 1.4rem;
   color: var(--grey);
   text-decoration: none;
-  transition: color .2s ease;
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
 }
 .sidebar a:hover {
   color: var(--pink);
+  text-decoration: underline;
 }
-.sidebar a.close-sidebar {
+
+.close-sidebar {
   margin-bottom: 6rem;
+  display: block;
+  text-align: center;
 }
 
 #sidebar:target {

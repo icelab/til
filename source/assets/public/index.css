@@ -9,11 +9,16 @@
 
 @import './reset';
 @import 'highlight.js/styles/solarized-light.css';
-@import 'fonts/freight-text-pro.css';
+@import 'fonts/freight-text-pro/freight-text-pro.css';
+@import 'fonts/national/national.css';
 @import './header';
 @import './sidebar';
 @import './articles';
-@import './responsive';
+
+
+* {
+  box-sizing: border-box;
+}
 
 html {
   font-size: 62.5%;
@@ -30,7 +35,10 @@ body {
 }
 
 .container {
-  max-width: 68rem;
+  width: 60rem;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
 }
+
+@import './responsive';

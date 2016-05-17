@@ -11,12 +11,6 @@
 .header a {
   color: var(--grey);
   text-decoration: none;
-  transition: color .3s ease;
-}
-
-.header a:hover {
-  color: var(--pink);
-  text-decoration: none;
 }
 
 .header__logo {
@@ -27,12 +21,28 @@
   background-size: 3.4rem 3.4rem;
   margin-top: -1rem;
   margin-right: 3rem;
+  transition: all 200ms ease-in-out;
+  transform: scale(1);
 }
 
-.icelab__text {
+.header__logo:hover {
+  transition: all 200ms ease-in-out;
+  transform: scale(.9);
+  text-decoration: none;
+}
+
+.header__til-text {
   float: left;
+}
+.header__til-text:hover {
+  color: var(--pink);
+  text-decoration: underline;
 }
 
 .header__view-topics {
   float: right;
+}
+.header__view-topics:hover {
+  color: var(--pink);
+  text-decoration: underline;
 }
