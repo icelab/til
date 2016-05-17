@@ -1,16 +1,28 @@
 :root {
-  --foo: #ccc;
+  --white: #ffffff;
 }
 
 @import './reset';
 @import 'highlight.js/styles/solarized-light.css';
+@import 'fonts/freight-text-pro.css';
 
 html {
   font-size: 62.5%;
 }
 
 body {
-  background-color: var(--foo);
-  font-family: 'Helvetica';
+  background-color: var(--white);
+  font-family: 'Anonymous Pro', "Courier New", Courier, monospace;
+  font-family: 'FreightTextPro';
   font-size: 1.6rem;
+  font-smoothing: antialiased;
 }
+
+.container {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+

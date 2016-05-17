@@ -8,11 +8,15 @@ html
       = data.site.name
     link rel="stylesheet" type="text/css" href=asset_path(:css, "assets/public")
     script type="text/javascript" src=asset_path(:js, "assets/public")
+
   body
     h1
       = link_to data.site.name, "/"
-    = yield
-    .tags
+    .container
+      = yield
+    aside
       h2 All tags
-      - blog.tags.each do |tag, articles|
-        = link_to tag, "/tags/#{tag}"
+      ul.topic-list
+        - blog.tags.each do |tag, articles|
+          li.topic-list__item
+            = link_to tag, "/tags/#{tag}"
