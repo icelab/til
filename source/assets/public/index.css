@@ -1,5 +1,8 @@
 :root {
   --white: #ffffff;
+  --pink: #E46B7A;
+  --grey: #4A4A4A;
+  --grey-light: #9B9B9B;
 }
 
 @import './reset';
@@ -12,17 +15,53 @@ html {
 
 body {
   background-color: var(--white);
-  font-family: 'Anonymous Pro', "Courier New", Courier, monospace;
+
   font-family: 'FreightTextPro';
   font-size: 1.6rem;
   font-smoothing: antialiased;
 }
 
 .container {
-  max-width: 680px;
+  max-width: 68rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 
+/* Header styles */
+
+.header {
+  padding: 3rem;
+  font-size: 1.3rem;
+  font-family: 'Anonymous Pro', serif;
+}
+
+.header a {
+  color: var(--grey);
+  text-decoration: none;
+  transition: color .5s ease;
+}
+
+.header a:hover {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.header__logo {
+  float: left;
+  width: 3.4rem;
+  height: 3.4rem;
+  background-image: url(icelab-logo.png);
+  background-size: 3.4rem 3.4rem;
+  margin-top: -1rem;
+  margin-right: 3rem;
+}
+
+.icelab__text {
+  float: left;
+}
+
+.header__view-topics {
+  float: right;
+}
 
