@@ -1,0 +1,46 @@
+
+/* Topics sidebar */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -25rem;
+  width: 25rem;
+  height: 100%;
+  padding-top: 3rem;
+  overflow-y: auto;
+  transition: all .2s ease-in-out;
+  background-color: #F6F6F6;
+}
+
+.sidebar a {
+  display: block;
+  font-family: 'Anonymous Pro', serif;
+  font-size: 1.4rem;
+  color: var(--grey);
+  text-decoration: none;
+  transition: color .2s ease;
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.sidebar a:hover {
+  color: var(--pink);
+}
+.sidebar a.close-sidebar {
+  margin-bottom: 6rem;
+}
+
+#sidebar:target {
+  right: 0;
+}
+
+.topic-count {
+  color: var(--green);
+}
+
+.topic-count i {
+  color: var(--blue);
+}

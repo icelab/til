@@ -1,12 +1,12 @@
 
 
-h1
-  = link_to article.title, article
-.content data-view-highlight=true
-  = article.body
-.tags
+.article
+  = link_to article.title, article, :class => "article__title"
+  .article__meta
+    'Daniel Nitsikopolous, 26 April 2016
+  .article__content data-view-highlight=true
+    = article.body
+
   - article.tags.each_with_index do |tag, i|
-    = link_to tag, "/tags/#{tag}"
-    - unless i == article.tags.count - 1
-      ',
+    = link_to tag, "/tags/#{tag}", :class => "article__tag"
 

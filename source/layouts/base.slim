@@ -10,13 +10,15 @@ html
     script type="text/javascript" src=asset_path(:js, "assets/public")
 
   body
-    h1
-      = link_to data.site.name, "/"
+
+    aside#sidebar.sidebar
+      a href="#" class="close-sidebar" Hide topics &rsaquo;
+      - blog.tags.each do |tag, articles|
+        = link_to "#{tag} <span class='topic-count'>(<i>1</i>)</span>", "/tags/#{tag}"
+    .header
+      a.header__logo href="http://www.icelab.com.au"
+      = link_to data.site.name, "/", :class => "header__til-text"
+      a.header__view-topics.open-sidebar href="#sidebar"  &lsaquo; View topics
+
     .container
       = yield
-    aside
-      h2 All tags
-      ul.topic-list
-        - blog.tags.each do |tag, articles|
-          li.topic-list__item
-            = link_to tag, "/tags/#{tag}"

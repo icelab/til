@@ -3,11 +3,17 @@
   --pink: #E46B7A;
   --grey: #4A4A4A;
   --grey-light: #9B9B9B;
+  --green: #70AD6A;
+  --blue: #2A5FB2;
 }
 
 @import './reset';
 @import 'highlight.js/styles/solarized-light.css';
 @import 'fonts/freight-text-pro.css';
+@import './header';
+@import './sidebar';
+@import './articles';
+@import './responsive';
 
 html {
   font-size: 62.5%;
@@ -26,42 +32,3 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-
-
-/* Header styles */
-
-.header {
-  padding: 3rem;
-  font-size: 1.3rem;
-  font-family: 'Anonymous Pro', serif;
-}
-
-.header a {
-  color: var(--grey);
-  text-decoration: none;
-  transition: color .5s ease;
-}
-
-.header a:hover {
-  color: var(--pink);
-  text-decoration: none;
-}
-
-.header__logo {
-  float: left;
-  width: 3.4rem;
-  height: 3.4rem;
-  background-image: url(icelab-logo.png);
-  background-size: 3.4rem 3.4rem;
-  margin-top: -1rem;
-  margin-right: 3rem;
-}
-
-.icelab__text {
-  float: left;
-}
-
-.header__view-topics {
-  float: right;
-}
-

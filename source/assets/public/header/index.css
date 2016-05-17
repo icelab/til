@@ -1,0 +1,38 @@
+
+/* Header styles */
+
+.header {
+  padding: 3rem;
+  font-size: 1.4rem;
+  font-family: 'Anonymous Pro', serif;
+  margin-bottom: 3rem;
+}
+
+.header a {
+  color: var(--grey);
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+.header a:hover {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.header__logo {
+  float: left;
+  width: 3.4rem;
+  height: 3.4rem;
+  background-image: url(icelab-logo.png);
+  background-size: 3.4rem 3.4rem;
+  margin-top: -1rem;
+  margin-right: 3rem;
+}
+
+.icelab__text {
+  float: left;
+}
+
+.header__view-topics {
+  float: right;
+}

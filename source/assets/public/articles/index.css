@@ -1,0 +1,54 @@
+
+/* Article styles */
+
+.article {
+  margin-bottom: 12rem;
+}
+
+/*.article__title {
+  font-family: helvetica;
+  font-weight: bold;
+  color: var(--pink);
+  font-size: 2.8rem;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 2.3rem;
+  display: block;
+}
+
+.article__meta {
+
+  font-family: helvetica;
+  font-weight: bold;
+  color: var(--grey-light);
+  font-size: 1.3rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 4.3rem;
+}
+
+.article__content {
+  font-size: 2rem;
+  line-height: 2.9rem;
+}
+
+.article__tag {
+  display: inline-block;
+  background-color: var(--pink);
+  color: var(--white);
+  font-size: 1.6rem;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  margin-right: 1.5rem;
+}
+
+code {
+  font-family: 'Anonymous Pro', serif;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #FBFBFB;
+  color: var(grey);
+}
+*/
