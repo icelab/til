@@ -14,16 +14,15 @@ per_page: 12
 - page_articles.each_with_index do |article, i|
   = partial "partials/article", locals: { article: article }
 
-- if paginate && num_pages > 1
-  p
+.pagination
+  - if paginate && num_pages > 1
+    - if prev_page
+      = link_to '&lsaquo; Newer', prev_page, :class => "pagination__newer"
+
     ' Page
-    = page_number
+    => page_number
     ' of
     = num_pages
 
-  - if prev_page
-    p = link_to 'Previous page', prev_page
-
-- if paginate
-  - if next_page
-    p = link_to 'Next page', next_page
+    - if next_page
+      = link_to 'Older &rsaquo;', next_page, :class => "pagination__older"
