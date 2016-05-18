@@ -79,15 +79,21 @@
   text-align: center;
 }
 
+.article__content blockquote {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-left: 4px solid var(--pink);
+}
+
 .article__content blockquote p {
   font-family: 'National', sans-serif;
   color: var(--grey);
-  font-style: italic;
   font-weight: bold;
-  font-size: 2.2rem;
-  text-align: center;
-  padding: 1.5rem 6rem 1.5rem 6rem;
-  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: left;
+  padding-left: 2.5rem;
+  line-height: 2.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .article__tag {
