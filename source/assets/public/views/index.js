@@ -9,5 +9,16 @@ module.exports = {
     for (var i = 0; i < blocks.length; i++) {
       highlight.highlightBlock(blocks[i])
     }
-  }
+  },
+  toggleSidebar: function (el, props) {
+    el.addEventListener("click", function(event){
+      event.preventDefault()
+      var sideBar = document.getElementById("sidebar")
+      if (sideBar.classList.contains("sidebar--open")) {
+        sidebar.classList.remove("sidebar--open")
+      } else {
+        sidebar.classList.add("sidebar--open")
+      }
+    });
+  },
 }

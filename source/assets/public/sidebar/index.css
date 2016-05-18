@@ -36,7 +36,11 @@
   text-align: center;
 }
 
-#sidebar:target {
+/*#sidebar:target {
+  right: 0;
+}*/
+
+.sidebar--open {
   right: 0;
 }
 

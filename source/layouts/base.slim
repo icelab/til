@@ -15,7 +15,9 @@ html
   body
 
     aside#sidebar.sidebar
-      a href="#" class="close-sidebar" Hide topics &rsaquo;
+      a href="#" class="close-sidebar" data-view-toggle-sidebar=""
+        'Hide topics &rsaquo;
+
       - blog.tags.each do |tag, articles|
         .sidebar-topic
           a href="/tags/#{tag}" #{tag}
@@ -27,7 +29,13 @@ html
       a.header__logo href="http://www.icelab.com.au"
       = link_to data.site.name, "/", :class => "header__til-text"
       == yield_content(:topic_tag)
-      a.header__view-topics.open-sidebar href="#sidebar"  &lsaquo; View topics
+
+      a href="#" class="header__view-topics open-sidebar" data-view-toggle-sidebar=""
+        '&lsaquo; View topics
 
     .container
       = yield
+
+
+
+
