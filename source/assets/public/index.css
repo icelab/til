@@ -10,6 +10,7 @@
 @import './reset';
 @import 'highlight.js/styles/solarized-light.css';
 @import 'fonts/freight-text-pro/freight-text-pro.css';
+@import 'fonts/anonymous/anonymous.css';
 @import 'fonts/national/national.css';
 @import './header';
 @import './sidebar';

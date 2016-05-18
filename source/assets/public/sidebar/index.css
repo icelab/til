@@ -9,7 +9,7 @@
   height: 100%;
   padding-top: 3rem;
   overflow-y: auto;
-  transition: all .2s ease-in-out;
+  transition: all .15s ease-in;
   background-color: #F9F9F9;
   box-shadow: -15px 0px 0px 0px rgba(255,255,255,0.5);
 }
@@ -20,7 +20,7 @@
   text-align: center;
 }
 .sidebar a {
-  font-family: 'Anonymous Pro', serif;
+  font-family: 'Anonymous', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
   font-size: 1.4rem;
   color: var(--grey);
   text-decoration: none;
