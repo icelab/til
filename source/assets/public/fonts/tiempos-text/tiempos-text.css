@@ -1,5 +1,5 @@
 
-/*@font-face {
+@font-face {
   font-family: 'TiemposText';
   src: url('fonts/tiempos-text/TiemposTextWeb-Bold.eot');
   src: url('fonts/tiempos-text/TiemposTextWeb-Bold.eot?#iefix') format('embedded-opentype'),
@@ -17,7 +17,7 @@
        url('fonts/tiempos-text/TiemposTextWeb-BoldItalic.woff2') format('woff2');
   font-style: italic;
   font-weight: bold;
-}*/
+}
 
 @font-face {
   font-family: 'TiemposText';
