@@ -35,6 +35,7 @@
 }
 
 .article__content {
+  font-weight: normal;
   color: var(--grey);
   font-size: 1.6rem;
   line-height: 2.4rem;
@@ -42,6 +43,7 @@
 
 .article__content p {
   margin-bottom: 1.5rem;
+  font-weight: normal;
 }
 
 .article__content i, .article__content em {
