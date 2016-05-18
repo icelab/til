@@ -12,7 +12,7 @@
 @font-face {
   font-family: 'TiemposText';
   src: url('fonts/tiempos-text/tiempostextweb-boldidtalic.eot');
-  src: url('fonts/tiempos-text/tiempostextweb-boldidtalic.eot?#iefix') format('embedded-opentype'),
+  src: url('fonts/tiempos-text/tiempostextweb-boldiditalic.eot?#iefix') format('embedded-opentype'),
        url('fonts/tiempos-text/tiempostextweb-boldidtalic.woff') format('woff'),
        url('fonts/tiempos-text/tiempostextweb-boldidtalic.woff2') format('woff2');
   font-style: italic;
