@@ -21,7 +21,7 @@
 }
 .sidebar a {
   color: var(--grey);
-  font-family: 'Anonymous', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  font-family: 'Inconsolata', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
   font-size: 1.4rem;
   text-decoration: none;
 }
@@ -43,7 +43,7 @@
 .topic-count {
   color: var(--green);
   font-size: 1.4rem;
-  font-family: 'Anonymous', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  font-family: 'Inconsolata', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
 .topic-count i {
