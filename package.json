@@ -30,6 +30,7 @@
   "scripts": {
     "clean": "rm -rf ./.tmp/dist/*",
     "watch": "NODE_ENV=development webpack --config ./webpack.config.js --watch -d",
+    "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack --config ./webpack.config.js -p --bail",
     "lint": "eslint '/targets/**/*.js'; exit 0"
   }
