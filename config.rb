@@ -111,6 +111,9 @@ configure :development do
   activate :livereload
 end
 
+# Adding this gem to stop post titles from widowing
+activate :widont
+
 # Build-specific configuration -------------------------------------------------
 
 configure :build do

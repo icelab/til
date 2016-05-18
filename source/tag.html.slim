@@ -5,11 +5,8 @@ per_page: 12
 
 - content_for(:topic_tag) do
   .topic-tag
-    = tagname
-    span.topic-count
-      |  (
-      i = articles.size
-      |)
+    ' about
+    a href="/tags/#{tagname}"= tagname
 
 - page_articles.each_with_index do |article, i|
   = partial "partials/article", locals: { article: article }

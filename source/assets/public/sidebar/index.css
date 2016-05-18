@@ -9,14 +9,14 @@
   height: 100%;
   padding-top: 3rem;
   overflow-y: auto;
-  transition: all .15s ease-in;
-  background-color: #F9F9F9;
+  transition: all .2s cubic-bezier(.83,.06,.09,.91);
+  background-color: #F3F3F3;
   box-shadow: -15px 0px 0px 0px rgba(255,255,255,0.5);
 }
 
 .sidebar-topic {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 .sidebar a {
@@ -41,7 +41,9 @@
 }
 
 .topic-count {
+  font-size: 1.4rem;
   color: var(--green);
+  font-family: 'Anonymous', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
 .topic-count i {

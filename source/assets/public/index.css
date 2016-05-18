@@ -2,7 +2,7 @@
   --white: #ffffff;
   --pink: #E46B7A;
   --grey: #4A4A4A;
-  --grey-light: #9B9B9B;
+  --grey-light: #8C8C8C;
   --green: #70AD6A;
   --blue: #2A5FB2;
 }
@@ -10,6 +10,7 @@
 @import './reset';
 @import 'highlight.js/styles/solarized-light.css';
 @import 'fonts/freight-text-pro/freight-text-pro.css';
+@import 'fonts/tiempos-text/tiempos-text.css';
 @import 'fonts/anonymous/anonymous.css';
 @import 'fonts/national/national.css';
 @import './header';
@@ -27,8 +28,7 @@ html {
 
 body {
   background-color: var(--white);
-
-  font-family: 'FreightTextPro';
+  font-family: 'TiemposText';
   font-size: 1.6rem;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;

@@ -20,7 +20,7 @@
   background-image: url(icelab-logo.png);
   background-size: 3.4rem 3.4rem;
   margin-top: -1rem;
-  margin-right: 3rem;
+  margin-right: 2rem;
   transition: all 200ms ease-in-out;
   transform: scale(1);
 }
@@ -49,10 +49,15 @@
 
 .topic-tag {
   color:  var(--grey);
-  position: absolute;
-  text-align: center;
-  width: 30rem;
-  left: 50%;
-  right: 50%;
-  margin-left: -15rem;
+  margin-left: 0.8rem;
+  display: inline-block;
+}
+
+.topic-tag a {
+  color: var(--pink);
+  font-weight: bold;
+}
+
+.topic-tag a:hover {
+  text-decoration: underline;
 }

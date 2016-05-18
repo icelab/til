@@ -6,6 +6,7 @@ ruby "2.3.0"
 gem "middleman"
 gem "middleman-dotenv"
 gem "middleman-livereload"
+gem "middleman-widont"
 gem "rake"
 
 # Formats

@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'TiemposText';
+  src: url('fonts/tiempos-text/TiemposTextWeb-Bold.eot');
+  src: url('fonts/tiempos-text/TiemposTextWeb-Bold.eot?#iefix') format('embedded-opentype'),
+       url('fonts/tiempos-text/TiemposTextWeb-Bold.woff') format('woff'),
+       url('fonts/tiempos-text/TiemposTextWeb-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'TiemposText';
+  src: url('fonts/tiempos-text/TiemposTextWeb-BoldItalic.eot');
+  src: url('fonts/tiempos-text/TiemposTextWeb-BoldItalic.eot?#iefix') format('embedded-opentype'),
+       url('fonts/tiempos-text/TiemposTextWeb-BoldItalic.woff') format('woff'),
+       url('fonts/tiempos-text/TiemposTextWeb-BoldItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'TiemposText';
+  src: url('fonts/tiempos-text/TiemposTextWeb-Regular.eot');
+  src: url('fonts/tiempos-text/TiemposTextWeb-Regular.eot?#iefix') format('embedded-opentype'),
+       url('fonts/tiempos-text/TiemposTextWeb-Regular.woff') format('woff'),
+       url('fonts/tiempos-text/TiemposTextWeb-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'TiemposText';
+  src: url('fonts/tiempos-text/TiemposTextWeb-RegularItalic.eot');
+  src: url('fonts/tiempos-text/TiemposTextWeb-RegularItalic.eot?#iefix') format('embedded-opentype'),
+       url('fonts/tiempos-text/TiemposTextWeb-RegularItalic.woff') format('woff'),
+       url('fonts/tiempos-text/TiemposTextWeb-RegularItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: normal;
+}
