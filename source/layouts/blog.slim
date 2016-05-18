@@ -2,7 +2,9 @@
   .article
     = link_to current_page.title, "/", :class => "article__title"
     .article__meta
-      'Daniel Nitsikopolous, 26 April 2016
+      = current_page.data.author
+      |, 
+      = current_page.data.date.strftime("%d %B %Y")
     .article__content data-view-highlight=true
       = yield
 
