@@ -20,7 +20,7 @@ html
           a href="/tags/#{tag}" #{tag}
           span.topic-count
             |  (
-            i 1
+            i = articles.size
             |)
     .header
       a.header__logo href="http://www.icelab.com.au"
@@ -32,3 +32,5 @@ html
 
     .container
       = yield
+
+
