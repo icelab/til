@@ -19,6 +19,10 @@
   text-decoration: none;
 }
 
+.article__title a:visited {
+  color: var(--pink);
+}
+
 .article__title:hover {
   text-decoration: underline;
 }
@@ -44,6 +48,7 @@
 .article__content p {
   margin-bottom: 1.5rem;
   font-weight: normal;
+  font-style: normal;
 }
 
 .article__content i, .article__content em {

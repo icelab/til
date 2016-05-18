@@ -1,6 +1,7 @@
 = wrap_layout :base do
   .article
-    = link_to current_page.title, "/", :class => "article__title"
+    h2.article__title
+      = link_to current_page.title, current_page
     .article__meta
       = current_page.data.author
       |, 
