@@ -2,10 +2,10 @@
 /* Header styles */
 
 .header {
-  padding: 3rem;
   font-size: 1.4rem;
   font-family: 'Anonymous', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
   margin-bottom: 3rem;
+  padding: 3rem;
 }
 
 .header a {
@@ -14,15 +14,15 @@
 }
 
 .header__logo {
-  float: left;
-  width: 3.4rem;
-  height: 3.4rem;
   background-image: url(icelab-logo.png);
   background-size: 3.4rem 3.4rem;
+  float: left;
+  height: 3.4rem;
   margin-top: -1rem;
   margin-right: 2rem;
   transition: all 200ms ease-in-out;
   transform: scale(1);
+  width: 3.4rem;
 }
 
 .header__logo:hover {
@@ -49,8 +49,8 @@
 
 .topic-tag {
   color:  var(--grey);
-  margin-left: 0.8rem;
   display: inline-block;
+  margin-left: 0.8rem;
 }
 
 .topic-tag a {

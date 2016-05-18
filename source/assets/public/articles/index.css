@@ -6,12 +6,12 @@
 }
 
 .article__title {
+  display: block;
   font-family: 'National', sans-serif;
   font-weight: bold;
   font-size: 3rem;
-  text-align: center;
   margin-bottom: 2rem;
-  display: block;
+  text-align: center;
 }
 
 .article__title a {
@@ -24,20 +24,20 @@
 }
 
 .article__meta {
+  color: var(--grey-light);
   font-family: 'National', sans-serif;
   font-weight: bold;
-  color: var(--grey-light);
   font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 4rem;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 4rem;
-  letter-spacing: 0.1em;
 }
 
 .article__content {
+  color: var(--grey);
   font-size: 1.6rem;
   line-height: 2.4rem;
-  color: var(--grey);
 }
 
 .article__content p {
@@ -64,8 +64,8 @@
 }
 
 .article__content li {
-  margin-bottom: 1.5rem;
   list-style-type: disc;
+  margin-bottom: 1.5rem;
 }
 
 .article__tags {
@@ -73,17 +73,17 @@
 }
 
 .article__tag {
-  font-family: 'National', sans-serif;
-  display: inline-block;
   background-color: var(--white);
   border: 1px solid var(--pink);
-  color: var(--pink);
-  font-size: 1.4rem;
-  padding: 0.5rem 1rem 0.8rem;
-  text-decoration: none;
   border-radius: 0.3rem;
+  color: var(--pink);
+  display: inline-block;
+  font-family: 'National', sans-serif;
+  font-size: 1.4rem;
   margin-right: 1rem;
   margin-top: 1rem;
+  padding: 0.5rem 1rem 0.8rem;
+  text-decoration: none;
 }
 
 .article__tag:hover {
@@ -93,26 +93,25 @@
 }
 
 .pagination {
-  margin-bottom: 12rem;
+  color: var(--grey-light);
   font-family: 'National', sans-serif;
   font-size: 3rem;
-  color: var(--grey-light);
-
+  margin-bottom: 12rem;
   text-align: center;
 }
 
 .pagination__newer {
-  text-decoration: none;
   color: var(--pink);
-  margin-right: 2rem;
   font-weight: bold;
+  margin-right: 2rem;
+  text-decoration: none;
 }
 
 .pagination__older {
-  text-decoration: none;
   color: var(--pink);
-  margin-left: 2rem;
   font-weight: bold;
+  margin-left: 2rem;
+  text-decoration: none;
 }
 
 .pagination a:hover {
