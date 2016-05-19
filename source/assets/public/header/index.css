@@ -49,13 +49,11 @@
 
 .topic-tag {
   color:  var(--grey);
-  display: inline-block;
-  margin-left: 0.8rem;
+  float: left;
 }
 
 .topic-tag a {
   color: var(--pink);
-  font-weight: bold;
 }
 
 .topic-tag a:hover {

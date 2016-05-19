@@ -9,11 +9,11 @@
 
   }
   .header__logo {
-    background-size: 2.5rem 2.5rem;
-    height: 2.5rem;
-    margin-top: -0.6rem;
-    margin-right: 1.5rem;
-    width: 2.5rem;
+    background-size: 2rem 2rem;
+    height: 2rem;
+    margin-top: -0.3rem;
+    margin-right: 1rem;
+    width: 2rem;
   }
 
   .sidebar {
@@ -34,9 +34,11 @@
     margin-bottom: 8rem;
   }
 
-  .topic-tag {
-    margin: 5rem auto 0rem;
-    position: static;
+  .open-sidebar {
+    text-transform: capitalize;
+  }
+  .open-sidebar span {
+    display: none;
   }
 
   .article__title {
