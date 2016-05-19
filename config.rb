@@ -52,7 +52,7 @@ helpers TypographyHelpers
 #     @which_fake_page = "Rendering a fake page with a variable"
 #   end
 
-page /(tags|page)\//, layout: "layouts/base"
+page /(topics|page)\//, layout: "layouts/base"
 page "/", layout: "layouts/base"
 page "*", layout: "layouts/blog"
 
@@ -77,7 +77,7 @@ activate :blog do |blog|
 
   # Enabled tags
   blog.tag_template = "tag.html"
-  blog.taglink = "tags/{tag}.html"
+  blog.taglink = "topics/{tag}.html"
 
   # Disable dated pages
   blog.generate_day_pages = false

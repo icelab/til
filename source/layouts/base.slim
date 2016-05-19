@@ -4,10 +4,6 @@ html
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     title
-      / => current_page.data.title
-      / ' —
-      / = data.site.name
-
       - if current_page.data.title
         = "#{data.site.name} about '#{current_page.data.title}'"
       - elsif defined? tagname
@@ -27,7 +23,7 @@ html
 
       - blog.tags.sort_by{ |tag, articles| tag.to_s.downcase }.each do |tag, articles|
         .sidebar-topic
-          a href="/tags/#{tag}" #{tag}
+          a href="/topics/#{tag}" #{tag}
           span.topic-count
             |  (
             i = articles.size
