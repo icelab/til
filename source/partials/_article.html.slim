@@ -1,5 +1,4 @@
 
-
 .article
   h2.article__title
     = link_to article.title, article
@@ -9,7 +8,6 @@
     = article.data.date.strftime("%d %B %Y")
   .article__content data-view-highlight=true
     = article.body
-
   .article__tags
     - article.tags.each_with_index do |tag, i|
       = link_to tag, "/topics/#{tag}", :class => "article__tag"
