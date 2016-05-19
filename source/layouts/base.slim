@@ -4,9 +4,18 @@ html
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     title
-      => current_page.data.title
-      ' —
-      = data.site.name
+      / => current_page.data.title
+      / ' —
+      / = data.site.name
+
+      - if current_page.data.title
+        = "#{current_page.data.title} - #{data.site.name}"
+      - elsif defined? tagname
+        = "#{data.site.name} about #{tagname}"
+      - else
+        = data.site.name
+
+
     link rel="shortcut icon" href="http://icelab.com.au/workspace/images/favicon.png"
     link rel="stylesheet" type="text/css" href=asset_path(:css, "assets/public")
     link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'
