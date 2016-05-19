@@ -19,4 +19,4 @@ So is pushing it to a remote:
 git push origin v1.0.0
 ```
 
-The _[Git Basics - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging)_ section in the online git book is an easy-to-read overview of the various tag commands.
+The [Git Basics - Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging) section in the online git book is an easy-to-read overview of the various tag commands.

@@ -22,6 +22,7 @@ This is because `setState` it turns out, is asynchronous. Of course most of the 
 From the docs:
 
 > setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.
+>
 > There is no guarantee of synchronous operation of calls to setState and calls may be batched for performance gains.
 
-Read about `setState` here: https://facebook.github.io/react/docs/component-api.html
+Read about `setState` [here](https://facebook.github.io/react/docs/component-api.html).

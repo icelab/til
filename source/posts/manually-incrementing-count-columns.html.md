@@ -31,7 +31,7 @@ end
 
 Which means that we're first fetching the current attribute's value, incrementing it then passing it on to `update_attribute` before it can be saved. This method leads to a non-atomic database operation, that is to say that at one point, the count is different in memory than it is in the database (which can lead to race conditions).
 
-The second is `ActiveRecord::Base#increment_counter(column_name, record_id)`.
+The second is `ActiveRecord::Base#increment_counter(column_name, record_id)`
 
 `increment_counter` is defined as:
 
@@ -52,5 +52,5 @@ UPDATE "table_name"
 This means that we now have an atomic operation and the counter cache value is the same across the system.
 
 Docs:
-* _[increment!](http://apidock.com/rails/ActiveRecord/Base/increment!)_
-* _[increment_counter](http://apidock.com/rails/ActiveRecord/Base/increment_counter/class)_
+* [increment!](http://apidock.com/rails/ActiveRecord/Base/increment!)
+* [increment_counter](http://apidock.com/rails/ActiveRecord/Base/increment_counter/class)

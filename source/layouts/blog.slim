@@ -8,6 +8,6 @@
       = current_page.data.date.strftime("%d %B %Y")
     .article__content data-view-highlight=true
       = yield
-
-    - current_page.tags.each_with_index do |tag, i|
-      = link_to tag, "/tags/#{tag}", :class => "article__tag"
+    .article__tags
+      - current_page.tags.each_with_index do |tag, i|
+        = link_to tag, "/tags/#{tag}", :class => "article__tag"
