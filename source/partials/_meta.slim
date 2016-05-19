@@ -1,0 +1,16 @@
+meta charset="utf-8"
+meta name="viewport" content="width=device-width, initial-scale=1.0"
+meta property="og:site_name" content=data.site.name
+meta property="og:url" content="http://til.icelab.com.au#{current_page.url}"
+meta property="og:type" content="article"
+- if current_page.data.title
+  meta property="og:title" content=current_page.data.title
+- if defined? current_page.body
+  / strip html tags and truncate body to 400 chars
+  meta property="og:description" content=current_page.body.gsub(/<\/?[^>]*>/,"").gsub(/^(.{400,}?).*$/m,'\1...')
+- if current_page.data.tags
+  meta name="twitter:label1" value="Tagged with"
+  meta name="twitter:data1" value=current_page.data.tags
+- if current_page.data.author
+  meta name="twitter:label2" value="Author"
+  meta name="twitter:data2" value=current_page.data.author
