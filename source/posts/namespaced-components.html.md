@@ -2,7 +2,7 @@
 title: Using namespaced components in React
 date: 2015-08-13
 author: Narinda Reeders
-tags: react, js
+tags: react, javascript
 ---
 
 The last time I used React we had some pretty awkward workarounds for the fact that components couldn't be namespaced. I was pretty stoked to find this has been fixed now.

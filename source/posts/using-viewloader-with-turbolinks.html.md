@@ -2,7 +2,7 @@
 title: Using viewloader with turbolinks
 date: 2015-09-17
 author: Andrew Croome
-tags: js
+tags: javascript
 ---
 
 When using viewloader with turbolinks, you want to make sure that viewloader executes once on the initial page load, once when the visitor reaches another page, and once when the visitor goes back in their browser (or forward for that matter).

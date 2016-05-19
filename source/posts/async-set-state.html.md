@@ -2,7 +2,7 @@
 title: In React setState is not "guaranteed" to be synchronous.
 date: 2015-11-19
 author: Narinda Reeders
-tags: react, js
+tags: react, javascript
 ---
 
 I discovered recently that if you do something link this in react:
