@@ -9,12 +9,11 @@ html
       / = data.site.name
 
       - if current_page.data.title
-        = "#{current_page.data.title} - #{data.site.name}"
+        = "#{data.site.name} about '#{current_page.data.title}'"
       - elsif defined? tagname
-        = "#{data.site.name} about #{tagname}"
+        = "#{data.site.name} about '#{tagname}'"
       - else
         = data.site.name
-
 
     link rel="shortcut icon" href="http://icelab.com.au/workspace/images/favicon.png"
     link rel="stylesheet" type="text/css" href=asset_path(:css, "assets/public")
@@ -22,7 +21,6 @@ html
     script type="text/javascript" src=asset_path(:js, "assets/public")
 
   body
-
     aside#sidebar.sidebar
       a href="#" class="close-sidebar" data-view-toggle-sidebar=""
         'Hide topics &rsaquo;
