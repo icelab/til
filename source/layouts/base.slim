@@ -18,7 +18,7 @@ html
       a href="#" class="close-sidebar" data-view-toggle-sidebar=""
         'Hide topics &rsaquo;
 
-      - blog.tags.each do |tag, articles|
+      - blog.tags.sort{ |a,b| a.to_s.downcase <=> b.to_s.downcase}.each do |tag, articles|
         .sidebar-topic
           a href="/tags/#{tag}" #{tag}
           span.topic-count
