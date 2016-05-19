@@ -111,12 +111,6 @@ configure :development do
   activate :livereload
 end
 
-# Adding this gem to stop post titles from widowing
-activate :widont do |widont|
-  widont.nbsp = "\u00A0"
-  widont.tags = %w[h1 h2 h3 h4 h5 h6]
-end
-
 # Build-specific configuration -------------------------------------------------
 
 configure :build do

@@ -1,10 +1,10 @@
 
 .article
   h2.article__title
-    = link_to article.title, article
+    = link_to widont(article.title), article
   .article__meta
     = article.data.author
-    |, 
+    ',
     = article.data.date.strftime("%d %B %Y")
   .article__content data-view-highlight=true
     = article.body
