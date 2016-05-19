@@ -46,6 +46,11 @@
   line-height: 2.7rem;
 }
 
+.article__content img {
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
 .article__content p {
   margin-bottom: 1.5rem;
   font-weight: normal;
