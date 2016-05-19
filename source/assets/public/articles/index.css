@@ -6,6 +6,7 @@
 }
 
 .article__title {
+  color: var(--pink);
   display: block;
   font-family: 'National', sans-serif;
   font-weight: bold;
@@ -23,7 +24,7 @@
   color: var(--pink);
 }
 
-.article__title:hover {
+.article__title a:hover {
   text-decoration: underline;
 }
 
