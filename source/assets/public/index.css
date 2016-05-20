@@ -5,16 +5,21 @@
   --grey-light: #8C8C8C;
   --green: #70AD6A;
   --blue: #2A5FB2;
+  --fontMono: 'Inconsolata', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  --fontMonoFallback: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  --fontSans: 'National', Helvetica, sans-serif;
+  --fontSansFallback: Helvetica, sans-serif;
+  --fontSerif: 'TiemposText', Georgia, serif;
+  --fontSerifFallback: Georgia, serif;
 }
 
 @import './reset';
-@import 'highlight.js/styles/solarized-light.css';
-@import 'fonts/tiempos-text/tiempos-text.css';
-@import 'fonts/anonymous/anonymous.css';
-@import 'fonts/national/national.css';
+@import './fonts/tiempos-text/tiempos-text.css';
+@import './fonts/national/national.css';
 @import './header';
 @import './sidebar';
 @import './articles';
+@import './code-highlight';
 
 * {
   box-sizing: border-box;
@@ -26,7 +31,7 @@ html {
 
 body {
   background-color: var(--white);
-  font-family: 'TiemposText';
+  font-family: var(--fontSerifFallback);
   font-size: 1.6rem;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -37,6 +42,10 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 60rem;
+}
+
+.fonts-loaded body {
+  font-family: var(--fontSerif);
 }
 
 @import './responsive';

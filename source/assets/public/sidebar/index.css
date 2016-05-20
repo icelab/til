@@ -2,7 +2,7 @@
 /* Topics sidebar */
 
 .sidebar {
-  background-color: #EEEEEE;
+  background-color: #eee;
   box-shadow: -15px 0px 0px 0px rgba(255,255,255,0.5);
   height: 100%;
   overflow-y: auto;
@@ -21,7 +21,7 @@
 }
 .sidebar a {
   color: var(--grey);
-  font-family: 'Inconsolata', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  font-family: var(--fontMonoFallback);
   font-size: 1.4rem;
   text-decoration: none;
 }
@@ -47,9 +47,14 @@
 .topic-count {
   color: var(--green);
   font-size: 1.4rem;
-  font-family: 'Inconsolata', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  font-family: var(--fontMonoFallback);
 }
 
 .topic-count i {
   color: var(--blue);
+}
+
+.fonts-loaded .sidebar a,
+.fonts-loaded .topic-count {
+  font-family: var(--fontMono);
 }

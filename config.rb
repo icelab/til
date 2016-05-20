@@ -20,6 +20,8 @@ set :markdown,        fenced_code_blocks: true,
 
 require "lib/typography_helpers"
 helpers TypographyHelpers
+require "lib/asset_helpers"
+helpers AssetHelpers
 
 # Methods defined in the helpers block are available in templates
 # Add custom ones below
@@ -92,9 +94,6 @@ end
 
 # Webpack configuration --------------------------------------------------------
 
-ignore "assets/**/*.css"
-ignore "assets/**/*.js"
-
 activate :external_pipeline,
          name: :webpack,
          command: build? ? "npm run build" : "npm run watch",
@@ -114,6 +113,8 @@ end
 # Build-specific configuration -------------------------------------------------
 
 configure :build do
+  ignore "assets/**/*.css"
+  ignore "assets/**/*.js"
   # Minify CSS on build
   # activate :minify_css
 

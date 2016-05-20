@@ -1,0 +1,96 @@
+
+code {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  margin: 0 0.1rem;
+  background-color: rgba(0,0,0,0.04);
+  color: #4a4a4a;
+  font-family: var(--fontMonoFallback);
+  font-size: 1.6rem;
+  line-height: 2rem;
+  border-radius: 0.3rem;
+  vertical-align: baseline;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1.5rem 2rem;
+  background-color: rgba(0,0,0,0.04);
+  color: #4a4a4a;
+  margin-bottom: 2rem;
+  font-family: var(--fontMonoFallback);
+  font-size: 1.6rem;
+  line-height: 2rem;
+  border-radius: 0.3rem;
+}
+​
+.hljs-comment,
+.hljs-quote {
+  color: #93a1a1;
+}
+​
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+  color: #60a459;
+}
+​
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: #0098c4;
+}
+​
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #2149a2;
+}
+​
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+  color: #8d73b2;
+}
+​
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: #ef733e;
+}
+​
+.hljs-built_in,
+.hljs-deletion {
+  color: #a8196c;
+}
+​
+.hljs-formula {
+  background: #eee8d5;
+}
+​
+.hljs-emphasis {
+  font-style: italic;
+}
+​
+.hljs-strong {
+  font-weight: bold;
+}
+
+.fonts-loaded code,
+.fonts-loaded .hljs {
+  font-family: var(--fontMono);
+}

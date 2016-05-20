@@ -8,7 +8,7 @@
 .article__title {
   color: var(--pink);
   display: block;
-  font-family: 'National', sans-serif;
+  font-family: var(--fontSansFallback);
   font-weight: bold;
   font-size: 3rem;
   margin-bottom: 2rem;
@@ -30,7 +30,7 @@
 
 .article__meta {
   color: var(--grey-light);
-  font-family: 'National', sans-serif;
+  font-family: var(--fontSansFallback);
   font-weight: bold;
   font-size: 1.3rem;
   letter-spacing: 0.1em;
@@ -105,7 +105,7 @@
   border-radius: 0.3rem;
   color: var(--pink);
   display: inline-block;
-  font-family: 'National', sans-serif;
+  font-family: var(--fontSansFallback);
   font-size: 1.4rem;
   margin-right: 1rem;
   margin-top: 1rem;
@@ -121,7 +121,7 @@
 
 .pagination {
   color: var(--grey-light);
-  font-family: 'National', sans-serif;
+  font-family: var(--fontSansFallback);
   font-size: 3rem;
   margin-bottom: 12rem;
   text-align: center;
@@ -146,37 +146,9 @@
   text-decoration: underline;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.fonts-loaded .article__title,
+.fonts-loaded .article__meta,
+.fonts-loaded .article__tag,
+.fonts-loaded .pagination {
+  font-family: var(--fontSans);
+}
