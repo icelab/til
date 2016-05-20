@@ -4,7 +4,7 @@ html lang="en-au"
     = partial "partials/meta"
     script
       = render_asset(asset_path(:js, "assets/inline-header"))
-    link rel="shortcut icon" href="http://icelab.com.au/workspace/images/favicon.png"
+    link rel="shortcut icon" href=image_path("assets/public/favicon.png")
     link rel="stylesheet" type="text/css" href=asset_path(:css, "assets/public")
     script src=asset_path(:js, "assets/public") async=true
     title
