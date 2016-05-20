@@ -16,7 +16,6 @@
 @import './reset';
 @import 'highlight.js/styles/solarized-light.css';
 @import 'fonts/tiempos-text/tiempos-text.css';
-@import 'fonts/anonymous/anonymous.css';
 @import 'fonts/national/national.css';
 @import './header';
 @import './sidebar';
