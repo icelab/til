@@ -78,7 +78,7 @@
 
 .article__content li {
   list-style-type: disc;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.2em;
 }
 
 .article__tags {
@@ -92,7 +92,7 @@
 }
 
 .article__content blockquote p {
-  color: #777777;
+  color: #777;
   text-align: left;
   padding-left: 2rem;
   line-height: 2.5rem;
