@@ -16,7 +16,7 @@ html lang="en-au"
         = data.site.name
   body
     aside#sidebar.sidebar
-      a href="#" class="close-sidebar" data-view-toggle-sidebar=""
+      button class="close-sidebar" data-view-toggle-sidebar=true
         'Hide topics &rsaquo;
 
       - blog.tags.sort_by{ |tag, articles| tag.to_s.downcase }.each do |tag, articles|
@@ -31,10 +31,10 @@ html lang="en-au"
       = link_to data.site.name, "/", :class => "header__til-text"
       == yield_content(:topic_tag)
 
-      a href="#" class="header__view-topics open-sidebar" data-view-toggle-sidebar=""
-        '&lsaquo; 
-        span View 
-        'topics
+      button class="header__view-topics open-sidebar" data-view-toggle-sidebar=true
+        '&lsaquo;
+        span> View
+        ' topics
 
     .container
       = yield
