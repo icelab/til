@@ -68,7 +68,7 @@ function fontsLoaded (fontsToCheck) {
 
   if (!fontsLoaded) {
     var loading = []
-    fontsToCheck.forEach((font) => {
+    fontsToCheck.forEach(function (font) {
       var promise = new window.FontFaceObserver(font.family, {
         weight: font.weight,
         style: font.style
@@ -76,7 +76,7 @@ function fontsLoaded (fontsToCheck) {
       loading.push(promise.check())
     })
 
-    Promise.all(loading).then(() => {
+    Promise.all(loading).then(function () {
       window.document.documentElement.className += ' fonts-loaded'
       window.localStorage.setItem('fontsLoaded', true)
     })
