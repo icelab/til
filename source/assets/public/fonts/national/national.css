@@ -9,10 +9,10 @@
 }
 @font-face {
   font-family: 'National';
-  src: url('fonts/national/national-web-bookitalic.eot');
-  src: url('fonts/national/national-web-bookitalic.eot?#iefix') format('embedded-opentype'),
-       url('fonts/national/national-web-bookitalic.woff') format('woff'),
-       url('fonts/national/national-web-bookitalic.woff2') format('woff2');
+  src: url('fonts/national/national-web-book-italic.eot');
+  src: url('fonts/national/national-web-book-italic.eot?#iefix') format('embedded-opentype'),
+       url('fonts/national/national-web-book-italic.woff') format('woff'),
+       url('fonts/national/national-web-book-italic.woff2') format('woff2');
   font-style: italic;
   font-weight: normal;
 }
