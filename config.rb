@@ -94,9 +94,6 @@ end
 
 # Webpack configuration --------------------------------------------------------
 
-ignore "assets/**/*.css"
-ignore "assets/**/*.js"
-
 activate :external_pipeline,
          name: :webpack,
          command: build? ? "npm run build" : "npm run watch",
@@ -116,6 +113,8 @@ end
 # Build-specific configuration -------------------------------------------------
 
 configure :build do
+  ignore "assets/**/*.css"
+  ignore "assets/**/*.js"
   # Minify CSS on build
   # activate :minify_css
 
