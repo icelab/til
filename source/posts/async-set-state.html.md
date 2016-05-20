@@ -8,7 +8,7 @@ tags: react, javascript
 I discovered recently that if you do something link this in react:
 
 ```javascript
-this.setState(reallyUseful: true);
+this.setState({reallyUseful: true});
 
 if (this.state.reallyUseful) {
   this.doSomethingAmazing();

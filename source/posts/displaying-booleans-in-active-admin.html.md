@@ -7,7 +7,7 @@ tags: rails, ruby
 
 In Active Admin if you want to display a boolean propetry that doesn't directly map to a database column you can use `status_tag` to display the value in a fiendly way:
 
-```
+```ruby
 column :featured do |thing|
   thing.featured? ? status_tag("yes", :ok) : status_tag("no")
 end

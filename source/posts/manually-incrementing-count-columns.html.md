@@ -43,7 +43,7 @@ end
 
 which executes SQL like:
 
-```SQL
+```sql
 UPDATE "table_name"
   SET "counter_name" = "counter_name" + 1
   WHERE id = 1

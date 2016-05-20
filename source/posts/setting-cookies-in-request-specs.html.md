@@ -16,5 +16,5 @@ Capybara.current_session.driver.browser.set_cookie("really_useful_cookie=#{cooki
 Happy panda:
 
 ```ruby
-get some_path, {}, {“HTTP_COOKIE” => "really_useful_cookie=#{cookie_monster.id}”}
+get some_path, {}, {"HTTP_COOKIE" => "really_useful_cookie=#{cookie_monster.id}”}
 ```

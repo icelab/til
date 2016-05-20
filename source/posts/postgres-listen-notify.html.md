@@ -9,7 +9,7 @@ PostgreSQL has its own listen/notify mechanism. It might be useful for cases whe
 
 *process.rb*
 
-```
+```ruby
 CHANNEL       = "slack_bot"
 RESET_CHANNEL = "pg_restart"
 
@@ -36,6 +36,6 @@ end
 
 *another-process.rb*
 
-```
+```ruby
 User.connection.execute %Q(NOTIFY "slack_bot", params)
 ```
