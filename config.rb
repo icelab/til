@@ -20,6 +20,8 @@ set :markdown,        fenced_code_blocks: true,
 
 require "lib/typography_helpers"
 helpers TypographyHelpers
+require "lib/asset_helpers"
+helpers AssetHelpers
 
 # Methods defined in the helpers block are available in templates
 # Add custom ones below
