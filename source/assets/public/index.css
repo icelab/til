@@ -14,12 +14,12 @@
 }
 
 @import './reset';
-@import 'highlight.js/styles/solarized-light.css';
-@import 'fonts/tiempos-text/tiempos-text.css';
-@import 'fonts/national/national.css';
+@import './fonts/tiempos-text/tiempos-text.css';
+@import './fonts/national/national.css';
 @import './header';
 @import './sidebar';
 @import './articles';
+@import './code-highlight';
 
 * {
   box-sizing: border-box;
