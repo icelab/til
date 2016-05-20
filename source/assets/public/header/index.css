@@ -61,6 +61,6 @@
 }
 
 
-.fonts-loader .header {
+.fonts-loaded .header {
   font-family: var(--fontMono);
 }
