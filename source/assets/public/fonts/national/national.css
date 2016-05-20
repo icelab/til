@@ -1,37 +1,37 @@
 @font-face {
   font-family: 'National';
-  src: url('fonts/national/nationalweb-book.eot');
-  src: url('fonts/national/nationalweb-book.eot?#iefix') format('embedded-opentype'),
-       url('fonts/national/nationalweb-book.woff') format('woff'),
-       url('fonts/national/nationalweb-book.woff2') format('woff2');
+  src: url('fonts/national/national-web-book.eot');
+  src: url('fonts/national/national-web-book.eot?#iefix') format('embedded-opentype'),
+       url('fonts/national/national-web-book.woff') format('woff'),
+       url('fonts/national/national-web-book.woff2') format('woff2');
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: 'National';
-  src: url('fonts/national/nationalweb-bookitalic.eot');
-  src: url('fonts/national/nationalweb-bookitalic.eot?#iefix') format('embedded-opentype'),
-       url('fonts/national/nationalweb-bookitalic.woff') format('woff'),
-       url('fonts/national/nationalweb-bookitalic.woff2') format('woff2');
+  src: url('fonts/national/national-web-bookitalic.eot');
+  src: url('fonts/national/national-web-bookitalic.eot?#iefix') format('embedded-opentype'),
+       url('fonts/national/national-web-bookitalic.woff') format('woff'),
+       url('fonts/national/national-web-bookitalic.woff2') format('woff2');
   font-style: italic;
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'National';
-  src: url('fonts/national/nationalweb-medium.eot');
-  src: url('fonts/national/nationalweb-medium.eot?#iefix') format('embedded-opentype'),
-       url('fonts/national/nationalweb-medium.woff') format('woff'),
-       url('fonts/national/nationalweb-medium.woff2') format('woff2');
+  src: url('fonts/national/national-web-medium.eot');
+  src: url('fonts/national/national-web-medium.eot?#iefix') format('embedded-opentype'),
+       url('fonts/national/national-web-medium.woff') format('woff'),
+       url('fonts/national/national-web-medium.woff2') format('woff2');
   font-style: normal;
   font-weight: bold;
 }
 @font-face {
   font-family: 'National';
-  src: url('fonts/national/nationalweb-mediumitalic.eot');
-  src: url('fonts/national/nationalweb-mediumitalic.eot?#iefix') format('embedded-opentype'),
-       url('fonts/national/nationalweb-mediumitalic.woff') format('woff'),
-       url('fonts/national/nationalweb-mediumitalic.woff2') format('woff2');
+  src: url('fonts/national/national-web-mediumitalic.eot');
+  src: url('fonts/national/national-web-mediumitalic.eot?#iefix') format('embedded-opentype'),
+       url('fonts/national/national-web-mediumitalic.woff') format('woff'),
+       url('fonts/national/national-web-mediumitalic.woff2') format('woff2');
   font-style: italic;
   font-weight: bold;
 }
