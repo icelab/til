@@ -16,6 +16,10 @@ set :markdown,        fenced_code_blocks: true,
                       lax_spacing: true,
                       with_toc_data: true
 
+config[:js_dir] = ''
+config[:css_dir] = ''
+config[:images_dir] = ''
+
 # Helpers ----------------------------------------------------------------------
 
 require "lib/typography_helpers"
@@ -105,6 +109,7 @@ activate :external_pipeline,
 
 activate :directory_indexes
 activate :syntax
+activate :asset_hash
 
 # Reload the browser automatically whenever files change
 configure :development do
