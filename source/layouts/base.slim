@@ -1,12 +1,12 @@
-
 doctype html
-html
+html lang="en-au"
   head
+    = partial "partials/meta"
+    script
+      = render_asset(asset_path(:js, "assets/inline-header"))
     link rel="shortcut icon" href="http://icelab.com.au/workspace/images/favicon.png"
     link rel="stylesheet" type="text/css" href=asset_path(:css, "assets/public")
-    link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'
-    script type="text/javascript" src=asset_path(:js, "assets/public")
-    = partial "partials/meta"
+    script src=asset_path(:js, "assets/public") async=true
     title
       - if current_page.data.title
         = "#{data.site.name} about '#{current_page.data.title}'"
@@ -39,6 +39,5 @@ html
     .container
       = yield
 
-
-
-
+    script
+      = render_asset(asset_path(:js, "assets/inline-footer"))
