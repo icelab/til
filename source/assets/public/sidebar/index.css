@@ -19,12 +19,14 @@
   margin-bottom: 1.5rem;
   text-align: center;
 }
+.sidebar button,
 .sidebar a {
   color: var(--grey);
   font-family: var(--fontMonoFallback);
   font-size: 1.4rem;
   text-decoration: none;
 }
+.sidebar button:hover,
 .sidebar a:hover {
   color: var(--pink);
   text-decoration: underline;
@@ -35,10 +37,6 @@
   margin-bottom: 5rem;
   text-align: center;
 }
-
-/*#sidebar:target {
-  right: 0;
-}*/
 
 .sidebar--open {
   right: 0;
