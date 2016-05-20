@@ -101,9 +101,10 @@ activate :external_pipeline,
          latency: 1
 
 
-# General configuration --------------------------------------------------------
+# Other configuration --------------------------------------------------------
 
 activate :directory_indexes
+activate :syntax
 
 # Reload the browser automatically whenever files change
 configure :development do
@@ -112,14 +113,10 @@ end
 
 # Build-specific configuration -------------------------------------------------
 
-configure :build do
-  ignore "assets/**/*.css"
-  ignore "assets/**/*.js"
-  # Minify CSS on build
-  # activate :minify_css
+ignore "assets/**/*.css"
+ignore "assets/**/*.js"
 
-  # Minify Javascript on build
-  # activate :minify_javascript
+configure :build do
 end
 
 # Deployment configuration -----------------------------------------------------

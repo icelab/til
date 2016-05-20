@@ -4,7 +4,6 @@
   "dependencies": {
     "domready": "1.0.8",
     "fontfaceobserver": "1.7.1",
-    "highlight.js": "9.3.0",
     "to-array": "0.1.4",
     "viewloader": "1.1.1"
   },
