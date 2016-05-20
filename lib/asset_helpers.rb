@@ -1,7 +1,7 @@
 module AssetHelpers
   def render_asset(path)
     # Remove leading slash
-    path = File.basename(path, '*')
+    path = normalise_path(path)
 
     # Infer whether `activate :asset_hash` is active matching against a hash
     # with a format like foo-bar-b785915a.js
@@ -14,18 +14,23 @@ module AssetHelpers
       false
     end
 
-    if asset_hash_active != nil
-      path = components[0...-1].join("-")
+    if asset_hash_active
+      path = path_components[0...-1].join("-")
       sitemap.resources.find {|r|
         # Remove the extension
-        File.basename(r.path, '*') == path
+        normalise_path(r.path) == path
       }.render
     else
-      path = components.join("-")
+      path = path_components.join("-")
       sitemap.resources.find {|r|
-        # Remove the leading `/`
-        File.basename(r.path, '*') == path
+        normalise_path(r.path) == path
       }.render
     end
+  end
+
+  private
+
+  def normalise_path(path)
+    File.join(File.dirname(path), File.basename(path, File.extname(path))).gsub(/^\//, "")
   end
 end
