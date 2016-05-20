@@ -3,7 +3,7 @@
 
 .header {
   font-size: 1.4rem;
-  font-family: 'Inconsolata', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  font-family: var(--fontMonoFallback);
   margin-bottom: 3rem;
   padding: 3rem;
 }
@@ -58,4 +58,9 @@
 
 .topic-tag a:hover {
   text-decoration: underline;
+}
+
+
+.fonts-loader .header {
+  font-family: var(--fontMono);
 }
