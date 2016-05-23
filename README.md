@@ -1,6 +1,6 @@
 # Today Icelab Learned
 
-A knowledge-base of little learnings from the team at [Icelab](http://icelab.com.au/).
+[A knowledge-base of little learnings](http://til.icelab.com.au/) from the team at [Icelab](http://icelab.com.au/).
 
 ## Contributing
 
@@ -35,4 +35,4 @@ bundle exec rake build
 
 ## Copyright
 
-© 2015 Icelab. Distributed under the [Creative Commons Attribution License](http://creativecommons.org/licenses/by/3.0/).
+© 2015-2016 [Icelab](http://icelab.com.au/). Distributed under the [Creative Commons Attribution License](http://creativecommons.org/licenses/by/3.0/).
