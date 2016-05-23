@@ -13,6 +13,7 @@ gem "rake"
 gem "redcarpet"
 gem "slim"
 gem "tilt-jbuilder"
+gem "builder", "~> 3.0"
 
 # Custom
 gem "middleman-blog"

@@ -14,6 +14,12 @@
   margin-bottom: 2rem;
   text-align: center;
 }
+  .article__title code {
+    color: color(var(--pink) shade(10%));
+    background-color: transparent;
+    font-size: 1em;
+    padding: 0;
+  }
 
 .article__title a {
   color: var(--pink);
@@ -24,7 +30,8 @@
   color: var(--pink);
 }
 
-.article__title a:hover {
+.article__title a:hover,
+.article__title a:hover code {
   text-decoration: underline;
 }
 
