@@ -7,7 +7,7 @@ tags: ruby
 
 We're all familiar with the `@foo ||= expensive_computation` technique to memoize (i.e. cache) the output of slow computations or to avoid unnecessary object creation.
 
-If you want to do the same but with results that will vary by a single parameter, you can use Ruby's hash with it's [block-based initializer](http://ruby-doc.org/core-2.3.1/Hash.html#method-c-new) to handle the caching for you:
+If you want to do the same but with results that will vary by a single parameter, you can use Ruby's hash with its [block-based initializer](http://ruby-doc.org/core-2.3.1/Hash.html#method-c-new) to handle the caching for you:
 
 ```ruby
 def my_cache
