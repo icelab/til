@@ -1,12 +1,12 @@
 
 @media only screen and (max-width : 760px) {
-  .header {
+  .header, .footer {
     font-size: 1.3rem;
+    line-height: 1.7rem;
     padding-top: 2rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-bottom: 2rem;
-
   }
   .header__logo {
     background-size: 2rem 2rem;
