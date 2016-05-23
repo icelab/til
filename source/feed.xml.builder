@@ -4,7 +4,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   xml.title data.site.name
   xml.id site_url
   xml.link "href" => site_url
-  xml.link "href" => site_url, "rel" => "self"
+  xml.link "href" => URI.join(site_url, '/feed.xml'), "rel" => "self"
   xml.updated(page_articles.first.date.to_time.iso8601) unless page_articles.empty?
   xml.author { xml.name "Icelab" }
 
