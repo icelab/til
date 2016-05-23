@@ -9,7 +9,7 @@
     <name>Icelab</name>
   </author>
   <entry>
-    <title>Hash.new with a block works well as a keyed cache</title>
+    <title type="html">Hash.new with a block works well as a keyed cache</title>
     <link rel="alternate" href="http://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/"/>
     <id>http://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/</id>
     <published>2016-05-23T10:00:00+10:00</published>
@@ -37,7 +37,7 @@
 </content>
   </entry>
   <entry>
-    <title>Selecting colours in HTML</title>
+    <title type="html">Selecting colours in HTML</title>
     <link rel="alternate" href="http://til.icelab.com.au/selecting-colours-in-html/"/>
     <id>http://til.icelab.com.au/selecting-colours-in-html/</id>
     <published>2016-05-22T10:00:00+10:00</published>
@@ -59,7 +59,7 @@
 </content>
   </entry>
   <entry>
-    <title>Creating an IAM user for access to an S3 bucket</title>
+    <title type="html">Creating an IAM user for access to an S3 bucket</title>
     <link rel="alternate" href="http://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/"/>
     <id>http://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/</id>
     <published>2016-04-04T10:00:00+10:00</published>
@@ -104,7 +104,7 @@
 </content>
   </entry>
   <entry>
-    <title>ChromeVox</title>
+    <title type="html">ChromeVox</title>
     <link rel="alternate" href="http://til.icelab.com.au/chrome-vox/"/>
     <id>http://til.icelab.com.au/chrome-vox/</id>
     <published>2016-03-08T11:00:00+11:00</published>
@@ -120,7 +120,7 @@
 </content>
   </entry>
   <entry>
-    <title>Using CloudFront as ‘origin pull’ (with bonus gzip)</title>
+    <title type="html">Using CloudFront as ‘origin pull’ (with bonus gzip)</title>
     <link rel="alternate" href="http://til.icelab.com.au/cloudfront-origin-pull-with-gzip/"/>
     <id>http://til.icelab.com.au/cloudfront-origin-pull-with-gzip/</id>
     <published>2016-02-16T11:00:00+11:00</published>
@@ -134,7 +134,7 @@
 </content>
   </entry>
   <entry>
-    <title>In React setState is not &amp;quot;guaranteed&amp;quot; to be synchronous.</title>
+    <title type="html">In React setState is not &amp;quot;guaranteed&amp;quot; to be synchronous.</title>
     <link rel="alternate" href="http://til.icelab.com.au/async-set-state/"/>
     <id>http://til.icelab.com.au/async-set-state/</id>
     <published>2015-11-19T11:00:00+11:00</published>
@@ -177,7 +177,7 @@
 </content>
   </entry>
   <entry>
-    <title>Symbolize keys</title>
+    <title type="html">Symbolize keys</title>
     <link rel="alternate" href="http://til.icelab.com.au/symbolize-keys/"/>
     <id>http://til.icelab.com.au/symbolize-keys/</id>
     <published>2015-11-19T11:00:00+11:00</published>
@@ -218,7 +218,7 @@
 </content>
   </entry>
   <entry>
-    <title>Pry is amazing</title>
+    <title type="html">Pry is amazing</title>
     <link rel="alternate" href="http://til.icelab.com.au/pry-is-amazing/"/>
     <id>http://til.icelab.com.au/pry-is-amazing/</id>
     <published>2015-11-11T11:00:00+11:00</published>
@@ -234,7 +234,7 @@
 </content>
   </entry>
   <entry>
-    <title>Authenticating with AWS Elasticsearch</title>
+    <title type="html">Authenticating with AWS Elasticsearch</title>
     <link rel="alternate" href="http://til.icelab.com.au/aws-elasticsearch-authentication/"/>
     <id>http://til.icelab.com.au/aws-elasticsearch-authentication/</id>
     <published>2015-10-21T11:00:00+11:00</published>
@@ -289,7 +289,7 @@
 </content>
   </entry>
   <entry>
-    <title>Using Arel to compare attributes of a record</title>
+    <title type="html">Using Arel to compare attributes of a record</title>
     <link rel="alternate" href="http://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/"/>
     <id>http://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/</id>
     <published>2015-09-24T10:00:00+10:00</published>
@@ -308,7 +308,7 @@
 </content>
   </entry>
   <entry>
-    <title>Manually incrementing count columns in rails</title>
+    <title type="html">Manually incrementing count columns in rails</title>
     <link rel="alternate" href="http://til.icelab.com.au/manually-incrementing-count-columns/"/>
     <id>http://til.icelab.com.au/manually-incrementing-count-columns/</id>
     <published>2015-09-18T10:00:00+10:00</published>
@@ -363,7 +363,7 @@
 </content>
   </entry>
   <entry>
-    <title>Using viewloader with turbolinks</title>
+    <title type="html">Using viewloader with turbolinks</title>
     <link rel="alternate" href="http://til.icelab.com.au/using-viewloader-with-turbolinks/"/>
     <id>http://til.icelab.com.au/using-viewloader-with-turbolinks/</id>
     <published>2015-09-17T10:00:00+10:00</published>
@@ -383,7 +383,7 @@
 </content>
   </entry>
   <entry>
-    <title>Setting cookies in request specs</title>
+    <title type="html">Setting cookies in request specs</title>
     <link rel="alternate" href="http://til.icelab.com.au/setting-cookies-in-request-specs/"/>
     <id>http://til.icelab.com.au/setting-cookies-in-request-specs/</id>
     <published>2015-09-17T10:00:00+10:00</published>
@@ -403,7 +403,7 @@
 </content>
   </entry>
   <entry>
-    <title>Manually add sitemaps to Google’s Webmaster Tools</title>
+    <title type="html">Manually add sitemaps to Google’s Webmaster Tools</title>
     <link rel="alternate" href="http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/"/>
     <id>http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/</id>
     <published>2015-09-15T10:00:00+10:00</published>
@@ -421,7 +421,7 @@
 </content>
   </entry>
   <entry>
-    <title>PostgreSQL as a message bus</title>
+    <title type="html">PostgreSQL as a message bus</title>
     <link rel="alternate" href="http://til.icelab.com.au/postgres-listen-notify/"/>
     <id>http://til.icelab.com.au/postgres-listen-notify/</id>
     <published>2015-09-15T10:00:00+10:00</published>
@@ -462,7 +462,7 @@
 </content>
   </entry>
   <entry>
-    <title>Show Open Graph image on first Facebook share</title>
+    <title type="html">Show Open Graph image on first Facebook share</title>
     <link rel="alternate" href="http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/"/>
     <id>http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/</id>
     <published>2015-09-02T10:00:00+10:00</published>
@@ -486,7 +486,7 @@
 </content>
   </entry>
   <entry>
-    <title>Pushing all branches</title>
+    <title type="html">Pushing all branches</title>
     <link rel="alternate" href="http://til.icelab.com.au/pushing-all-branches/"/>
     <id>http://til.icelab.com.au/pushing-all-branches/</id>
     <published>2015-09-02T10:00:00+10:00</published>
@@ -506,7 +506,7 @@
 </content>
   </entry>
   <entry>
-    <title>Facebook image display when posting a link</title>
+    <title type="html">Facebook image display when posting a link</title>
     <link rel="alternate" href="http://til.icelab.com.au/clear-facebook-share-data/"/>
     <id>http://til.icelab.com.au/clear-facebook-share-data/</id>
     <published>2015-08-20T10:00:00+10:00</published>
@@ -526,7 +526,7 @@
 </content>
   </entry>
   <entry>
-    <title>CSS dropdown menus</title>
+    <title type="html">CSS dropdown menus</title>
     <link rel="alternate" href="http://til.icelab.com.au/css-dropdown-menus/"/>
     <id>http://til.icelab.com.au/css-dropdown-menus/</id>
     <published>2015-08-17T10:00:00+10:00</published>
@@ -603,7 +603,7 @@
 </content>
   </entry>
   <entry>
-    <title>Displaying booleans in Active Admin</title>
+    <title type="html">Displaying booleans in Active Admin</title>
     <link rel="alternate" href="http://til.icelab.com.au/displaying-booleans-in-active-admin/"/>
     <id>http://til.icelab.com.au/displaying-booleans-in-active-admin/</id>
     <published>2015-08-13T10:00:00+10:00</published>
@@ -621,7 +621,7 @@
 </content>
   </entry>
   <entry>
-    <title>Table columns should be typed</title>
+    <title type="html">Table columns should be typed</title>
     <link rel="alternate" href="http://til.icelab.com.au/table-columns-should-be-typed/"/>
     <id>http://til.icelab.com.au/table-columns-should-be-typed/</id>
     <published>2015-08-13T10:00:00+10:00</published>
@@ -645,7 +645,7 @@
 </content>
   </entry>
   <entry>
-    <title>Using namespaced components in React</title>
+    <title type="html">Using namespaced components in React</title>
     <link rel="alternate" href="http://til.icelab.com.au/namespaced-components/"/>
     <id>http://til.icelab.com.au/namespaced-components/</id>
     <published>2015-08-13T10:00:00+10:00</published>
@@ -679,7 +679,7 @@
 </content>
   </entry>
   <entry>
-    <title>Creating and pushing a git tag</title>
+    <title type="html">Creating and pushing a git tag</title>
     <link rel="alternate" href="http://til.icelab.com.au/creating-and-pushing-a-tag/"/>
     <id>http://til.icelab.com.au/creating-and-pushing-a-tag/</id>
     <published>2015-08-12T10:00:00+10:00</published>
@@ -701,7 +701,7 @@
 </content>
   </entry>
   <entry>
-    <title>Dynamic classnames in Slim</title>
+    <title type="html">Dynamic classnames in Slim</title>
     <link rel="alternate" href="http://til.icelab.com.au/dynamic-classnames-in-slim/"/>
     <id>http://til.icelab.com.au/dynamic-classnames-in-slim/</id>
     <published>2015-08-12T10:00:00+10:00</published>
@@ -725,7 +725,7 @@
 </content>
   </entry>
   <entry>
-    <title>Formatting strings with C-like formatting codes.</title>
+    <title type="html">Formatting strings with C-like formatting codes.</title>
     <link rel="alternate" href="http://til.icelab.com.au/string-format/"/>
     <id>http://til.icelab.com.au/string-format/</id>
     <published>2015-08-12T10:00:00+10:00</published>
@@ -772,7 +772,7 @@
 </content>
   </entry>
   <entry>
-    <title>Using &lt;code&gt;Class.new&lt;/code&gt; for dynamically adding class methods</title>
+    <title type="html">Using &lt;code&gt;Class.new&lt;/code&gt; for dynamically adding class methods</title>
     <link rel="alternate" href="http://til.icelab.com.au/dynamically-adding-class-methods/"/>
     <id>http://til.icelab.com.au/dynamically-adding-class-methods/</id>
     <published>2015-08-09T10:00:00+10:00</published>
