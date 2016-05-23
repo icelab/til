@@ -52,10 +52,10 @@
 
 <p>For bonus points it’ll also gzip your content for you without you having to do much work at all. Set ‘Compress Objects Automatically’ to ‘Yes’ and you’re done. If CloudFront can serve a gzipped version (and the client can receive one) it’ll serve up a compressed version of your file instead.</p>
 </div><div class="article__tags"><a href="/topics/performance" class="article__tag">performance</a><a href="/topics/aws" class="article__tag">aws</a></div></div><div class="article"><h2 class="article__title"><a href="/async-set-state/">In React setState is not "guaranteed" to be&nbsp;synchronous.</a></h2><div class="article__meta">Narinda Reeders, 19 November 2015</div><div class="article__content" data-view-highlight=""><p>I discovered recently that if you do something link this in react:</p>
-<pre class="highlight javascript"><code><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">reallyUseful</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
+<pre class="highlight javascript"><code><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">reallyUseful</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">reallyUseful</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">doSomethingAmazing</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">doSomethingAmazing</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -72,6 +72,17 @@
 </blockquote>
 
 <p>Read about <code>setState</code> <a href="https://facebook.github.io/react/docs/component-api.html">here</a>.</p>
+
+<p><em>Editor’s note — <code>setState</code> will also take a callback as its second argument that’ll be executed after <code>this.state</code> has been updated:</em></p>
+<pre class="highlight javascript"><code><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span>
+  <span class="p">{</span> <span class="na">reallyUseful</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+  <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">reallyUseful</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">doSomethingAmazing</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
 </div><div class="article__tags"><a href="/topics/react" class="article__tag">react</a><a href="/topics/javascript" class="article__tag">javascript</a></div></div><div class="article"><h2 class="article__title"><a href="/symbolize-keys/">Symbolize&nbsp;keys</a></h2><div class="article__meta">Jojo Hall, 19 November 2015</div><div class="article__content" data-view-highlight=""><p>If you&rsquo;re writing plain old Ruby you can symbolize the keys of a hash with the following:</p>
 <pre class="highlight ruby"><code><span class="nb">hash</span><span class="p">.</span><span class="nf">inject</span><span class="p">({}){</span><span class="o">|</span><span class="n">memo</span><span class="p">,(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">|</span> <span class="n">memo</span><span class="p">[</span><span class="n">k</span><span class="p">.</span><span class="nf">to_sym</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span> <span class="n">memo</span><span class="p">}</span>
 </code></pre>
