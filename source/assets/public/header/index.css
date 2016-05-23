@@ -41,6 +41,7 @@
 
 .header__view-topics {
   float: right;
+  outline: none;
 }
 .header__view-topics:hover {
   color: var(--pink);
