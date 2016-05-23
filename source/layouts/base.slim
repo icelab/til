@@ -16,6 +16,7 @@ html lang="en-au"
       - else
         = data.site.name
     = partial "partials/analytics"
+    link href="/feed.xml" rel="alternate" type="application/atom+xml" title=data.site.name
   body
     aside#sidebar.sidebar
       button class="close-sidebar" data-view-toggle-sidebar=true
