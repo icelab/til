@@ -1,9 +1,9 @@
 = wrap_layout :base do
   .article
-    h2.article__title = widont(current_page.title)
+    h2.article__title = md_line(widont(current_page.title))
     .article__meta
       = current_page.data.author
-      |, 
+      ',
       = current_page.data.date.strftime("%d %B %Y")
     .article__content data-view-highlight=true
       = yield
