@@ -6,7 +6,7 @@ tags: social
 ---
 
 
-When sharing links to Facebook, Kinderling were only being given the option to display old images, and couldn’t work out why the new ones weren’t coming through.
+When sharing links to Facebook, ████████ were only being given the option to display old images, and couldn’t work out why the new ones weren’t coming through.
 
 As it happens, there are specific metatags required to force Facebook to notice the correct content, explained [here](https://developers.facebook.com/docs/sharing/webmasters#markup).
 
