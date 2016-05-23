@@ -6,7 +6,7 @@ module TypographyHelpers
     renderer = Redcarpet::Render::HTML.new({
       :hard_wrap => true
     })
-    output = Redcarpet::Markdown.new(renderer, markdown)
+    output = Redcarpet::Markdown.new(renderer, {})
     output.render(text)
   end
 
@@ -15,7 +15,7 @@ module TypographyHelpers
       :filter_html => true,
       :hard_wrap => true
     })
-    output = Redcarpet::Markdown.new(renderer, markdown)
+    output = Redcarpet::Markdown.new(renderer, {})
     output.render(text)
   end
 
