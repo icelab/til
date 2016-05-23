@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Today Icelab Learnt</title>
+  <id>http://til.icelab.com.au/</id>
+  <link href="http://til.icelab.com.au/"/>
+  <link href="http://til.icelab.com.au/" rel="self"/>
+  <updated>2016-05-23T10:00:00+10:00</updated>
+  <author>
+    <name>Icelab</name>
+  </author>
+  <entry>
+    <title>Hash.new with a block works well as a keyed cache</title>
+    <link rel="alternate" href="http://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/"/>
+    <id>http://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/</id>
+    <published>2016-05-23T10:00:00+10:00</published>
+    <updated>2016-05-23T13:05:50+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;We&amp;rsquo;re all familiar with the &lt;code&gt;@foo ||= expensive_computation&lt;/code&gt; technique to memoize (i.e. cache) the output of slow computations or to avoid unnecessary object creation.&lt;/p&gt;
+
+&lt;p&gt;If you want to do the same but with results that will vary by a single parameter, you can use Ruby&amp;rsquo;s hash with its &lt;a href="http://ruby-doc.org/core-2.3.1/Hash.html#method-c-new"&gt;block-based initializer&lt;/a&gt; to handle the caching for you:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_cache&lt;/span&gt;
+  &lt;span class="vi"&gt;@my_cache&lt;/span&gt; &lt;span class="o"&gt;||=&lt;/span&gt; &lt;span class="no"&gt;Hash&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;some_slow_computation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Computed once&lt;/span&gt;
+&lt;span class="n"&gt;my_cache&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:foo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Then cached&lt;/span&gt;
+&lt;span class="n"&gt;my_cache&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:foo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can see this work in practice &lt;a href="https://github.com/dry-rb/dry-component/blob/0bebc656b625a18c25e3c8d9c4b71946fecac5e1/lib/dry/component/injector.rb#L56-L60"&gt;inside dry-component&amp;rsquo;s Injector&lt;/a&gt;, where it caches objects to allow arbitrarily long chaining of injector strategies without creating duplicate injector objects.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Selecting colours in HTML</title>
+    <link rel="alternate" href="http://til.icelab.com.au/selecting-colours-in-html/"/>
+    <id>http://til.icelab.com.au/selecting-colours-in-html/</id>
+    <published>2016-05-22T10:00:00+10:00</published>
+    <updated>2016-05-23T11:13:53+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;Somehow in the excitement around HTML5’s new input types I missed the addition of an input type specifically for selecting colours:&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;"color"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Include this and you’ll get a platform-native colour selector that takes and returns hex colour values, like my debugging colour of choice &lt;code&gt;#ff0099&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p data-height="200" data-theme-id="0" data-slug-hash="vGogBW" data-default-tab="result" data-user="makenosound" data-embed-version="2" class="codepen"&gt;Selecting colours in HTML &lt;a href="http://codepen.io/makenosound/pen/vGogBW/"&gt;vGogBW&lt;/a&gt;&lt;/p&gt;
+
+&lt;script async src="//assets.codepen.io/assets/embed/ei.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;Note that the value needs to a fully hex string, not a shortcut like &lt;code&gt;#f09&lt;/code&gt;. And, alas, if you’re viewing this in Safari you’ll notice that it isn’t supported at all.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Creating an IAM user for access to an S3 bucket</title>
+    <link rel="alternate" href="http://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/"/>
+    <id>http://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/</id>
+    <published>2016-04-04T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;When you create an S3 bucket for a web app to use, you should create a specific IAM user to grant access to that bucket.&lt;/p&gt;
+
+&lt;p&gt;To do this, first create a user:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Visit the &lt;a href="https://console.aws.amazon.com/iam"&gt;IAM section of the AWS console&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Go to the &amp;ldquo;Users&amp;rdquo; section and click the &amp;ldquo;Create New Users&amp;rdquo; button&lt;/li&gt;
+&lt;li&gt;Enter the user name(s) you want to create (e.g. &lt;code&gt;my-bucket-s3&lt;/code&gt; for a bucket named &lt;code&gt;my-bucket&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;When you&amp;rsquo;re shown the user credentials, save them somewhere safe, like our team 1Password vault&lt;/li&gt;
+&lt;li&gt;When you return to the IAM users list, go to the newly created user and click on their &amp;ldquo;Permissions&amp;rdquo; tab. Click on the &amp;ldquo;Inline Policies&amp;rdquo; section and create a new policy&lt;/li&gt;
+&lt;li&gt;Choose to create a &amp;ldquo;Custom Policy&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Name the policy &amp;ldquo;my-bucket-s3-access&amp;rdquo; (or something similarly descriptive) and paste the following into the &amp;ldquo;Policy Document&amp;rdquo; area (replacing &lt;code&gt;my-bucket&lt;/code&gt; with your bucket&amp;rsquo;s name):&lt;/p&gt;
+&lt;pre class="highlight json"&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="nt"&gt;"Statement"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nt"&gt;"Effect"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Allow"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nt"&gt;"Action"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"s3:ListAllMyBuckets"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nt"&gt;"Resource"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"arn:aws:s3:::*"&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nt"&gt;"Effect"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Allow"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nt"&gt;"Action"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"s3:*"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nt"&gt;"Resource"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="s2"&gt;"arn:aws:s3:::my-bucket"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="s2"&gt;"arn:aws:s3:::my-bucket/*"&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Click &amp;ldquo;Apply Policy&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The access policy should now be active and your app should be able to access the bucket with the new IAM user&amp;rsquo;s credentials.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>ChromeVox</title>
+    <link rel="alternate" href="http://til.icelab.com.au/chrome-vox/"/>
+    <id>http://til.icelab.com.au/chrome-vox/</id>
+    <published>2016-03-08T11:00:00+11:00</published>
+    <updated>2016-05-23T11:13:53+10:00</updated>
+    <author>
+      <name>Andy McCray</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="http://www.chromevox.com/"&gt;ChromeVox&lt;/a&gt; is a screen reader extension for Chrome.&lt;/p&gt;
+
+&lt;p&gt;I found it a helpful extension when addressing accessibility issues on a recent project. I was able to replicate the voice prompts noted in the accessibility audit. Thus, fixing them was much easier!&lt;/p&gt;
+
+&lt;p&gt;One thing to note is that you&amp;rsquo;ll want to change the default voice. The default just seems to cackle at you. You can do this via &lt;code&gt;Settings &amp;gt; Extensions &amp;gt; ChromeVox &amp;gt; Options&lt;/code&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using CloudFront as ‘origin pull’ (with bonus gzip)</title>
+    <link rel="alternate" href="http://til.icelab.com.au/cloudfront-origin-pull-with-gzip/"/>
+    <id>http://til.icelab.com.au/cloudfront-origin-pull-with-gzip/</id>
+    <published>2016-02-16T11:00:00+11:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;CloudFront can act as a CDN that ‘pulls’ content from an origin server. It’s really easy to set up, you simply set the ‘Origin Domain Name’ to wherever you’re hosting your app: &lt;code&gt;foobar.herokuapp.com&lt;/code&gt; for example and then &amp;hellip; nothing. That’s all you need to do. Requests that come through CloudFront will pass through to your origin server and then be cached thereafter.&lt;/p&gt;
+
+&lt;p&gt;For bonus points it’ll also gzip your content for you without you having to do much work at all. Set ‘Compress Objects Automatically’ to ‘Yes’ and you’re done. If CloudFront can serve a gzipped version (and the client can receive one) it’ll serve up a compressed version of your file instead.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>In React setState is not &amp;quot;guaranteed&amp;quot; to be synchronous.</title>
+    <link rel="alternate" href="http://til.icelab.com.au/async-set-state/"/>
+    <id>http://til.icelab.com.au/async-set-state/</id>
+    <published>2015-11-19T11:00:00+11:00</published>
+    <updated>2016-05-23T10:21:19+10:00</updated>
+    <author>
+      <name>Narinda Reeders</name>
+    </author>
+    <content type="html">&lt;p&gt;I discovered recently that if you do something link this in react:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="na"&gt;reallyUseful&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;reallyUseful&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;doSomethingAmazing&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip; it&amp;rsquo;s not very useful and more often than not nothing amazing happens, just confusion and sadness.&lt;/p&gt;
+
+&lt;p&gt;This is because &lt;code&gt;setState&lt;/code&gt; it turns out, is asynchronous. Of course most of the time you are doing your amazing things in your render function so everything is sweet but on the odd occasion that you need to pass that value elsewhere, eg: publishing an event, beware!&lt;/p&gt;
+
+&lt;p&gt;From the docs:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.&lt;/p&gt;
+
+&lt;p&gt;There is no guarantee of synchronous operation of calls to setState and calls may be batched for performance gains.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Read about &lt;code&gt;setState&lt;/code&gt; &lt;a href="https://facebook.github.io/react/docs/component-api.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Editor’s note — &lt;code&gt;setState&lt;/code&gt; will also take a callback as its second argument that’ll be executed after &lt;code&gt;this.state&lt;/code&gt; has been updated:&lt;/em&gt;&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setState&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;reallyUseful&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;reallyUseful&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;doSomethingAmazing&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Symbolize keys</title>
+    <link rel="alternate" href="http://til.icelab.com.au/symbolize-keys/"/>
+    <id>http://til.icelab.com.au/symbolize-keys/</id>
+    <published>2015-11-19T11:00:00+11:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Jojo Hall</name>
+    </author>
+    <content type="html">&lt;p&gt;If you&amp;rsquo;re writing plain old Ruby you can symbolize the keys of a hash with the following:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;inject&lt;/span&gt;&lt;span class="p"&gt;({}){&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This does the following:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;hash&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"hello"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"jojo"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;inject&lt;/span&gt;&lt;span class="p"&gt;({}){&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:hello&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"jojo"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However if you&amp;rsquo;re doing this in a web application you may want to make a module to make hash and array data transformations easily available to you. In most of our apps we would use &lt;a href="https://github.com/solnic/transproc"&gt;transproc&lt;/a&gt; to help us with this — if you&amp;rsquo;re working in one of Icelab&amp;rsquo;s Rodakase apps this will be available to you.&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s2"&gt;"transproc/all"&lt;/span&gt;
+
+&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Functions&lt;/span&gt;
+  &lt;span class="kp"&gt;extend&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Registry&lt;/span&gt;
+
+  &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;HashTransformations&lt;/span&gt;
+  &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;ArrayTransformations&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="no"&gt;Functions&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:symbolize_keys&lt;/span&gt;&lt;span class="p"&gt;)[{&lt;/span&gt;&lt;span class="s2"&gt;"foo"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;span class="c1"&gt;# =&amp;gt; {foo: "bar"}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you are using Rails then you can use the method &lt;code&gt;hash.symbolize_keys&lt;/code&gt; or the destructive version &lt;code&gt;hash.symbolize_keys!&lt;/code&gt;&lt;br&gt;
+(both made available via ActiveSupport).&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Pry is amazing</title>
+    <link rel="alternate" href="http://til.icelab.com.au/pry-is-amazing/"/>
+    <id>http://til.icelab.com.au/pry-is-amazing/</id>
+    <published>2015-11-11T11:00:00+11:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="https://github.com/pry/pry"&gt;Pry&lt;/a&gt; is amazing! It has a whole bunch of helpful shortcuts you can use while working in a session.&lt;/p&gt;
+
+&lt;p&gt;I found the &lt;a href="https://github.com/pry/pry/wiki/Exceptions"&gt;exception handling shortcuts&lt;/a&gt; particularly helpful. &lt;code&gt;_ex_&lt;/code&gt; will give you the last raised exception, and &lt;code&gt;wtf?&lt;/code&gt; will show you a stacktrace from that exception (which is helpful, since stacktraces aren&amp;rsquo;t normally shown in interactive terminal sessions like this). Hilariously, you can add more question marks or exclamation marks on the end to see more detail.&lt;/p&gt;
+
+&lt;p&gt;If you work with Ruby app consoles regularly, you&amp;rsquo;d do yourself a favour to give the &lt;a href="https://github.com/pry/pry/wiki"&gt;Pry Wiki&lt;/a&gt; a good read!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Authenticating with AWS Elasticsearch</title>
+    <link rel="alternate" href="http://til.icelab.com.au/aws-elasticsearch-authentication/"/>
+    <id>http://til.icelab.com.au/aws-elasticsearch-authentication/</id>
+    <published>2015-10-21T11:00:00+11:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Andrew Croome</name>
+    </author>
+    <content type="html">&lt;p&gt;The AWS Elasticseach service offers authentication via an IAM user, or by whitelisting IPs.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how to use IAM credentials to sign requests to the service when using Faraday and how to hook that into the Ruby elasticsearch gem.&lt;/p&gt;
+
+&lt;p&gt;To sign requests using Faraday, you can use a gem called &lt;a href="https://github.com/winebarrel/faraday_middleware-aws-signers-v4"&gt;faraday_middleware-aws-signers-v4&lt;/a&gt;, which provides a middleware that will sign your requests.&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'faraday_middleware'&lt;/span&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'faraday_middleware/aws_signers_v4'&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Faraday&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;url: &lt;/span&gt;&lt;span class="s1"&gt;'address-of-your-AWS-es-service'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;faraday&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;faraday&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;request&lt;/span&gt; &lt;span class="ss"&gt;:aws_signers_v4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="ss"&gt;credentials: &lt;/span&gt;&lt;span class="no"&gt;Aws&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Credentials&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'AWS_ACCESS_KEY_ID'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'AWS_SECRET_ACCESS_KEY'&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;
+    &lt;span class="ss"&gt;service_name: &lt;/span&gt;&lt;span class="s1"&gt;'es'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;region: &lt;/span&gt;&lt;span class="s1"&gt;'ap-southeast-2'&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;faraday&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;adapter&lt;/span&gt; &lt;span class="ss"&gt;:typhoeus&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To get the client provided by the elasticsearch gem to use your Faraday configuation, you can pass that configuration to it like so:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;faraday_config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;lambda&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;faraday&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;faraday&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;request&lt;/span&gt; &lt;span class="ss"&gt;:aws_signers_v4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="ss"&gt;credentials: &lt;/span&gt;&lt;span class="no"&gt;Aws&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Credentials&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"ELASTICSEARCH_AWS_ACCESS_KEY_ID"&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+      &lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"ELASTICSEARCH_AWS_SECRET_ACCESS_KEY"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+      &lt;span class="p"&gt;),&lt;/span&gt;
+      &lt;span class="ss"&gt;service_name: &lt;/span&gt;&lt;span class="s2"&gt;"es"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="ss"&gt;region: &lt;/span&gt;&lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"ELASTICSEARCH_AWS_REGION"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;faraday&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;adapter&lt;/span&gt; &lt;span class="ss"&gt;:typhoeus&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;elasticsearch_host_config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="ss"&gt;host:   &lt;/span&gt;&lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"ELASTICSEARCH_HOST"&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="ss"&gt;port:   &lt;/span&gt;&lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"ELASTICSEARCH_PORT"&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="ss"&gt;scheme: &lt;/span&gt;&lt;span class="no"&gt;ENV&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"ELASTICSEARCH_SCHEME"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;transport&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Elasticsearch&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Transport&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Transport&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;HTTP&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Faraday&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;hosts: &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;elasticsearch_host_config&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;faraday_config&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Elasticsearch&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;transport: &lt;/span&gt;&lt;span class="n"&gt;transport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can then use the client object as usual, and you&amp;rsquo;ll get automatically signed requests.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using Arel to compare attributes of a record</title>
+    <link rel="alternate" href="http://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/"/>
+    <id>http://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/</id>
+    <published>2015-09-24T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Daniel Nitsikopoulos</name>
+    </author>
+    <content type="html">&lt;p&gt;I was just trying to find a way to run a query and compare the &lt;code&gt;updated_at&lt;/code&gt; and &lt;code&gt;created_at&lt;/code&gt; attributes of a record and came across this technique:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;users&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;User&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;arel_table&lt;/span&gt;
+&lt;span class="no"&gt;User&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;where&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:created_at&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nf"&gt;eq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:updated_at&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It seems like &lt;code&gt;.gt&lt;/code&gt; and &lt;code&gt;.lt&lt;/code&gt; also work. While &lt;code&gt;User.where(&amp;quot;created_at = updated_at&amp;quot;)&lt;/code&gt; would also work in SQL, we can use Arel to be database agnostic.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href="https://github.com/rails/arel"&gt;Arel docs&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Manually incrementing count columns in rails</title>
+    <link rel="alternate" href="http://til.icelab.com.au/manually-incrementing-count-columns/"/>
+    <id>http://til.icelab.com.au/manually-incrementing-count-columns/</id>
+    <published>2015-09-18T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Daniel Nitsikopoulos</name>
+    </author>
+    <content type="html">&lt;p&gt;Adding a counter cache column to a model is a common optimisation we make in order to avoid unnecessary queries when trying to aggregate data associated with that particular model. Rails provides us with a number of ways to maintain the counter cache column&amp;rsquo;s value. The first is to follow the rails convention and add &lt;code&gt;counter_cache: true&lt;/code&gt; to a &lt;code&gt;belongs_to&lt;/code&gt; association and ensure we have a correctly named &lt;code&gt;*_count&lt;/code&gt; column.&lt;/p&gt;
+
+&lt;p&gt;The other way to do it, is manually. In this case rails provides us with a few convenience methods to increment a given column.&lt;/p&gt;
+
+&lt;p&gt;The first is &lt;code&gt;ActiveRecord::Base#increment!(attribute, by)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;increment!&lt;/code&gt; is defined as:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increment!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;increment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;update_attribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and &lt;code&gt;increment&lt;/code&gt; is defined as:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt;
+  &lt;span class="nb"&gt;self&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which means that we&amp;rsquo;re first fetching the current attribute&amp;rsquo;s value, incrementing it then passing it on to &lt;code&gt;update_attribute&lt;/code&gt; before it can be saved. This method leads to a non-atomic database operation, that is to say that at one point, the count is different in memory than it is in the database (which can lead to race conditions).&lt;/p&gt;
+
+&lt;p&gt;The second is &lt;code&gt;ActiveRecord::Base#increment_counter(column_name, record_id)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;increment_counter&lt;/code&gt; is defined as:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;increment_counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;counter_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;update_counters&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;counter_name&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which executes SQL like:&lt;/p&gt;
+&lt;pre class="highlight sql"&gt;&lt;code&gt;&lt;span class="k"&gt;UPDATE&lt;/span&gt; &lt;span class="nv"&gt;"table_name"&lt;/span&gt;
+  &lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="nv"&gt;"counter_name"&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;"counter_name"&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+  &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This means that we now have an atomic operation and the counter cache value is the same across the system.&lt;/p&gt;
+
+&lt;p&gt;Docs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://apidock.com/rails/ActiveRecord/Base/increment!"&gt;increment!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://apidock.com/rails/ActiveRecord/Base/increment_counter/class"&gt;increment_counter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using viewloader with turbolinks</title>
+    <link rel="alternate" href="http://til.icelab.com.au/using-viewloader-with-turbolinks/"/>
+    <id>http://til.icelab.com.au/using-viewloader-with-turbolinks/</id>
+    <published>2015-09-17T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Andrew Croome</name>
+    </author>
+    <content type="html">&lt;p&gt;When using viewloader with turbolinks, you want to make sure that viewloader executes once on the initial page load, once when the visitor reaches another page, and once when the visitor goes back in their browser (or forward for that matter).&lt;/p&gt;
+
+&lt;p&gt;To achieve this, get viewloader to execute on the &lt;code&gt;ready&lt;/code&gt;, &lt;code&gt;page:load&lt;/code&gt; and &lt;code&gt;page:restore&lt;/code&gt; events:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ready page:load page:restore"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;viewloader&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;views&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;page:restore&lt;/code&gt; is fired by &lt;a href="https://github.com/rails/turbolinks"&gt;turbolinks&lt;/a&gt; whenever &amp;ldquo;A cached body element has been loaded into the DOM&amp;rdquo;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Setting cookies in request specs</title>
+    <link rel="alternate" href="http://til.icelab.com.au/setting-cookies-in-request-specs/"/>
+    <id>http://til.icelab.com.au/setting-cookies-in-request-specs/</id>
+    <published>2015-09-17T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Narinda Reeders</name>
+    </author>
+    <content type="html">&lt;p&gt;When writing request specs and you want to set a cookie, setting it with Capybara doesn’t seem to work, best to set it in the request headers.&lt;/p&gt;
+
+&lt;p&gt;Sad panda:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="no"&gt;Capybara&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;current_session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;browser&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_cookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"really_useful_cookie=&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;cookie_monster&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;id&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Happy panda:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;some_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"HTTP_COOKIE"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"really_useful_cookie=&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;cookie_monster&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;id&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;”}
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Manually add sitemaps to Google’s Webmaster Tools</title>
+    <link rel="alternate" href="http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/"/>
+    <id>http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/</id>
+    <published>2015-09-15T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;It’s good practice to add sitemaps to &lt;a href="https://www.google.com/webmasters/tools/"&gt;Google’s Webmaster Tools&lt;/a&gt; so you can check their health and get notifications about sitemap issues. We often host sitemaps on S3 because they could be large static files that we don’t want running through our Rails stack.&lt;/p&gt;
+
+&lt;p&gt;This leads us to the problem: If you have a sitemap that’s hosted externally to your website, you can’t add them through the Google’s Webmaster Tools interface. For some reason Google limits these to paths underneath the official domain attached to an account. There is a solution though — you can sneak them in using their notification URL. All you need to do is:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;curl www.google.com/webmasters/tools/ping?sitemap=https%3A%2F%2Fwheeler-centre-heracles.s3.amazonaws.com%2Fsitemaps%2Fsitemap.xml.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And ta da, it’ll show up in the Webmaster Tools admin interface.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>PostgreSQL as a message bus</title>
+    <link rel="alternate" href="http://til.icelab.com.au/postgres-listen-notify/"/>
+    <id>http://til.icelab.com.au/postgres-listen-notify/</id>
+    <published>2015-09-15T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Alex Timofeev</name>
+    </author>
+    <content type="html">&lt;p&gt;PostgreSQL has its own listen/notify mechanism. It might be useful for cases when we have to manage messaging between different application processes, but would prefer to not use extra dependencies such as Redis.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;process.rb&lt;/em&gt;&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="no"&gt;CHANNEL&lt;/span&gt;       &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"slack_bot"&lt;/span&gt;
+&lt;span class="no"&gt;RESET_CHANNEL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"pg_restart"&lt;/span&gt;
+
+&lt;span class="no"&gt;ActiveRecord&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;connection_pool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;with_connection&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;instance_variable_get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:@connection&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;begin&lt;/span&gt;
+    &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;async_exec&lt;/span&gt; &lt;span class="s2"&gt;"LISTEN &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;RESET_CHANNEL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+    &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;async_exec&lt;/span&gt; &lt;span class="s2"&gt;"LISTEN &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;CHANNEL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+    &lt;span class="kp"&gt;catch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:break_loop&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+      &lt;span class="kp"&gt;loop&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+        &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;wait_for_notify&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;channel&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;payload&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+          &lt;span class="nb"&gt;p&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;channel&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;payload&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+          &lt;span class="kp"&gt;throw&lt;/span&gt; &lt;span class="ss"&gt;:break_loop&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;channel&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="no"&gt;RESET_CHANNEL&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;rescue&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt;
+    &lt;span class="nb"&gt;p&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:error&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="k"&gt;ensure&lt;/span&gt;
+    &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;async_exec&lt;/span&gt; &lt;span class="s2"&gt;"UNLISTEN *"&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;another-process.rb&lt;/em&gt;&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="no"&gt;User&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;execute&lt;/span&gt; &lt;span class="sx"&gt;%Q(NOTIFY "slack_bot", params)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Show Open Graph image on first Facebook share</title>
+    <link rel="alternate" href="http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/"/>
+    <id>http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/</id>
+    <published>2015-09-02T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;When you share a URL on Facebook for the first time — specifically, the first time &lt;em&gt;anyone&lt;/em&gt; has shared it — it won’t include any of the images on the page and our clients will be :cry:. This happens even if you have included a meta tag that references an image:&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;property=&lt;/span&gt;&lt;span class="s"&gt;"og:image"&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;"http://foo.com/image.png"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;em&gt;second&lt;/em&gt; time a URL is shared, it’ll work as expected and your chosen &lt;code&gt;og:image&lt;/code&gt; will show up in the share preview (along with any other images on the page) — Facebook seem to have shifted this all to a background job or something.&lt;/p&gt;
+
+&lt;p&gt;Fear not! There is a solution. If you include the dimensions of your image alongside the &lt;code&gt;og:image&lt;/code&gt; meta tag it’ll force Facebook to show the image immediately:&lt;/p&gt;
+&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;property=&lt;/span&gt;&lt;span class="s"&gt;"og:image"&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;"http://foo.com/image.png"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;property=&lt;/span&gt;&lt;span class="s"&gt;"og:image:width"&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;"300"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;property=&lt;/span&gt;&lt;span class="s"&gt;"og:image:height"&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;"400"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These dimensions don’t actually have to be accurate either. On Readings we don’t know the dimensions of images as they’re provided by Erudite without any meta-information, so we do a best-guess approach based on the ratio that book covers (or CD covers) tend to be.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Pushing all branches</title>
+    <link rel="alternate" href="http://til.icelab.com.au/pushing-all-branches/"/>
+    <id>http://til.icelab.com.au/pushing-all-branches/</id>
+    <published>2015-09-02T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Josephine Hall</name>
+    </author>
+    <content type="html">&lt;p&gt;Say you want to push up an existing repostiory to a new remote on your favourite repository hosting service. You can use the following command if you want to make sure you include all branches:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is especially helpful when you want to immediately create some PRs!&lt;/p&gt;
+
+&lt;p&gt;To push all tags:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --tags
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Facebook image display when posting a link</title>
+    <link rel="alternate" href="http://til.icelab.com.au/clear-facebook-share-data/"/>
+    <id>http://til.icelab.com.au/clear-facebook-share-data/</id>
+    <published>2015-08-20T10:00:00+10:00</published>
+    <updated>2016-05-23T10:13:58+10:00</updated>
+    <author>
+      <name>Jess Allison</name>
+    </author>
+    <content type="html">&lt;p&gt;When sharing links to Facebook, ████████ were only being given the option to display old images, and couldn’t work out why the new ones weren’t coming through.&lt;/p&gt;
+
+&lt;p&gt;As it happens, there are specific metatags required to force Facebook to notice the correct content, explained &lt;a href="https://developers.facebook.com/docs/sharing/webmasters#markup"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;“Without these tags, the Facebook Crawler will use internal heuristics to make a best guess about the title, description, and preview image for your content.”&lt;/p&gt;
+
+&lt;p&gt;To force refresh of a particular item without updating the site itself, you can also use the &lt;a href="https://developers.facebook.com/tools/debug/og/object/"&gt;Facebook debugger&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you go there, input the URL and click “Fetch new scrape information” until the “right” content shows up at the bottom.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>CSS dropdown menus</title>
+    <link rel="alternate" href="http://til.icelab.com.au/css-dropdown-menus/"/>
+    <id>http://til.icelab.com.au/css-dropdown-menus/</id>
+    <published>2015-08-17T10:00:00+10:00</published>
+    <updated>2016-05-20T22:51:19+10:00</updated>
+    <author>
+      <name>Andy McCray</name>
+    </author>
+    <content type="html">&lt;p&gt;Creating a CSS-only dropdown menu is easy!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/public/content/css-dropdown-menus-65627d09.gif" alt="CSS dropdown menus are the bomb" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Using nested lists, the basic structure is:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="nc"&gt;.nav&lt;/span&gt;
+  &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__list-item&lt;/span&gt;
+    &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.nav__list-anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"#"&lt;/span&gt;
+      &lt;span class="p"&gt;|&lt;/span&gt; Hogwarts
+  &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__list-item.nav__list-item--has-dropdown&lt;/span&gt;
+    &lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="nc"&gt;.nav__list-toggle&lt;/span&gt;
+      &lt;span class="p"&gt;|&lt;/span&gt; Students
+      &lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="nc"&gt;.fa.fa-caret-down&lt;/span&gt;
+    &lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown&lt;/span&gt;
+      &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-item&lt;/span&gt;
+        &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"#"&lt;/span&gt;
+          &lt;span class="p"&gt;|&lt;/span&gt; Harry Potter
+      &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-item&lt;/span&gt;
+        &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"#"&lt;/span&gt;
+          &lt;span class="p"&gt;|&lt;/span&gt; Ron Weasley
+      &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-item&lt;/span&gt;
+        &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"#"&lt;/span&gt;
+          &lt;span class="p"&gt;|&lt;/span&gt; Hermione Granger
+  &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__list-item.nav__list-item--has-dropdown&lt;/span&gt;
+    &lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="nc"&gt;.nav__list-toggle&lt;/span&gt;
+      &lt;span class="p"&gt;|&lt;/span&gt; Teachers
+      &lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="nc"&gt;.fa.fa-caret-down&lt;/span&gt;
+    &lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown&lt;/span&gt;
+      &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-item&lt;/span&gt;
+        &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"#"&lt;/span&gt;
+          &lt;span class="p"&gt;|&lt;/span&gt; Minerva McGonagall
+      &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-item&lt;/span&gt;
+        &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.nav__dropdown-list-anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"#"&lt;/span&gt;
+          &lt;span class="p"&gt;|&lt;/span&gt; Severus Snape
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the bare-bones CSS:&lt;/p&gt;
+&lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.nav__list-item&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;inline-block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;relative&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="nc"&gt;.nav__list-anchor&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+  &lt;span class="nc"&gt;.nav__list-toggle&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;pointer&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nc"&gt;.nav__dropdown&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="nl"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;absolute&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="nl"&gt;z-index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nc"&gt;.nav__list-item--has-dropdown&lt;/span&gt;&lt;span class="nd"&gt;:hover&lt;/span&gt; &lt;span class="nc"&gt;.nav__dropdown&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+    &lt;span class="nc"&gt;.nav__list-item--has-dropdown&lt;/span&gt;&lt;span class="nd"&gt;:focus&lt;/span&gt; &lt;span class="nc"&gt;.nav__dropdown&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+      &lt;span class="nc"&gt;.nav__dropdown-list-anchor&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="consider-mobile"&gt;Consider mobile&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;:hover&lt;/code&gt; triggered menus don&amp;rsquo;t feel &lt;em&gt;great&lt;/em&gt; on mobile. A nice solution is to use a JavaScript &lt;code&gt;click&lt;/code&gt; event to append a modifier class to the the toggle element (&lt;code&gt;.nav__list-anchor--dropdown-is-visible&lt;/code&gt;) and use that class to perma-show the menu.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Displaying booleans in Active Admin</title>
+    <link rel="alternate" href="http://til.icelab.com.au/displaying-booleans-in-active-admin/"/>
+    <id>http://til.icelab.com.au/displaying-booleans-in-active-admin/</id>
+    <published>2015-08-13T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Josephine Hall</name>
+    </author>
+    <content type="html">&lt;p&gt;In Active Admin if you want to display a boolean propetry that doesn&amp;rsquo;t directly map to a database column you can use &lt;code&gt;status_tag&lt;/code&gt; to display the value in a fiendly way:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;column&lt;/span&gt; &lt;span class="ss"&gt;:featured&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;featured?&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;status_tag&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"yes"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:ok&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;status_tag&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"no"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There&amp;rsquo;s a bit more info in the &lt;em&gt;&lt;a href="http://activeadmin.info/docs/12-arbre-components.html#status-tag"&gt;Active Admin docs&lt;/a&gt;&lt;/em&gt; which shows you how to add classes too!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Table columns should be typed</title>
+    <link rel="alternate" href="http://til.icelab.com.au/table-columns-should-be-typed/"/>
+    <id>http://til.icelab.com.au/table-columns-should-be-typed/</id>
+    <published>2015-08-13T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Michael Honey</name>
+    </author>
+    <content type="html">&lt;p&gt;Processing.Table columns should be typed as INT or FLOAT if you want to do maths with them:&lt;/p&gt;
+&lt;pre class="highlight java"&gt;&lt;code&gt;&lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;addColumn&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"name"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// defaults to STRING&lt;/span&gt;
+&lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;addColumn&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"count"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Table&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;INT&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;addColumn&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"height"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Table&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;FLOAT&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you &lt;em&gt;don&amp;rsquo;t&lt;/em&gt; do that, trying to cast the value on the way out:&lt;/p&gt;
+&lt;pre class="highlight java"&gt;&lt;code&gt;&lt;span class="n"&gt;inst&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getFloat&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"total"&lt;/span&gt;&lt;span class="o"&gt;)+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Seems like it&amp;rsquo;d work. Nope.&lt;/p&gt;
+
+&lt;p&gt;(Processing 2.2.1)&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using namespaced components in React</title>
+    <link rel="alternate" href="http://til.icelab.com.au/namespaced-components/"/>
+    <id>http://til.icelab.com.au/namespaced-components/</id>
+    <published>2015-08-13T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Narinda Reeders</name>
+    </author>
+    <content type="html">&lt;p&gt;The last time I used React we had some pretty awkward workarounds for the fact that components couldn&amp;rsquo;t be namespaced. I was pretty stoked to find this has been fixed now.&lt;/p&gt;
+
+&lt;p&gt;So if you have a component &lt;code&gt;myNavComponent&lt;/code&gt; you can do:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;NavComponent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Define your sub-components as attributes:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Next&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Goto&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;Nav&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And then use them as you would expect to in your JSX:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&amp;lt;Nav&amp;gt;
+  &amp;lt;Nav.Prev /&amp;gt;
+  &amp;lt;Nav.Goto /&amp;gt;
+  &amp;lt;Nav.Next /&amp;gt;
+&amp;lt;/Nav&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components"&gt;https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Creating and pushing a git tag</title>
+    <link rel="alternate" href="http://til.icelab.com.au/creating-and-pushing-a-tag/"/>
+    <id>http://til.icelab.com.au/creating-and-pushing-a-tag/</id>
+    <published>2015-08-12T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;If you&amp;rsquo;re releasing gems (or any other kinds of packages), git tags are a useful way to track those release milestones in the source code repo.&lt;/p&gt;
+
+&lt;p&gt;Creating a tag is easy:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git tag v1.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So is pushing it to a remote:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push origin v1.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging"&gt;Git Basics - Tagging&lt;/a&gt; section in the online git book is an easy-to-read overview of the various tag commands.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Dynamic classnames in Slim</title>
+    <link rel="alternate" href="http://til.icelab.com.au/dynamic-classnames-in-slim/"/>
+    <id>http://til.icelab.com.au/dynamic-classnames-in-slim/</id>
+    <published>2015-08-12T10:00:00+10:00</published>
+    <updated>2016-05-20T23:01:50+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;While glancing through one of Narinda’s pull-requests, I noticed she’d used a syntax for dynamic classnames in &lt;a href="http://slim-lang.com/"&gt;Slim&lt;/a&gt; that I had not seen before:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Aww yeah&lt;/span&gt;
+&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two"&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;dynamic_classname]
+  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Slim will magically convert concatenate the classnames based on the truthiness of the &lt;code&gt;truthy_test&lt;/code&gt;. Much more flexible (and less stinky) than the string concatenation I would usually use:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Eww&lt;/span&gt;
+&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two #{dynamic_classname}"&lt;/span&gt;
+  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Formatting strings with C-like formatting codes.</title>
+    <link rel="alternate" href="http://til.icelab.com.au/string-format/"/>
+    <id>http://til.icelab.com.au/string-format/</id>
+    <published>2015-08-12T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Daniel Nitsikopoulos</name>
+    </author>
+    <content type="html">&lt;p&gt;I learnt this while putting together the report emails for Ticketscout.&lt;/p&gt;
+
+&lt;p&gt;Most of the time, regular string interpolation is all that we need when working with strings. Though sometimes we want a little more control over the formatting.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s say we have a set of numbers that we want to calculate the average for, then print that average to 1 decimal place.&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="no"&gt;FLOATS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;avg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;FLOATS&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="no"&gt;FLOATS&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;size&lt;/span&gt;
+&lt;span class="s2"&gt;"Average is: &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;avg&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; "Average is: 25.714285714285715&lt;/span&gt;
+&lt;span class="s2"&gt;"Average is: &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;avg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; "Average is: 25.7&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Normally, this is fine, but when working with some content, it may be nicer to use Ruby&amp;rsquo;s String Format instead (especially if trying to format more complex numbers).&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="s2"&gt;"Average is %.1f"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;avg&lt;/span&gt; &lt;span class="c1"&gt;# =&amp;gt; "Average is 25.7"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can also make printing hashes a little prettier as well.&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;dog&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;name: &lt;/span&gt;&lt;span class="s1"&gt;'poppy'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;breed: &lt;/span&gt;&lt;span class="s1"&gt;'labrador'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;colour: &lt;/span&gt;&lt;span class="s1"&gt;'black'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="s2"&gt;"This is &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;dog&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, she is a &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;dog&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:colour&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;dog&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:breed&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;."&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Becomes:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="s2"&gt;"This is %{name}, she is a %{colour} %{breed}."&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;dog&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which, to me at least, reads a little nicer.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://apidock.com/ruby/Kernel/sprintf"&gt;Kernel::sprintf&lt;/a&gt; has a more complete list of formatting strings.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using &lt;code&gt;Class.new&lt;/code&gt; for dynamically adding class methods</title>
+    <link rel="alternate" href="http://til.icelab.com.au/dynamically-adding-class-methods/"/>
+    <id>http://til.icelab.com.au/dynamically-adding-class-methods/</id>
+    <published>2015-08-09T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;Say you&amp;rsquo;re building a system where you want to dynamically add some class methods to a class at a particular moment, but without leaving them around for use on the class at other times.&lt;/p&gt;
+
+&lt;p&gt;This is pretty easy if you create an anonymous subclass whenever you need to use the special class methods:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;MyCustomFinders&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;special_finder&lt;/span&gt;
+    &lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;something: &lt;/span&gt;&lt;span class="s2"&gt;"is special"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyThing&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;ActiveRecord&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Base&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="no"&gt;Class&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;MyThing&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;MyCustomFinders&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;special_finder&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+</feed>
