@@ -8,10 +8,10 @@ tags: react, javascript
 I discovered recently that if you do something link this in react:
 
 ```javascript
-this.setState({reallyUseful: true});
+this.setState({reallyUseful: true})
 
 if (this.state.reallyUseful) {
-  this.doSomethingAmazing();
+  this.doSomethingAmazing()
 }
 ```
 
@@ -26,3 +26,16 @@ From the docs:
 > There is no guarantee of synchronous operation of calls to setState and calls may be batched for performance gains.
 
 Read about `setState` [here](https://facebook.github.io/react/docs/component-api.html).
+
+*Editor’s note — `setState` will also take a callback as its second argument that’ll be executed after `this.state` has been updated:*
+
+```js
+this.setState(
+  { reallyUseful: true },
+  function() {
+    if (this.state.reallyUseful) {
+      this.doSomethingAmazing()
+    }
+  }
+)
+```
