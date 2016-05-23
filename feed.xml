@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Today Icelab Learnt</title>
-  <id>http://til.icelab.com.au/</id>
-  <link href="http://til.icelab.com.au/"/>
+  <id>http://til.icelab.com.au</id>
+  <link href="http://til.icelab.com.au"/>
   <link href="http://til.icelab.com.au/feed.xml" rel="self"/>
   <updated>2016-05-23T10:00:00+10:00</updated>
   <author>
@@ -530,7 +530,7 @@
     <link rel="alternate" href="http://til.icelab.com.au/css-dropdown-menus/"/>
     <id>http://til.icelab.com.au/css-dropdown-menus/</id>
     <published>2015-08-17T10:00:00+10:00</published>
-    <updated>2016-05-20T22:51:19+10:00</updated>
+    <updated>2016-05-23T19:56:23+10:00</updated>
     <author>
       <name>Andy McCray</name>
     </author>
