@@ -1,0 +1,23 @@
+
+/* Footer styles */
+
+.footer {
+  color: var(--grey);
+  font-size: 1.4rem;
+  font-family: var(--fontMonoFallback);
+  padding: 3rem 3rem 3rem 3rem;
+  text-align: left;
+}
+
+.footer a {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.fonts-loaded .footer {
+  font-family: var(--fontMono);
+}

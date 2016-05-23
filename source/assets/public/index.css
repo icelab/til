@@ -17,6 +17,7 @@
 @import './fonts/tiempos-text/tiempos-text.css';
 @import './fonts/national/national.css';
 @import './header';
+@import './footer';
 @import './sidebar';
 @import './articles';
 @import './code-highlight';
