@@ -58,14 +58,14 @@ helpers AssetHelpers
 #     @which_fake_page = "Rendering a fake page with a variable"
 #   end
 
-page /(topics|page)\//, layout: "layouts/base"
-page "/", layout: "layouts/base"
-page "*", layout: "layouts/blog"
-
 # Pages without layout
 page "/*.xml", layout: false
 page "/*.json", layout: false
 page "/*.txt", layout: false
+
+page /(topics|page)\//, layout: "layouts/base"
+page "/", layout: "layouts/base"
+page "*", layout: "layouts/blog"
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {

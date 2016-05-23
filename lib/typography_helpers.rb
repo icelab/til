@@ -2,7 +2,7 @@ require "redcarpet"
 require "lib/redcarpet_renderers"
 
 module TypographyHelpers
-  def markdown(text)
+  def md(text)
     renderer = Redcarpet::Render::HTML.new({
       :hard_wrap => true
     })
@@ -10,7 +10,7 @@ module TypographyHelpers
     output.render(text)
   end
 
-  def markdown_line(text)
+  def md_line(text)
     renderer = Redcarpet::Render::HTMLWithoutBlockElements.new({
       :filter_html => true,
       :hard_wrap => true
