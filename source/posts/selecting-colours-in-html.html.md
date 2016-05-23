@@ -16,4 +16,4 @@ Include this and you’ll get a platform-native colour selector that takes and r
 <p data-height="200" data-theme-id="0" data-slug-hash="vGogBW" data-default-tab="result" data-user="makenosound" data-embed-version="2" class="codepen">Selecting colours in HTML <a href="http://codepen.io/makenosound/pen/vGogBW/">vGogBW</a></p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Note that the value needs to a fully hex string, not a shortcut like `#f09`.
+Note that the value needs to a fully hex string, not a shortcut like `#f09`. And, alas, if you’re viewing this in Safari you’ll notice that it isn’t supported at all.
