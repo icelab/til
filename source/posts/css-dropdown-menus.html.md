@@ -7,7 +7,7 @@ tags: css
 
 Creating a CSS-only dropdown menu is easy!
 
-![CSS dropdown menus are the bomb](assets/public/content/css-dropdown-menus.gif)
+![CSS dropdown menus are the bomb](/assets/public/content/css-dropdown-menus.gif)
 
 Using nested lists, the basic structure is:
 

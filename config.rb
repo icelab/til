@@ -122,6 +122,7 @@ ignore "assets/**/*.css"
 ignore "assets/**/*.js"
 
 configure :build do
+  activate :asset_host, host: "http://til.icelab.com.au"
 end
 
 # Deployment configuration -----------------------------------------------------
