@@ -3,7 +3,7 @@
   <title>Today Icelab Learnt</title>
   <id>http://til.icelab.com.au/</id>
   <link href="http://til.icelab.com.au/"/>
-  <link href="http://til.icelab.com.au/" rel="self"/>
+  <link href="http://til.icelab.com.au/feed.xml" rel="self"/>
   <updated>2016-05-23T10:00:00+10:00</updated>
   <author>
     <name>Icelab</name>
