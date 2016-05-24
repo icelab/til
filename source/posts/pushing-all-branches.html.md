@@ -1,11 +1,11 @@
 ---
 title: Pushing all branches
 date: 2015-09-02
-author: Josephine Hall
+author: Jojo Hall
 tags: git
 ---
 
-Say you want to push up an existing repostiory to a new remote on your favourite repository hosting service. You can use the following command if you want to make sure you include all branches:
+Say you want to push up an existing repository to a new remote on your favourite repository hosting service. You can use the following command if you want to make sure you include all branches:
 
 ```
 git push <REMOTE-NAME> --all

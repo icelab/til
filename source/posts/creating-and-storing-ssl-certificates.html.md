@@ -1,7 +1,7 @@
 ---
 title: Creating and storing SSL certificates
 date: 2016-05-24
-author: Josephine Hall
+author: Jojo Hall
 tags: ops
 ---
 
