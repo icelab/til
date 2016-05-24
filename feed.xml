@@ -4,10 +4,34 @@
   <id>http://til.icelab.com.au</id>
   <link href="http://til.icelab.com.au"/>
   <link href="http://til.icelab.com.au/feed.xml" rel="self"/>
-  <updated>2016-05-23T10:00:00+10:00</updated>
+  <updated>2016-05-24T10:00:00+10:00</updated>
   <author>
     <name>Icelab</name>
   </author>
+  <entry>
+    <title type="html">Creating and storing SSL certificates</title>
+    <link rel="alternate" href="http://til.icelab.com.au/creating-and-storing-ssl-certificates/"/>
+    <id>http://til.icelab.com.au/creating-and-storing-ssl-certificates/</id>
+    <published>2016-05-24T10:00:00+10:00</published>
+    <updated>2016-05-24T14:24:11+10:00</updated>
+    <author>
+      <name>Jojo Hall</name>
+    </author>
+    <content type="html">&lt;p&gt;As part of the SSL Certificate generation process you&amp;rsquo;ll need to create a Certificate Signing Request. You can do this with the command:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;openssl req -nodes -newkey rsa:2048 -sha256 -keyout server.key -out server.csr
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will generate two files: a public .csr file, and a private .key file&lt;/p&gt;
+
+&lt;p&gt;You can view the files with the commands &lt;code&gt;cat server.csr&lt;/code&gt; and &lt;code&gt;cat server.key&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here at Icelab we recommend saving this information in a new 1Password secure note named with the following format:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;[domain-name.com] SSL CSR
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save the data from both files into the secure note and continue to be happy and confident in the face of adversity :)&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title type="html">Hash.new with a block works well as a keyed cache</title>
     <link rel="alternate" href="http://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/"/>
@@ -363,26 +387,6 @@
 </content>
   </entry>
   <entry>
-    <title type="html">Using viewloader with turbolinks</title>
-    <link rel="alternate" href="http://til.icelab.com.au/using-viewloader-with-turbolinks/"/>
-    <id>http://til.icelab.com.au/using-viewloader-with-turbolinks/</id>
-    <published>2015-09-17T10:00:00+10:00</published>
-    <updated>2016-05-20T22:49:55+10:00</updated>
-    <author>
-      <name>Andrew Croome</name>
-    </author>
-    <content type="html">&lt;p&gt;When using viewloader with turbolinks, you want to make sure that viewloader executes once on the initial page load, once when the visitor reaches another page, and once when the visitor goes back in their browser (or forward for that matter).&lt;/p&gt;
-
-&lt;p&gt;To achieve this, get viewloader to execute on the &lt;code&gt;ready&lt;/code&gt;, &lt;code&gt;page:load&lt;/code&gt; and &lt;code&gt;page:restore&lt;/code&gt; events:&lt;/p&gt;
-&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ready page:load page:restore"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nx"&gt;viewloader&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;views&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;page:restore&lt;/code&gt; is fired by &lt;a href="https://github.com/rails/turbolinks"&gt;turbolinks&lt;/a&gt; whenever &amp;ldquo;A cached body element has been loaded into the DOM&amp;rdquo;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
     <title type="html">Setting cookies in request specs</title>
     <link rel="alternate" href="http://til.icelab.com.au/setting-cookies-in-request-specs/"/>
     <id>http://til.icelab.com.au/setting-cookies-in-request-specs/</id>
@@ -400,6 +404,26 @@
 &lt;p&gt;Happy panda:&lt;/p&gt;
 &lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;some_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"HTTP_COOKIE"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"really_useful_cookie=&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;cookie_monster&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;id&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;”}
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Using viewloader with turbolinks</title>
+    <link rel="alternate" href="http://til.icelab.com.au/using-viewloader-with-turbolinks/"/>
+    <id>http://til.icelab.com.au/using-viewloader-with-turbolinks/</id>
+    <published>2015-09-17T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Andrew Croome</name>
+    </author>
+    <content type="html">&lt;p&gt;When using viewloader with turbolinks, you want to make sure that viewloader executes once on the initial page load, once when the visitor reaches another page, and once when the visitor goes back in their browser (or forward for that matter).&lt;/p&gt;
+
+&lt;p&gt;To achieve this, get viewloader to execute on the &lt;code&gt;ready&lt;/code&gt;, &lt;code&gt;page:load&lt;/code&gt; and &lt;code&gt;page:restore&lt;/code&gt; events:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ready page:load page:restore"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;viewloader&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;views&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;page:restore&lt;/code&gt; is fired by &lt;a href="https://github.com/rails/turbolinks"&gt;turbolinks&lt;/a&gt; whenever &amp;ldquo;A cached body element has been loaded into the DOM&amp;rdquo;.&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -462,6 +486,26 @@
 </content>
   </entry>
   <entry>
+    <title type="html">Pushing all branches</title>
+    <link rel="alternate" href="http://til.icelab.com.au/pushing-all-branches/"/>
+    <id>http://til.icelab.com.au/pushing-all-branches/</id>
+    <published>2015-09-02T10:00:00+10:00</published>
+    <updated>2016-05-24T14:24:11+10:00</updated>
+    <author>
+      <name>Jojo Hall</name>
+    </author>
+    <content type="html">&lt;p&gt;Say you want to push up an existing repository to a new remote on your favourite repository hosting service. You can use the following command if you want to make sure you include all branches:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is especially helpful when you want to immediately create some PRs!&lt;/p&gt;
+
+&lt;p&gt;To push all tags:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --tags
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
     <title type="html">Show Open Graph image on first Facebook share</title>
     <link rel="alternate" href="http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/"/>
     <id>http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/</id>
@@ -483,26 +527,6 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;These dimensions don’t actually have to be accurate either. On Readings we don’t know the dimensions of images as they’re provided by Erudite without any meta-information, so we do a best-guess approach based on the ratio that book covers (or CD covers) tend to be.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title type="html">Pushing all branches</title>
-    <link rel="alternate" href="http://til.icelab.com.au/pushing-all-branches/"/>
-    <id>http://til.icelab.com.au/pushing-all-branches/</id>
-    <published>2015-09-02T10:00:00+10:00</published>
-    <updated>2016-05-20T22:49:55+10:00</updated>
-    <author>
-      <name>Josephine Hall</name>
-    </author>
-    <content type="html">&lt;p&gt;Say you want to push up an existing repostiory to a new remote on your favourite repository hosting service. You can use the following command if you want to make sure you include all branches:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --all
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is especially helpful when you want to immediately create some PRs!&lt;/p&gt;
-
-&lt;p&gt;To push all tags:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --tags
-&lt;/code&gt;&lt;/pre&gt;
 </content>
   </entry>
   <entry>
@@ -530,7 +554,7 @@
     <link rel="alternate" href="http://til.icelab.com.au/css-dropdown-menus/"/>
     <id>http://til.icelab.com.au/css-dropdown-menus/</id>
     <published>2015-08-17T10:00:00+10:00</published>
-    <updated>2016-05-23T22:02:10+10:00</updated>
+    <updated>2016-05-24T14:24:11+10:00</updated>
     <author>
       <name>Andy McCray</name>
     </author>
@@ -607,11 +631,11 @@
     <link rel="alternate" href="http://til.icelab.com.au/displaying-booleans-in-active-admin/"/>
     <id>http://til.icelab.com.au/displaying-booleans-in-active-admin/</id>
     <published>2015-08-13T10:00:00+10:00</published>
-    <updated>2016-05-20T22:49:55+10:00</updated>
+    <updated>2016-05-24T14:24:11+10:00</updated>
     <author>
-      <name>Josephine Hall</name>
+      <name>Jojo Hall</name>
     </author>
-    <content type="html">&lt;p&gt;In Active Admin if you want to display a boolean propetry that doesn&amp;rsquo;t directly map to a database column you can use &lt;code&gt;status_tag&lt;/code&gt; to display the value in a fiendly way:&lt;/p&gt;
+    <content type="html">&lt;p&gt;In Active Admin if you want to display a boolean property that doesn&amp;rsquo;t directly map to a database column you can use &lt;code&gt;status_tag&lt;/code&gt; to display the value in a friendly way:&lt;/p&gt;
 &lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;column&lt;/span&gt; &lt;span class="ss"&gt;:featured&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
   &lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;featured?&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="n"&gt;status_tag&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"yes"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:ok&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;status_tag&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"no"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;end&lt;/span&gt;
@@ -679,52 +703,6 @@
 </content>
   </entry>
   <entry>
-    <title type="html">Creating and pushing a git tag</title>
-    <link rel="alternate" href="http://til.icelab.com.au/creating-and-pushing-a-tag/"/>
-    <id>http://til.icelab.com.au/creating-and-pushing-a-tag/</id>
-    <published>2015-08-12T10:00:00+10:00</published>
-    <updated>2016-05-20T22:49:55+10:00</updated>
-    <author>
-      <name>Tim Riley</name>
-    </author>
-    <content type="html">&lt;p&gt;If you&amp;rsquo;re releasing gems (or any other kinds of packages), git tags are a useful way to track those release milestones in the source code repo.&lt;/p&gt;
-
-&lt;p&gt;Creating a tag is easy:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git tag v1.0.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So is pushing it to a remote:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push origin v1.0.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &lt;a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging"&gt;Git Basics - Tagging&lt;/a&gt; section in the online git book is an easy-to-read overview of the various tag commands.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title type="html">Dynamic classnames in Slim</title>
-    <link rel="alternate" href="http://til.icelab.com.au/dynamic-classnames-in-slim/"/>
-    <id>http://til.icelab.com.au/dynamic-classnames-in-slim/</id>
-    <published>2015-08-12T10:00:00+10:00</published>
-    <updated>2016-05-20T23:01:50+10:00</updated>
-    <author>
-      <name>Max Wheeler</name>
-    </author>
-    <content type="html">&lt;p&gt;While glancing through one of Narinda’s pull-requests, I noticed she’d used a syntax for dynamic classnames in &lt;a href="http://slim-lang.com/"&gt;Slim&lt;/a&gt; that I had not seen before:&lt;/p&gt;
-&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Aww yeah&lt;/span&gt;
-&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two"&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;dynamic_classname]
-  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Slim will magically convert concatenate the classnames based on the truthiness of the &lt;code&gt;truthy_test&lt;/code&gt;. Much more flexible (and less stinky) than the string concatenation I would usually use:&lt;/p&gt;
-&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Eww&lt;/span&gt;
-&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two #{dynamic_classname}"&lt;/span&gt;
-  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-  </entry>
-  <entry>
     <title type="html">Formatting strings with C-like formatting codes.</title>
     <link rel="alternate" href="http://til.icelab.com.au/string-format/"/>
     <id>http://til.icelab.com.au/string-format/</id>
@@ -769,6 +747,52 @@
 &lt;p&gt;Which, to me at least, reads a little nicer.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://apidock.com/ruby/Kernel/sprintf"&gt;Kernel::sprintf&lt;/a&gt; has a more complete list of formatting strings.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Creating and pushing a git tag</title>
+    <link rel="alternate" href="http://til.icelab.com.au/creating-and-pushing-a-tag/"/>
+    <id>http://til.icelab.com.au/creating-and-pushing-a-tag/</id>
+    <published>2015-08-12T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;If you&amp;rsquo;re releasing gems (or any other kinds of packages), git tags are a useful way to track those release milestones in the source code repo.&lt;/p&gt;
+
+&lt;p&gt;Creating a tag is easy:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git tag v1.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So is pushing it to a remote:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push origin v1.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging"&gt;Git Basics - Tagging&lt;/a&gt; section in the online git book is an easy-to-read overview of the various tag commands.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Dynamic classnames in Slim</title>
+    <link rel="alternate" href="http://til.icelab.com.au/dynamic-classnames-in-slim/"/>
+    <id>http://til.icelab.com.au/dynamic-classnames-in-slim/</id>
+    <published>2015-08-12T10:00:00+10:00</published>
+    <updated>2016-05-20T23:01:50+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;While glancing through one of Narinda’s pull-requests, I noticed she’d used a syntax for dynamic classnames in &lt;a href="http://slim-lang.com/"&gt;Slim&lt;/a&gt; that I had not seen before:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Aww yeah&lt;/span&gt;
+&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two"&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;dynamic_classname]
+  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Slim will magically convert concatenate the classnames based on the truthiness of the &lt;code&gt;truthy_test&lt;/code&gt;. Much more flexible (and less stinky) than the string concatenation I would usually use:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Eww&lt;/span&gt;
+&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two #{dynamic_classname}"&lt;/span&gt;
+  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
+&lt;/code&gt;&lt;/pre&gt;
 </content>
   </entry>
   <entry>
