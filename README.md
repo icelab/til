@@ -1,6 +1,6 @@
 # Today Icelab Learned
 
-[A knowledge-base of little learnings](http://til.icelab.com.au/) from the team at [Icelab](http://icelab.com.au/).
+[A knowledge base of little learnings](http://til.icelab.com.au/) from the team at [Icelab](http://icelab.com.au/).
 
 ## Contributing
 
