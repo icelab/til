@@ -2,6 +2,7 @@
 title: Creating and storing SSL certificates
 date: 2016-05-24
 author: Josephine Hall
+tags: ops
 ---
 
 As part of the SSL Certificate generation process you'll need to create a Certificate Signing Request. You can do this with the command:
