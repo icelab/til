@@ -1,6 +1,6 @@
 ---
 title: Creating and storing SSL certificates
-date: 2016-05-04
+date: 2016-05-24
 author: Josephine Hall
 ---
 
@@ -14,7 +14,7 @@ This will generate two files: a public .csr file, and a private .key file
 
 You can view the files with the commands `cat server.csr` and `cat server.key`
 
-To save this information for future use we now recommend making a new 1Password secure note named in the following format:
+Here at Icelab we recommend saving this information in a new 1Password secure note named with the following format:
 
 ```
 [domain-name.com] SSL CSR
