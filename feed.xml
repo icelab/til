@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Today Icelab Learnt</title>
+  <title>Today Icelab Learned</title>
   <id>http://til.icelab.com.au</id>
   <link href="http://til.icelab.com.au"/>
   <link href="http://til.icelab.com.au/feed.xml" rel="self"/>
