@@ -8,6 +8,8 @@ meta property="og:type" content="article"
 - if defined? current_page.body
   / strip html tags and truncate body to 400 chars
   meta property="og:description" content=current_page.body.gsub(/<\/?[^>]*>/,"").gsub(/^(.{400,}?).*$/m,'\1...')
+- else
+  meta property="og:description" content="A knowledgebase of little learnings from the team at Icelab."
 - if current_page.data.tags
   meta name="twitter:label1" value="Tagged with"
   meta name="twitter:data1" value=current_page.data.tags
