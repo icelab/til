@@ -35,9 +35,7 @@ bundle exec rake build
 
 ## Assets
 
-The design-specifics for this site are contained in a separate `til-assets` private repo. You’ll need to remove the `.gitmodules` file and place your own assets in `./source/assets/public`.
-
-We’ve left a base target for you to copy in `./source/assets/public-demo`, so just:
+The design-specifics for this site are contained in a separate Icelab-specific `til-assets` private repo. You’ll need to remove the `.gitmodules` file and place your own assets in `./source/assets/public`. We’ve left a base target for you to copy in `./source/assets/public-demo`, so just:
 
 ```
 rm .gitmodules
