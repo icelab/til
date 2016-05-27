@@ -7,9 +7,9 @@
 1. Open a new pull request against this repository (using a feature branch).
 2. Add a markdown file with your learnings under `source/posts/`, or you can ask middleman to create one for you:
 
-   ```
-   middleman article "Your new post’s title"
-   ```
+```
+middleman article "Your new post’s title"
+```
 
 3. Add YAML front-matter for the post's `title`, publishing `date`, your name as `author`, and a comma-separated list of `tags`
 4. Short is sweet. Your learning doesn't need to be lengthy. A few sentences and some example code is enough. The markdown is parsed as [GFM](https://help.github.com/articles/github-flavored-markdown/) so you can used fenced code-blocks with syntax highlighting.
@@ -32,6 +32,19 @@ To build out the static files into `build/` run:
 ```
 bundle exec rake build
 ```
+
+## Assets
+
+The design-specifics for this site are contained in a separate `til-assets` private repo. You’ll need to remove the `.gitmodules` file and place your own assets in `./source/assets/public`.
+
+We’ve left a base target for you to copy in `./source/assets/public-demo`, so just:
+
+```
+rm .gitmodules
+mv ./source/assets/public-demo ./source/assets/public
+```
+
+... and you should be good to go!
 
 ## Copyright
 
