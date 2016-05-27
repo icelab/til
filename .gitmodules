@@ -1,0 +1,3 @@
+[submodule "source/assets/public"]
+	path = source/assets/public
+	url = https://github.com/icelab/til-assets.git
