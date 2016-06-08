@@ -27,13 +27,15 @@ With that we have a nice Twitter bird and envelope icon (courtesy of [Font Aweso
 ul.social-icons__list
   li.social-icons__list-item
     a.social-icons__anchor href="http://twitter.com/andymccray"
-      span.hide-visually Follow Andy McCray on Twitter
-      i.fa.fa-twitter
+      span#twitter-label.hide-visually Follow Andy McCray on Twitter
+      i.fa.fa-twitter aria-labelledby="twitter-label"
   li.social-icons__list-item
     a.social-icons__anchor href="mailto:andy@icelab.com.au"
-      span.hide-visually Email Andy McCray
-      i.fa.fa-envelope
+      span#email-label.hide-visually Email Andy McCray
+      i.fa.fa-envelope aria-labelledby="email-label"
 ```
+
+We're also using the [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) attribute to provide further clarification to screen readers.
 
 And the CSS:
 
