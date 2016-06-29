@@ -4,10 +4,107 @@
   <id>http://til.icelab.com.au</id>
   <link href="http://til.icelab.com.au"/>
   <link href="http://til.icelab.com.au/feed.xml" rel="self"/>
-  <updated>2016-05-24T10:00:00+10:00</updated>
+  <updated>2016-06-07T10:00:00+10:00</updated>
   <author>
     <name>Icelab</name>
   </author>
+  <entry>
+    <title type="html">Improving accessibility with visually hidden labels</title>
+    <link rel="alternate" href="http://til.icelab.com.au/improving-accessibility-with-visually-hidden-labels/"/>
+    <id>http://til.icelab.com.au/improving-accessibility-with-visually-hidden-labels/</id>
+    <published>2016-06-07T10:00:00+10:00</published>
+    <updated>2016-06-29T14:55:47+10:00</updated>
+    <author>
+      <name>Andy McCray</name>
+    </author>
+    <content type="html">&lt;p&gt;Accessibility is something that&amp;rsquo;s always in the front of our minds when building websites at Icelab. It&amp;rsquo;s particularly important for Government work which requires specific &lt;a href="https://www.w3.org/WAI/intro/wcag"&gt;WCAG&lt;/a&gt; adherence.&lt;/p&gt;
+
+&lt;p&gt;A pattern we use often is to &lt;em&gt;visually hide&lt;/em&gt; additional descriptive labels. These labels will be announced by screen readers but not rendered on the screen. Take this common snippet:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__list&lt;/span&gt;
+  &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__list-item&lt;/span&gt;
+    &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"http://twitter.com/andymccray"&lt;/span&gt;
+      &lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="nc"&gt;.fa.fa-twitter&lt;/span&gt;
+  &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__list-item&lt;/span&gt;
+    &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"mailto:andy@icelab.com.au"&lt;/span&gt;
+      &lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="nc"&gt;.fa.fa-envelope&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With that we have a nice Twitter bird and envelope icon (courtesy of &lt;a href="http://fontawesome.io/"&gt;Font Awesome&lt;/a&gt;). Perfect!&lt;/p&gt;
+
+&lt;p&gt;…well, not so perfect really. We can make the experience much nicer for visually impaired users with a little extra effort:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__list&lt;/span&gt;
+  &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__list-item&lt;/span&gt;
+    &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"http://twitter.com/andymccray"&lt;/span&gt;
+      &lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="nf"&gt;#twitter-label&lt;/span&gt;&lt;span class="nc"&gt;.hide-visually&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;Follow&lt;span class="w"&gt; &lt;/span&gt;Andy&lt;span class="w"&gt; &lt;/span&gt;McCray&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;Twitter
+      &lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="nc"&gt;.fa.fa-twitter&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;aria-labelledby&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"twitter-label"&lt;/span&gt;
+  &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__list-item&lt;/span&gt;
+    &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="nc"&gt;.social-icons__anchor&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"mailto:andy@icelab.com.au"&lt;/span&gt;
+      &lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="nf"&gt;#email-label&lt;/span&gt;&lt;span class="nc"&gt;.hide-visually&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;Email&lt;span class="w"&gt; &lt;/span&gt;Andy&lt;span class="w"&gt; &lt;/span&gt;McCray
+      &lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="nc"&gt;.fa.fa-envelope&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;aria-labelledby&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"email-label"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;re also using the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute"&gt;aria-labelledby&lt;/a&gt; attribute to provide further clarification to screen readers.&lt;/p&gt;
+
+&lt;p&gt;And the CSS:&lt;/p&gt;
+&lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="c"&gt;/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */&lt;/span&gt;
+
+&lt;span class="nc"&gt;.hide-visually&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nl"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;clip&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nl"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;margin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;-1px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;overflow&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;absolute&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nl"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And with that our screen reader users will have a much friendlier experience getting in touch.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">URI regular expressions</title>
+    <link rel="alternate" href="http://til.icelab.com.au/uri-regex-ruby/"/>
+    <id>http://til.icelab.com.au/uri-regex-ruby/</id>
+    <published>2016-06-01T10:00:00+10:00</published>
+    <updated>2016-06-29T14:55:47+10:00</updated>
+    <author>
+      <name>Daniel Nitsikopoulos</name>
+    </author>
+    <content type="html">&lt;p&gt;Let&amp;rsquo;s go ahead and write some regex to validate a URI in Ruby:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://vignette3.wikia.nocookie.net/arresteddevelopment/images/e/ef/2x04_Good_Grief_%2832%29.png/revision/latest/scale-to-width-down/640?cb=20121126044547" alt="Good Grief" /&gt;&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="no"&gt;URI&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;regexp&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+
+&lt;p&gt;We can use it like so&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="no"&gt;URI&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;regexp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;my_uri&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you have a look at the output of &lt;code&gt;URI.regexp&lt;/code&gt; in &lt;code&gt;irb&lt;/code&gt;, you&amp;rsquo;ll see the pattern that&amp;rsquo;s used to match against. It&amp;rsquo;s relatively complex, but each capture group is documented.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Scheme&lt;/li&gt;
+&lt;li&gt;Opaque (e.g. scheme:foo/bar)&lt;/li&gt;
+&lt;li&gt;User Info&lt;/li&gt;
+&lt;li&gt;Host&lt;/li&gt;
+&lt;li&gt;Port&lt;/li&gt;
+&lt;li&gt;Registry&lt;/li&gt;
+&lt;li&gt;Path&lt;/li&gt;
+&lt;li&gt;Query&lt;/li&gt;
+&lt;li&gt;Fragment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;irb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="mo"&gt;001&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="no"&gt;URI&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;regexp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"http://username:password@foo.bar:80/baz.html?query=string#fragment"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="c1"&gt;#&amp;lt;MatchData "http://username:password@foo.bar:80/baz.html?query=string#frag" 1:"http" 2:nil 3:"username:password" 4:"foo.bar" 5:"80" 6:nil 7:"/baz.html" 8:"query=string" 9:"frag"&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
   <entry>
     <title type="html">Creating and storing SSL certificates</title>
     <link rel="alternate" href="http://til.icelab.com.au/creating-and-storing-ssl-certificates/"/>
@@ -158,6 +255,47 @@
 </content>
   </entry>
   <entry>
+    <title type="html">Symbolize keys</title>
+    <link rel="alternate" href="http://til.icelab.com.au/symbolize-keys/"/>
+    <id>http://til.icelab.com.au/symbolize-keys/</id>
+    <published>2015-11-19T11:00:00+11:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Jojo Hall</name>
+    </author>
+    <content type="html">&lt;p&gt;If you&amp;rsquo;re writing plain old Ruby you can symbolize the keys of a hash with the following:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;inject&lt;/span&gt;&lt;span class="p"&gt;({}){&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This does the following:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;hash&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"hello"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"jojo"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;inject&lt;/span&gt;&lt;span class="p"&gt;({}){&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:hello&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"jojo"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However if you&amp;rsquo;re doing this in a web application you may want to make a module to make hash and array data transformations easily available to you. In most of our apps we would use &lt;a href="https://github.com/solnic/transproc"&gt;transproc&lt;/a&gt; to help us with this — if you&amp;rsquo;re working in one of Icelab&amp;rsquo;s Rodakase apps this will be available to you.&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s2"&gt;"transproc/all"&lt;/span&gt;
+
+&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Functions&lt;/span&gt;
+  &lt;span class="kp"&gt;extend&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Registry&lt;/span&gt;
+
+  &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;HashTransformations&lt;/span&gt;
+  &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;ArrayTransformations&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="no"&gt;Functions&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:symbolize_keys&lt;/span&gt;&lt;span class="p"&gt;)[{&lt;/span&gt;&lt;span class="s2"&gt;"foo"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;span class="c1"&gt;# =&amp;gt; {foo: "bar"}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you are using Rails then you can use the method &lt;code&gt;hash.symbolize_keys&lt;/code&gt; or the destructive version &lt;code&gt;hash.symbolize_keys!&lt;/code&gt;&lt;br&gt;
+(both made available via ActiveSupport).&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title type="html">In React setState is not &amp;quot;guaranteed&amp;quot; to be synchronous.</title>
     <link rel="alternate" href="http://til.icelab.com.au/async-set-state/"/>
     <id>http://til.icelab.com.au/async-set-state/</id>
@@ -198,47 +336,6 @@
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-</content>
-  </entry>
-  <entry>
-    <title type="html">Symbolize keys</title>
-    <link rel="alternate" href="http://til.icelab.com.au/symbolize-keys/"/>
-    <id>http://til.icelab.com.au/symbolize-keys/</id>
-    <published>2015-11-19T11:00:00+11:00</published>
-    <updated>2016-05-20T22:49:55+10:00</updated>
-    <author>
-      <name>Jojo Hall</name>
-    </author>
-    <content type="html">&lt;p&gt;If you&amp;rsquo;re writing plain old Ruby you can symbolize the keys of a hash with the following:&lt;/p&gt;
-&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;inject&lt;/span&gt;&lt;span class="p"&gt;({}){&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This does the following:&lt;/p&gt;
-&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;hash&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"hello"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"jojo"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="nb"&gt;hash&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;inject&lt;/span&gt;&lt;span class="p"&gt;({}){&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;memo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;:hello&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"jojo"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;However if you&amp;rsquo;re doing this in a web application you may want to make a module to make hash and array data transformations easily available to you. In most of our apps we would use &lt;a href="https://github.com/solnic/transproc"&gt;transproc&lt;/a&gt; to help us with this — if you&amp;rsquo;re working in one of Icelab&amp;rsquo;s Rodakase apps this will be available to you.&lt;/p&gt;
-&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s2"&gt;"transproc/all"&lt;/span&gt;
-
-&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Functions&lt;/span&gt;
-  &lt;span class="kp"&gt;extend&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Registry&lt;/span&gt;
-
-  &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;HashTransformations&lt;/span&gt;
-  &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="no"&gt;Transproc&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;ArrayTransformations&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nc"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-
-&lt;span class="no"&gt;Functions&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:symbolize_keys&lt;/span&gt;&lt;span class="p"&gt;)[{&lt;/span&gt;&lt;span class="s2"&gt;"foo"&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"bar"&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
-&lt;span class="c1"&gt;# =&amp;gt; {foo: "bar"}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you are using Rails then you can use the method &lt;code&gt;hash.symbolize_keys&lt;/code&gt; or the destructive version &lt;code&gt;hash.symbolize_keys!&lt;/code&gt;&lt;br&gt;
-(both made available via ActiveSupport).&lt;/p&gt;
 </content>
   </entry>
   <entry>
