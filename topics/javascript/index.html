@@ -30,7 +30,7 @@ ga('send', 'pageview');</script><link href="/feed.xml" rel="alternate" title="To
 <span class="p">}</span>
 </code></pre>
 
-<p>By checking for both <code>window.ga</code> <em>and</em> <code>window.ga.create</code> before calling <code>preventDefault</code> we ensure that the link work when Google Analytics is blocked, and that outbound clicks are tracked whenver we can.</p>
+<p>By checking for both <code>window.ga</code> <em>and</em> <code>window.ga.create</code> before calling <code>preventDefault</code> we ensure that the links work when Google Analytics is blocked, and that outbound clicks are tracked whenever we can.</p>
 </div><div class="article__tags"><a href="/topics/analytics" class="article__tag">analytics</a><a href="/topics/javascript" class="article__tag">javascript</a></div></div><div class="article"><h2 class="article__title"><a href="/async-set-state/">In React setState is not &quot;guaranteed&quot; to be&nbsp;synchronous.</a></h2><div class="article__meta">Narinda Reeders, 19 November 2015</div><div class="article__content" data-view-highlight=""><p>I discovered recently that if you do something link this in react:</p>
 <pre class="highlight javascript"><code><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">reallyUseful</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
 

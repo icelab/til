@@ -13,7 +13,7 @@
     <link rel="alternate" href="http://til.icelab.com.au/detect-google-analytics-blocking/"/>
     <id>http://til.icelab.com.au/detect-google-analytics-blocking/</id>
     <published>2016-06-30T10:00:00+10:00</published>
-    <updated>2016-06-30T12:40:04+10:00</updated>
+    <updated>2016-06-30T12:45:23+10:00</updated>
     <author>
       <name>Max Wheeler</name>
     </author>
@@ -43,7 +43,7 @@
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;By checking for both &lt;code&gt;window.ga&lt;/code&gt; &lt;em&gt;and&lt;/em&gt; &lt;code&gt;window.ga.create&lt;/code&gt; before calling &lt;code&gt;preventDefault&lt;/code&gt; we ensure that the link work when Google Analytics is blocked, and that outbound clicks are tracked whenver we can.&lt;/p&gt;
+&lt;p&gt;By checking for both &lt;code&gt;window.ga&lt;/code&gt; &lt;em&gt;and&lt;/em&gt; &lt;code&gt;window.ga.create&lt;/code&gt; before calling &lt;code&gt;preventDefault&lt;/code&gt; we ensure that the links work when Google Analytics is blocked, and that outbound clicks are tracked whenever we can.&lt;/p&gt;
 </content>
   </entry>
   <entry>
