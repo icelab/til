@@ -35,4 +35,4 @@ function trackOutboundLink (e, url) {
 }
 ```
 
-By checking for both `window.ga` _and_ `window.ga.create` before calling `preventDefault` we ensure that the link work when Google Analytics is blocked, and that outbound clicks are tracked whenver we can.
+By checking for both `window.ga` _and_ `window.ga.create` before calling `preventDefault` we ensure that the links work when Google Analytics is blocked, and that outbound clicks are tracked whenever we can.
