@@ -5,13 +5,13 @@ author: Andy McCray
 tags: css
 ---
 
-Flexbox has introduced a [whole bunch](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) of neat layout tricks. Things that we once needed JavaScript (or duplicate markup) to achieve are now doable with plain old CSS.
+Flexbox introduces a [whole bunch](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) of neat layout tricks that we can start using today. Things that we once needed JavaScript (or duplicate markup) to achieve are now doable with plain old CSS.
 
 One such property that I’ve found myself using repeatedly is `order`. We can assign a numeric value to a set of elements and the browser will _reorder_ those elements on the screen — without manipulating the DOM.
 
 Adjust the `order` property in the following example to see the technique in effect:
 
-<p data-height="200" data-theme-id="0" data-slug-hash="vGogBW" data-default-tab="result" data-user="andymccray" data-embed-version="2" class="codepen">The flexbox order property <a href="http://codepen.io/andymccray/pen/mAVYGy">mAVYGy</a></p>
+<p data-height="200" data-theme-id="0" data-slug-hash="mAVYGy" data-default-tab="result" data-user="andymccray" data-embed-version="2" class="codepen">The flexbox order property <a href="http://codepen.io/andymccray/pen/mAVYGy">mAVYGy</a></p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 So where is this useful? There’s a bunch of scenarios you might like to utilise this property: one example is bringing a navigation `<aside>` to the top of the screen on a mobile optimised layout.
