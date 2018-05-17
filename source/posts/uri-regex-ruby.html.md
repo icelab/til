@@ -7,7 +7,7 @@ tags: regex, ruby
 
 Let's go ahead and write some regex to validate a URI in Ruby:
 
-![Good Grief](http://vignette3.wikia.nocookie.net/arresteddevelopment/images/e/ef/2x04_Good_Grief_%2832%29.png/revision/latest/scale-to-width-down/640?cb=20121126044547)
+![Good Grief](https://vignette3.wikia.nocookie.net/arresteddevelopment/images/e/ef/2x04_Good_Grief_%2832%29.png/revision/latest/scale-to-width-down/640?cb=20121126044547)
 
 ```ruby
 URI.regexp
