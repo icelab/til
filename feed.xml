@@ -4,10 +4,190 @@
   <id>http://til.icelab.com.au</id>
   <link href="http://til.icelab.com.au"/>
   <link href="http://til.icelab.com.au/feed.xml" rel="self"/>
-  <updated>2016-06-30T10:00:00+10:00</updated>
+  <updated>2018-05-17T10:00:00+10:00</updated>
   <author>
     <name>Icelab</name>
   </author>
+  <entry>
+    <title type="html">NGINX proxy_pass DNS caching and Heroku</title>
+    <link rel="alternate" href="http://til.icelab.com.au/nginx-proxy-pass-dns-cache/"/>
+    <id>http://til.icelab.com.au/nginx-proxy-pass-dns-cache/</id>
+    <published>2018-05-17T10:00:00+10:00</published>
+    <updated>2018-05-17T13:20:49+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;We occasionally use NGINX to &lt;code&gt;proxy_pass&lt;/code&gt; to an app on Heroku so that we have a consistent IP address that can be whitelisted in clients’ firewalls. There’s a quirk in the way that NGINX caches DNS lookups that can cause problems when proxying to Heroku.&lt;/p&gt;
+
+&lt;p&gt;By default, NGINX will cache the DNS result (the resolved IP address) for any &lt;em&gt;statically defined&lt;/em&gt; URLs for &lt;code&gt;proxy_pass&lt;/code&gt; on startup. This is problematic on Heroku because the IP address for the underlying app changes continuously, and so it a cached result falls out of Heroku’s routing mesh we can proxy to the incorrect server.&lt;/p&gt;
+
+&lt;p&gt;The solution to this problem is to avoid caching the DNS resolution, at least as much as is possible. &lt;a href="https://www.nadeau.tv/nginx-proxy_pass-dns-cache/"&gt;You can &amp;ldquo;trick&amp;rdquo; NGINX into doing this by setting the &lt;code&gt;proxy_pass&lt;/code&gt; value to a variable&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;server {
+  resolver 8.8.8.8;
+  # Set as a variable to force dynamic lookups
+  set $proxy_pass_url https://my-app.herokuapp.com;
+
+  location / {
+    proxy_pass $proxy_pass_url;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Even though the value of the variable never changes, NGINX thinks it &lt;em&gt;might&lt;/em&gt; and thus will refresh it regularly.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Kwarg splat arguments create new hashes</title>
+    <link rel="alternate" href="http://til.icelab.com.au/kwarg-splat-arguments-create-new-hashes/"/>
+    <id>http://til.icelab.com.au/kwarg-splat-arguments-create-new-hashes/</id>
+    <published>2017-05-03T10:00:00+10:00</published>
+    <updated>2018-05-11T10:30:04+10:00</updated>
+    <author>
+      <name>Tim Rilety</name>
+    </author>
+    <content type="html">&lt;p&gt;I made a method with a &amp;ldquo;double splat&amp;rdquo; kwarg argument to accept some options and returned a modified hash:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;singularize_options&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;dup&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# mutate `options` here...&lt;/span&gt;
+
+  &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In my usual &amp;ldquo;don&amp;rsquo;t mutate things we don&amp;rsquo;t own&amp;rdquo; style, I &lt;code&gt;#dup&lt;/code&gt;ed the incoming options before going to work on it.&lt;/p&gt;
+
+&lt;p&gt;However, &lt;a href="https://github.com/dry-rb/dry-view/pull/36/files#r114222945"&gt;thanks to our dry-rb/rom-rb friend @flash-gordon&lt;/a&gt;, I learnt this wasn&amp;rsquo;t necessary! As he says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;when you capture values with &lt;code&gt;**&lt;/code&gt;, Ruby creates a new hash instance so calling &lt;code&gt;.dup&lt;/code&gt; is not needed&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;object_id&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="p"&gt;{}.&lt;/span&gt;&lt;span class="nf"&gt;tap&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;object_id&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;# =&amp;gt; false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now my method can be even simpler:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;singularize_options&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="c1"&gt;# mutate `options` here...&lt;/span&gt;
+  &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Rake tasks with splat arguments</title>
+    <link rel="alternate" href="http://til.icelab.com.au/rake-tasks-with-splat-arguments/"/>
+    <id>http://til.icelab.com.au/rake-tasks-with-splat-arguments/</id>
+    <published>2017-05-03T10:00:00+10:00</published>
+    <updated>2018-05-11T10:30:04+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;Splat arguments can be helpful, and it turns out we don&amp;rsquo;t need to forsake them when we&amp;rsquo;re building Rake tasks, either.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s say we want to build an &lt;code&gt;elasticsearch:reindex&lt;/code&gt; task that allows an optional list of entity types to reindex:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="ss"&gt;:elasticsearch&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;task&lt;/span&gt; &lt;span class="ss"&gt;:reindex&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;_t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="no"&gt;Search&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Container&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"search.operations.enqueue_reindex"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;extras&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Rake gives us a &lt;a href="http://www.rubydoc.info/gems/rake/Rake/TaskArguments#extras-instance_method"&gt;&lt;code&gt;TaskArguments#extras&lt;/code&gt;&lt;/a&gt; method, which returns  the values not associated with any of the task&amp;rsquo;s named arguments.&lt;/p&gt;
+
+&lt;p&gt;So now we can call our rake task like so:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;rake elasticsearch:reindex[products, posts]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And &lt;code&gt;args.extras&lt;/code&gt; gives us this:&lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"products"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"posts"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">background-position precision with the calc property</title>
+    <link rel="alternate" href="http://til.icelab.com.au/background-position-precision-with-the-calc-property/"/>
+    <id>http://til.icelab.com.au/background-position-precision-with-the-calc-property/</id>
+    <published>2017-02-09T11:00:00+11:00</published>
+    <updated>2018-05-17T13:11:48+10:00</updated>
+    <author>
+      <name>Andy McCray</name>
+    </author>
+    <content type="html">&lt;p&gt;Positioning a &lt;code&gt;background-image&lt;/code&gt; with CSS can be a frustrating experience. In fixed layout contexts you can use pixel or percentage values for precision positioning, but when you‘re working with a fluid layout, this can be a real headache.&lt;/p&gt;
+
+&lt;p&gt;Let‘s start by reviewing the &lt;code&gt;background-position&lt;/code&gt; property:&lt;/p&gt;
+&lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nl"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;xpos&lt;/span&gt; &lt;span class="n"&gt;ypos&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In most cases, this will be a fixed unit (&lt;code&gt;20px 30px&lt;/code&gt;), a percentage (&lt;code&gt;50% 100%&lt;/code&gt;), some keywords (&lt;code&gt;left top&lt;/code&gt;) or a combination thereof (&lt;code&gt;right 20%&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;So what can you do if you want to position an image &lt;code&gt;40px&lt;/code&gt; from the right edge of your fluid-width container? Our favourite &lt;code&gt;calc&lt;/code&gt; property to the rescue!&lt;/p&gt;
+&lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c"&gt;/* Position the background at the right edge, then offset it by `40px` */&lt;/span&gt;
+  &lt;span class="nl"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;calc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;100%&lt;/span&gt; &lt;span class="n"&gt;-&lt;/span&gt; &lt;span class="m"&gt;40px&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nb"&gt;top&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Restore a file with git checkout</title>
+    <link rel="alternate" href="http://til.icelab.com.au/restore-file-with-git-checkout/"/>
+    <id>http://til.icelab.com.au/restore-file-with-git-checkout/</id>
+    <published>2017-01-23T11:00:00+11:00</published>
+    <updated>2018-05-11T10:30:04+10:00</updated>
+    <author>
+      <name>Daniel Nitsikopoulos</name>
+    </author>
+    <content type="html">&lt;p&gt;If you commit and push a change to a file that you later discover you didn’t mean to make, you can restore a previous version of a file with &lt;code&gt;git checkout&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s presume we have the following history:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;*aacc272 - accidental change to foo.rb
+*ac2eb0b - changes
+*c688457 - bug fixes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We know that &lt;code&gt;foo.rb&lt;/code&gt; is in the state we want in the commit with hash &lt;code&gt;ac2eb0b&lt;/code&gt;. So we can run &lt;code&gt;$ git checkout ac2eb0b path/to/foo.rb&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s worth noting that unlike passing a branch name to &lt;code&gt;git checkout&lt;/code&gt;, this method is destructive and can discard changes in the working directory.&lt;/p&gt;
+
+&lt;p&gt;From the git man pages:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;git checkout [-p|&amp;ndash;patch] [&lt;tree-ish&gt;] [&amp;ndash;] &lt;pathspec&gt;…&lt;br&gt;
+When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch branches. It updates the named paths in the working tree from the index file or from a named &lt;tree-ish&gt; (most often a commit). In this case, the -b and &amp;ndash;track options are meaningless and giving either of them results in an error. The &lt;tree-ish&gt; argument can be used to specify a specific tree-ish (i.e. commit, tag or tree) to update the index for the given paths before updating the working tree.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Using the flexbox order property to rearrange elements</title>
+    <link rel="alternate" href="http://til.icelab.com.au/using-the-flexbox-order-property-to-rearrange-elements/"/>
+    <id>http://til.icelab.com.au/using-the-flexbox-order-property-to-rearrange-elements/</id>
+    <published>2016-09-14T10:00:00+10:00</published>
+    <updated>2017-04-03T11:41:01+10:00</updated>
+    <author>
+      <name>Andy McCray</name>
+    </author>
+    <content type="html">&lt;p&gt;Flexbox introduces a &lt;a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"&gt;whole bunch&lt;/a&gt; of neat layout tricks that we can start using today. Things that we once needed JavaScript (or duplicate markup) to achieve are now doable with plain old CSS.&lt;/p&gt;
+
+&lt;p&gt;One such property that I’ve found myself using repeatedly is &lt;code&gt;order&lt;/code&gt;. We can assign a numeric value to a set of elements and the browser will &lt;em&gt;reorder&lt;/em&gt; those elements on the screen — without manipulating the DOM.&lt;/p&gt;
+
+&lt;p&gt;Adjust the &lt;code&gt;order&lt;/code&gt; property in the following example to see the technique in effect:&lt;/p&gt;
+
+&lt;p data-height="200" data-theme-id="0" data-slug-hash="mAVYGy" data-default-tab="result" data-user="andymccray" data-embed-version="2" class="codepen"&gt;The flexbox order property &lt;a href="http://codepen.io/andymccray/pen/mAVYGy"&gt;mAVYGy&lt;/a&gt;&lt;/p&gt;
+
+&lt;script async src="//assets.codepen.io/assets/embed/ei.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;So where is this useful? There’s a bunch of scenarios you might like to utilise this property: one example is bringing a navigation &lt;code&gt;&amp;lt;aside&amp;gt;&lt;/code&gt; to the top of the screen on a mobile optimised layout.&lt;/p&gt;
+
+&lt;p&gt;If you resize your browser to a phone-width and inspect the source of &lt;a href="http://icelab.com.au"&gt;icelab.com.au&lt;/a&gt;, you’ll see that the navigation bar in the footer exists &lt;em&gt;below&lt;/em&gt; the contact detail elements in the DOM. But thanks to our friend &lt;code&gt;order&lt;/code&gt;, we can completely rearrange the layout for this context. Neat!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title type="html">Detect Google Analytics blocking</title>
     <link rel="alternate" href="http://til.icelab.com.au/detect-google-analytics-blocking/"/>
@@ -44,6 +224,28 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;By checking for both &lt;code&gt;window.ga&lt;/code&gt; &lt;em&gt;and&lt;/em&gt; &lt;code&gt;window.ga.create&lt;/code&gt; before calling &lt;code&gt;preventDefault&lt;/code&gt; we ensure that the links work when Google Analytics is blocked, and that outbound clicks are tracked whenever we can.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Specify enumerator index offset</title>
+    <link rel="alternate" href="http://til.icelab.com.au/specify-enumerator-index-offset/"/>
+    <id>http://til.icelab.com.au/specify-enumerator-index-offset/</id>
+    <published>2016-06-09T10:00:00+10:00</published>
+    <updated>2018-05-11T10:30:04+10:00</updated>
+    <author>
+      <name>Daniel Nitsikopoulos</name>
+    </author>
+    <content type="html">&lt;p&gt;When looping through a collection of items, we sometimes want access to the index of an item at each iteration.&lt;/p&gt;
+
+&lt;p&gt;We can do that with &lt;code&gt;collection.each_with_index{ |item, index| ... }&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this case, &lt;code&gt;index&lt;/code&gt; will always start at &lt;code&gt;0&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;If we want index to start from a particular number, we can use &lt;code&gt;Enumerator#with_index&lt;/code&gt; and specify an offset.&lt;/p&gt;
+
+&lt;p&gt;For example: &lt;code&gt;collection.each.with_index(1){ |item, index| ... }&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://ruby-doc.org/core-2.1.0/Enumerator.html#method-i-with_index"&gt;Enumerator#with_index&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -562,24 +764,6 @@
 </content>
   </entry>
   <entry>
-    <title type="html">Manually add sitemaps to Google’s Webmaster Tools</title>
-    <link rel="alternate" href="http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/"/>
-    <id>http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/</id>
-    <published>2015-09-15T10:00:00+10:00</published>
-    <updated>2016-05-20T22:49:55+10:00</updated>
-    <author>
-      <name>Max Wheeler</name>
-    </author>
-    <content type="html">&lt;p&gt;It’s good practice to add sitemaps to &lt;a href="https://www.google.com/webmasters/tools/"&gt;Google’s Webmaster Tools&lt;/a&gt; so you can check their health and get notifications about sitemap issues. We often host sitemaps on S3 because they could be large static files that we don’t want running through our Rails stack.&lt;/p&gt;
-
-&lt;p&gt;This leads us to the problem: If you have a sitemap that’s hosted externally to your website, you can’t add them through the Google’s Webmaster Tools interface. For some reason Google limits these to paths underneath the official domain attached to an account. There is a solution though — you can sneak them in using their notification URL. All you need to do is:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;curl www.google.com/webmasters/tools/ping?sitemap=https%3A%2F%2Fwheeler-centre-heracles.s3.amazonaws.com%2Fsitemaps%2Fsitemap.xml.gz
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And ta da, it’ll show up in the Webmaster Tools admin interface.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
     <title type="html">PostgreSQL as a message bus</title>
     <link rel="alternate" href="http://til.icelab.com.au/postgres-listen-notify/"/>
     <id>http://til.icelab.com.au/postgres-listen-notify/</id>
@@ -621,6 +805,44 @@
 </content>
   </entry>
   <entry>
+    <title type="html">Manually add sitemaps to Google’s Webmaster Tools</title>
+    <link rel="alternate" href="http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/"/>
+    <id>http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/</id>
+    <published>2015-09-15T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;It’s good practice to add sitemaps to &lt;a href="https://www.google.com/webmasters/tools/"&gt;Google’s Webmaster Tools&lt;/a&gt; so you can check their health and get notifications about sitemap issues. We often host sitemaps on S3 because they could be large static files that we don’t want running through our Rails stack.&lt;/p&gt;
+
+&lt;p&gt;This leads us to the problem: If you have a sitemap that’s hosted externally to your website, you can’t add them through the Google’s Webmaster Tools interface. For some reason Google limits these to paths underneath the official domain attached to an account. There is a solution though — you can sneak them in using their notification URL. All you need to do is:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;curl www.google.com/webmasters/tools/ping?sitemap=https%3A%2F%2Fwheeler-centre-heracles.s3.amazonaws.com%2Fsitemaps%2Fsitemap.xml.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And ta da, it’ll show up in the Webmaster Tools admin interface.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Pushing all branches</title>
+    <link rel="alternate" href="http://til.icelab.com.au/pushing-all-branches/"/>
+    <id>http://til.icelab.com.au/pushing-all-branches/</id>
+    <published>2015-09-02T10:00:00+10:00</published>
+    <updated>2016-05-24T14:24:11+10:00</updated>
+    <author>
+      <name>Jojo Hall</name>
+    </author>
+    <content type="html">&lt;p&gt;Say you want to push up an existing repository to a new remote on your favourite repository hosting service. You can use the following command if you want to make sure you include all branches:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is especially helpful when you want to immediately create some PRs!&lt;/p&gt;
+
+&lt;p&gt;To push all tags:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --tags
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
+  <entry>
     <title type="html">Show Open Graph image on first Facebook share</title>
     <link rel="alternate" href="http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/"/>
     <id>http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/</id>
@@ -642,26 +864,6 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;These dimensions don’t actually have to be accurate either. On Readings we don’t know the dimensions of images as they’re provided by Erudite without any meta-information, so we do a best-guess approach based on the ratio that book covers (or CD covers) tend to be.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title type="html">Pushing all branches</title>
-    <link rel="alternate" href="http://til.icelab.com.au/pushing-all-branches/"/>
-    <id>http://til.icelab.com.au/pushing-all-branches/</id>
-    <published>2015-09-02T10:00:00+10:00</published>
-    <updated>2016-05-24T14:24:11+10:00</updated>
-    <author>
-      <name>Jojo Hall</name>
-    </author>
-    <content type="html">&lt;p&gt;Say you want to push up an existing repository to a new remote on your favourite repository hosting service. You can use the following command if you want to make sure you include all branches:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --all
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is especially helpful when you want to immediately create some PRs!&lt;/p&gt;
-
-&lt;p&gt;To push all tags:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push &amp;lt;REMOTE-NAME&amp;gt; --tags
-&lt;/code&gt;&lt;/pre&gt;
 </content>
   </entry>
   <entry>
@@ -762,40 +964,6 @@
 </content>
   </entry>
   <entry>
-    <title type="html">Using namespaced components in React</title>
-    <link rel="alternate" href="http://til.icelab.com.au/namespaced-components/"/>
-    <id>http://til.icelab.com.au/namespaced-components/</id>
-    <published>2015-08-13T10:00:00+10:00</published>
-    <updated>2016-05-20T22:49:55+10:00</updated>
-    <author>
-      <name>Narinda Reeders</name>
-    </author>
-    <content type="html">&lt;p&gt;The last time I used React we had some pretty awkward workarounds for the fact that components couldn&amp;rsquo;t be namespaced. I was pretty stoked to find this has been fixed now.&lt;/p&gt;
-
-&lt;p&gt;So if you have a component &lt;code&gt;myNavComponent&lt;/code&gt; you can do:&lt;/p&gt;
-&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;NavComponent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Define your sub-components as attributes:&lt;/p&gt;
-&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Next&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
-&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
-&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Goto&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;Nav&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And then use them as you would expect to in your JSX:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&amp;lt;Nav&amp;gt;
-  &amp;lt;Nav.Prev /&amp;gt;
-  &amp;lt;Nav.Goto /&amp;gt;
-  &amp;lt;Nav.Next /&amp;gt;
-&amp;lt;/Nav&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href="https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components"&gt;https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
     <title type="html">Displaying booleans in Active Admin</title>
     <link rel="alternate" href="http://til.icelab.com.au/displaying-booleans-in-active-admin/"/>
     <id>http://til.icelab.com.au/displaying-booleans-in-active-admin/</id>
@@ -838,49 +1006,37 @@
 </content>
   </entry>
   <entry>
-    <title type="html">Dynamic classnames in Slim</title>
-    <link rel="alternate" href="http://til.icelab.com.au/dynamic-classnames-in-slim/"/>
-    <id>http://til.icelab.com.au/dynamic-classnames-in-slim/</id>
-    <published>2015-08-12T10:00:00+10:00</published>
-    <updated>2016-05-20T23:01:50+10:00</updated>
-    <author>
-      <name>Max Wheeler</name>
-    </author>
-    <content type="html">&lt;p&gt;While glancing through one of Narinda’s pull-requests, I noticed she’d used a syntax for dynamic classnames in &lt;a href="http://slim-lang.com/"&gt;Slim&lt;/a&gt; that I had not seen before:&lt;/p&gt;
-&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Aww yeah&lt;/span&gt;
-&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two"&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;dynamic_classname]
-  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Slim will magically convert concatenate the classnames based on the truthiness of the &lt;code&gt;truthy_test&lt;/code&gt;. Much more flexible (and less stinky) than the string concatenation I would usually use:&lt;/p&gt;
-&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Eww&lt;/span&gt;
-&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two #{dynamic_classname}"&lt;/span&gt;
-  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-  </entry>
-  <entry>
-    <title type="html">Creating and pushing a git tag</title>
-    <link rel="alternate" href="http://til.icelab.com.au/creating-and-pushing-a-tag/"/>
-    <id>http://til.icelab.com.au/creating-and-pushing-a-tag/</id>
-    <published>2015-08-12T10:00:00+10:00</published>
+    <title type="html">Using namespaced components in React</title>
+    <link rel="alternate" href="http://til.icelab.com.au/namespaced-components/"/>
+    <id>http://til.icelab.com.au/namespaced-components/</id>
+    <published>2015-08-13T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
-      <name>Tim Riley</name>
+      <name>Narinda Reeders</name>
     </author>
-    <content type="html">&lt;p&gt;If you&amp;rsquo;re releasing gems (or any other kinds of packages), git tags are a useful way to track those release milestones in the source code repo.&lt;/p&gt;
+    <content type="html">&lt;p&gt;The last time I used React we had some pretty awkward workarounds for the fact that components couldn&amp;rsquo;t be namespaced. I was pretty stoked to find this has been fixed now.&lt;/p&gt;
 
-&lt;p&gt;Creating a tag is easy:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git tag v1.0.0
+&lt;p&gt;So if you have a component &lt;code&gt;myNavComponent&lt;/code&gt; you can do:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;NavComponent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;So is pushing it to a remote:&lt;/p&gt;
-&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push origin v1.0.0
+&lt;p&gt;Define your sub-components as attributes:&lt;/p&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Next&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Goto&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createClass&lt;/span&gt;&lt;span class="p"&gt;(...);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;Nav&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;NavComponent&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The &lt;a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging"&gt;Git Basics - Tagging&lt;/a&gt; section in the online git book is an easy-to-read overview of the various tag commands.&lt;/p&gt;
+&lt;p&gt;And then use them as you would expect to in your JSX:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&amp;lt;Nav&amp;gt;
+  &amp;lt;Nav.Prev /&amp;gt;
+  &amp;lt;Nav.Goto /&amp;gt;
+  &amp;lt;Nav.Next /&amp;gt;
+&amp;lt;/Nav&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components"&gt;https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -928,6 +1084,52 @@
 &lt;p&gt;Which, to me at least, reads a little nicer.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://apidock.com/ruby/Kernel/sprintf"&gt;Kernel::sprintf&lt;/a&gt; has a more complete list of formatting strings.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Creating and pushing a git tag</title>
+    <link rel="alternate" href="http://til.icelab.com.au/creating-and-pushing-a-tag/"/>
+    <id>http://til.icelab.com.au/creating-and-pushing-a-tag/</id>
+    <published>2015-08-12T10:00:00+10:00</published>
+    <updated>2016-05-20T22:49:55+10:00</updated>
+    <author>
+      <name>Tim Riley</name>
+    </author>
+    <content type="html">&lt;p&gt;If you&amp;rsquo;re releasing gems (or any other kinds of packages), git tags are a useful way to track those release milestones in the source code repo.&lt;/p&gt;
+
+&lt;p&gt;Creating a tag is easy:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git tag v1.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So is pushing it to a remote:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;git push origin v1.0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging"&gt;Git Basics - Tagging&lt;/a&gt; section in the online git book is an easy-to-read overview of the various tag commands.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title type="html">Dynamic classnames in Slim</title>
+    <link rel="alternate" href="http://til.icelab.com.au/dynamic-classnames-in-slim/"/>
+    <id>http://til.icelab.com.au/dynamic-classnames-in-slim/</id>
+    <published>2015-08-12T10:00:00+10:00</published>
+    <updated>2016-05-20T23:01:50+10:00</updated>
+    <author>
+      <name>Max Wheeler</name>
+    </author>
+    <content type="html">&lt;p&gt;While glancing through one of Narinda’s pull-requests, I noticed she’d used a syntax for dynamic classnames in &lt;a href="http://slim-lang.com/"&gt;Slim&lt;/a&gt; that I had not seen before:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Aww yeah&lt;/span&gt;
+&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two"&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;dynamic_classname]
+  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Slim will magically convert concatenate the classnames based on the truthiness of the &lt;code&gt;truthy_test&lt;/code&gt;. Much more flexible (and less stinky) than the string concatenation I would usually use:&lt;/p&gt;
+&lt;pre class="highlight slim"&gt;&lt;code&gt;&lt;span class="c"&gt;/ Eww&lt;/span&gt;
+&lt;span class="p"&gt;-&lt;/span&gt; &lt;span class="n"&gt;dynamic_classname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;truthy_test&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;'foo'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;.static-class-name-one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"static-class-name-two #{dynamic_classname}"&lt;/span&gt;
+  &lt;span class="p"&gt;'&lt;/span&gt; Foo or bar?
+&lt;/code&gt;&lt;/pre&gt;
 </content>
   </entry>
   <entry>
