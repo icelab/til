@@ -1,5 +1,5 @@
 ---
-title: `background-position` precision with the `calc` property
+title: background-position precision with the calc property
 date: 2017-02-09
 author: Andy McCray
 tags: css
