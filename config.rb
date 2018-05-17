@@ -63,7 +63,7 @@ page "/*.xml", layout: false
 page "/*.json", layout: false
 page "/*.txt", layout: false
 
-page /(topics|page)\//, layout: "layouts/base"
+# page /(topics|page)\//, layout: "layouts/base" # this doesn’t work
 page "/", layout: "layouts/base"
 page "*", layout: "layouts/blog"
 
