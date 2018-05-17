@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Today Icelab Learned</title>
-  <id>http://til.icelab.com.au</id>
-  <link href="http://til.icelab.com.au"/>
-  <link href="http://til.icelab.com.au/feed.xml" rel="self"/>
+  <id>https://til.icelab.com.au</id>
+  <link href="https://til.icelab.com.au"/>
+  <link href="https://til.icelab.com.au/feed.xml" rel="self"/>
   <updated>2018-05-17T10:00:00+10:00</updated>
   <author>
     <name>Icelab</name>
   </author>
   <entry>
     <title type="html">NGINX proxy_pass DNS caching and Heroku</title>
-    <link rel="alternate" href="http://til.icelab.com.au/nginx-proxy-pass-dns-cache/"/>
-    <id>http://til.icelab.com.au/nginx-proxy-pass-dns-cache/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/nginx-proxy-pass-dns-cache/"/>
+    <id>https://til.icelab.com.au/nginx-proxy-pass-dns-cache/</id>
     <published>2018-05-17T10:00:00+10:00</published>
     <updated>2018-05-17T13:20:49+10:00</updated>
     <author>
@@ -38,8 +38,8 @@
   </entry>
   <entry>
     <title type="html">Kwarg splat arguments create new hashes</title>
-    <link rel="alternate" href="http://til.icelab.com.au/kwarg-splat-arguments-create-new-hashes/"/>
-    <id>http://til.icelab.com.au/kwarg-splat-arguments-create-new-hashes/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/kwarg-splat-arguments-create-new-hashes/"/>
+    <id>https://til.icelab.com.au/kwarg-splat-arguments-create-new-hashes/</id>
     <published>2017-05-03T10:00:00+10:00</published>
     <updated>2018-05-11T10:30:04+10:00</updated>
     <author>
@@ -80,8 +80,8 @@
   </entry>
   <entry>
     <title type="html">Rake tasks with splat arguments</title>
-    <link rel="alternate" href="http://til.icelab.com.au/rake-tasks-with-splat-arguments/"/>
-    <id>http://til.icelab.com.au/rake-tasks-with-splat-arguments/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/rake-tasks-with-splat-arguments/"/>
+    <id>https://til.icelab.com.au/rake-tasks-with-splat-arguments/</id>
     <published>2017-05-03T10:00:00+10:00</published>
     <updated>2018-05-11T10:30:04+10:00</updated>
     <author>
@@ -110,8 +110,8 @@
   </entry>
   <entry>
     <title type="html">background-position precision with the calc property</title>
-    <link rel="alternate" href="http://til.icelab.com.au/background-position-precision-with-the-calc-property/"/>
-    <id>http://til.icelab.com.au/background-position-precision-with-the-calc-property/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/background-position-precision-with-the-calc-property/"/>
+    <id>https://til.icelab.com.au/background-position-precision-with-the-calc-property/</id>
     <published>2017-02-09T11:00:00+11:00</published>
     <updated>2018-05-17T13:11:48+10:00</updated>
     <author>
@@ -137,8 +137,8 @@
   </entry>
   <entry>
     <title type="html">Restore a file with git checkout</title>
-    <link rel="alternate" href="http://til.icelab.com.au/restore-file-with-git-checkout/"/>
-    <id>http://til.icelab.com.au/restore-file-with-git-checkout/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/restore-file-with-git-checkout/"/>
+    <id>https://til.icelab.com.au/restore-file-with-git-checkout/</id>
     <published>2017-01-23T11:00:00+11:00</published>
     <updated>2018-05-11T10:30:04+10:00</updated>
     <author>
@@ -166,10 +166,10 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Using the flexbox order property to rearrange elements</title>
-    <link rel="alternate" href="http://til.icelab.com.au/using-the-flexbox-order-property-to-rearrange-elements/"/>
-    <id>http://til.icelab.com.au/using-the-flexbox-order-property-to-rearrange-elements/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/using-the-flexbox-order-property-to-rearrange-elements/"/>
+    <id>https://til.icelab.com.au/using-the-flexbox-order-property-to-rearrange-elements/</id>
     <published>2016-09-14T10:00:00+10:00</published>
-    <updated>2017-04-03T11:41:01+10:00</updated>
+    <updated>2018-05-17T13:50:30+10:00</updated>
     <author>
       <name>Andy McCray</name>
     </author>
@@ -185,13 +185,13 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
 
 &lt;p&gt;So where is this useful? There’s a bunch of scenarios you might like to utilise this property: one example is bringing a navigation &lt;code&gt;&amp;lt;aside&amp;gt;&lt;/code&gt; to the top of the screen on a mobile optimised layout.&lt;/p&gt;
 
-&lt;p&gt;If you resize your browser to a phone-width and inspect the source of &lt;a href="http://icelab.com.au"&gt;icelab.com.au&lt;/a&gt;, you’ll see that the navigation bar in the footer exists &lt;em&gt;below&lt;/em&gt; the contact detail elements in the DOM. But thanks to our friend &lt;code&gt;order&lt;/code&gt;, we can completely rearrange the layout for this context. Neat!&lt;/p&gt;
+&lt;p&gt;If you resize your browser to a phone-width and inspect the source of &lt;a href="https://www.icelab.com.au"&gt;icelab.com.au&lt;/a&gt;, you’ll see that the navigation bar in the footer exists &lt;em&gt;below&lt;/em&gt; the contact detail elements in the DOM. But thanks to our friend &lt;code&gt;order&lt;/code&gt;, we can completely rearrange the layout for this context. Neat!&lt;/p&gt;
 </content>
   </entry>
   <entry>
     <title type="html">Detect Google Analytics blocking</title>
-    <link rel="alternate" href="http://til.icelab.com.au/detect-google-analytics-blocking/"/>
-    <id>http://til.icelab.com.au/detect-google-analytics-blocking/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/detect-google-analytics-blocking/"/>
+    <id>https://til.icelab.com.au/detect-google-analytics-blocking/</id>
     <published>2016-06-30T10:00:00+10:00</published>
     <updated>2016-06-30T12:45:23+10:00</updated>
     <author>
@@ -228,8 +228,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Specify enumerator index offset</title>
-    <link rel="alternate" href="http://til.icelab.com.au/specify-enumerator-index-offset/"/>
-    <id>http://til.icelab.com.au/specify-enumerator-index-offset/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/specify-enumerator-index-offset/"/>
+    <id>https://til.icelab.com.au/specify-enumerator-index-offset/</id>
     <published>2016-06-09T10:00:00+10:00</published>
     <updated>2018-05-11T10:30:04+10:00</updated>
     <author>
@@ -250,8 +250,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Improving accessibility with visually hidden labels</title>
-    <link rel="alternate" href="http://til.icelab.com.au/improving-accessibility-with-visually-hidden-labels/"/>
-    <id>http://til.icelab.com.au/improving-accessibility-with-visually-hidden-labels/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/improving-accessibility-with-visually-hidden-labels/"/>
+    <id>https://til.icelab.com.au/improving-accessibility-with-visually-hidden-labels/</id>
     <published>2016-06-07T10:00:00+10:00</published>
     <updated>2016-06-29T14:55:47+10:00</updated>
     <author>
@@ -308,16 +308,16 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">URI regular expressions</title>
-    <link rel="alternate" href="http://til.icelab.com.au/uri-regex-ruby/"/>
-    <id>http://til.icelab.com.au/uri-regex-ruby/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/uri-regex-ruby/"/>
+    <id>https://til.icelab.com.au/uri-regex-ruby/</id>
     <published>2016-06-01T10:00:00+10:00</published>
-    <updated>2016-06-29T14:55:47+10:00</updated>
+    <updated>2018-05-17T13:50:50+10:00</updated>
     <author>
       <name>Daniel Nitsikopoulos</name>
     </author>
     <content type="html">&lt;p&gt;Let&amp;rsquo;s go ahead and write some regex to validate a URI in Ruby:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="http://vignette3.wikia.nocookie.net/arresteddevelopment/images/e/ef/2x04_Good_Grief_%2832%29.png/revision/latest/scale-to-width-down/640?cb=20121126044547" alt="Good Grief" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://vignette3.wikia.nocookie.net/arresteddevelopment/images/e/ef/2x04_Good_Grief_%2832%29.png/revision/latest/scale-to-width-down/640?cb=20121126044547" alt="Good Grief" /&gt;&lt;/p&gt;
 &lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="no"&gt;URI&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;regexp&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -347,8 +347,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Creating and storing SSL certificates</title>
-    <link rel="alternate" href="http://til.icelab.com.au/creating-and-storing-ssl-certificates/"/>
-    <id>http://til.icelab.com.au/creating-and-storing-ssl-certificates/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/creating-and-storing-ssl-certificates/"/>
+    <id>https://til.icelab.com.au/creating-and-storing-ssl-certificates/</id>
     <published>2016-05-24T10:00:00+10:00</published>
     <updated>2016-05-24T14:24:11+10:00</updated>
     <author>
@@ -371,8 +371,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Hash.new with a block works well as a keyed cache</title>
-    <link rel="alternate" href="http://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/"/>
-    <id>http://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/"/>
+    <id>https://til.icelab.com.au/hash-new-with-a-block-works-well-as-a-keyed-cache/</id>
     <published>2016-05-23T10:00:00+10:00</published>
     <updated>2016-05-23T13:05:50+10:00</updated>
     <author>
@@ -399,8 +399,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Selecting colours in HTML</title>
-    <link rel="alternate" href="http://til.icelab.com.au/selecting-colours-in-html/"/>
-    <id>http://til.icelab.com.au/selecting-colours-in-html/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/selecting-colours-in-html/"/>
+    <id>https://til.icelab.com.au/selecting-colours-in-html/</id>
     <published>2016-05-22T10:00:00+10:00</published>
     <updated>2016-05-23T11:13:53+10:00</updated>
     <author>
@@ -421,8 +421,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Creating an IAM user for access to an S3 bucket</title>
-    <link rel="alternate" href="http://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/"/>
-    <id>http://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/"/>
+    <id>https://til.icelab.com.au/creating-an-iam-user-for-s3-bucket/</id>
     <published>2016-04-04T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -466,8 +466,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">ChromeVox</title>
-    <link rel="alternate" href="http://til.icelab.com.au/chrome-vox/"/>
-    <id>http://til.icelab.com.au/chrome-vox/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/chrome-vox/"/>
+    <id>https://til.icelab.com.au/chrome-vox/</id>
     <published>2016-03-08T11:00:00+11:00</published>
     <updated>2016-05-23T11:13:53+10:00</updated>
     <author>
@@ -482,8 +482,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Using CloudFront as ‘origin pull’ (with bonus gzip)</title>
-    <link rel="alternate" href="http://til.icelab.com.au/cloudfront-origin-pull-with-gzip/"/>
-    <id>http://til.icelab.com.au/cloudfront-origin-pull-with-gzip/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/cloudfront-origin-pull-with-gzip/"/>
+    <id>https://til.icelab.com.au/cloudfront-origin-pull-with-gzip/</id>
     <published>2016-02-16T11:00:00+11:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -496,8 +496,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Symbolize keys</title>
-    <link rel="alternate" href="http://til.icelab.com.au/symbolize-keys/"/>
-    <id>http://til.icelab.com.au/symbolize-keys/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/symbolize-keys/"/>
+    <id>https://til.icelab.com.au/symbolize-keys/</id>
     <published>2015-11-19T11:00:00+11:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -537,8 +537,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">In React setState is not &amp;quot;guaranteed&amp;quot; to be synchronous.</title>
-    <link rel="alternate" href="http://til.icelab.com.au/async-set-state/"/>
-    <id>http://til.icelab.com.au/async-set-state/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/async-set-state/"/>
+    <id>https://til.icelab.com.au/async-set-state/</id>
     <published>2015-11-19T11:00:00+11:00</published>
     <updated>2016-05-23T10:21:19+10:00</updated>
     <author>
@@ -580,8 +580,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Pry is amazing</title>
-    <link rel="alternate" href="http://til.icelab.com.au/pry-is-amazing/"/>
-    <id>http://til.icelab.com.au/pry-is-amazing/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/pry-is-amazing/"/>
+    <id>https://til.icelab.com.au/pry-is-amazing/</id>
     <published>2015-11-11T11:00:00+11:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -596,8 +596,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Authenticating with AWS Elasticsearch</title>
-    <link rel="alternate" href="http://til.icelab.com.au/aws-elasticsearch-authentication/"/>
-    <id>http://til.icelab.com.au/aws-elasticsearch-authentication/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/aws-elasticsearch-authentication/"/>
+    <id>https://til.icelab.com.au/aws-elasticsearch-authentication/</id>
     <published>2015-10-21T11:00:00+11:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -651,8 +651,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Using Arel to compare attributes of a record</title>
-    <link rel="alternate" href="http://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/"/>
-    <id>http://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/"/>
+    <id>https://til.icelab.com.au/using-arel-to-compare-attributes-of-a-record/</id>
     <published>2015-09-24T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -670,8 +670,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Manually incrementing count columns in rails</title>
-    <link rel="alternate" href="http://til.icelab.com.au/manually-incrementing-count-columns/"/>
-    <id>http://til.icelab.com.au/manually-incrementing-count-columns/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/manually-incrementing-count-columns/"/>
+    <id>https://til.icelab.com.au/manually-incrementing-count-columns/</id>
     <published>2015-09-18T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -725,8 +725,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Setting cookies in request specs</title>
-    <link rel="alternate" href="http://til.icelab.com.au/setting-cookies-in-request-specs/"/>
-    <id>http://til.icelab.com.au/setting-cookies-in-request-specs/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/setting-cookies-in-request-specs/"/>
+    <id>https://til.icelab.com.au/setting-cookies-in-request-specs/</id>
     <published>2015-09-17T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -745,8 +745,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Using viewloader with turbolinks</title>
-    <link rel="alternate" href="http://til.icelab.com.au/using-viewloader-with-turbolinks/"/>
-    <id>http://til.icelab.com.au/using-viewloader-with-turbolinks/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/using-viewloader-with-turbolinks/"/>
+    <id>https://til.icelab.com.au/using-viewloader-with-turbolinks/</id>
     <published>2015-09-17T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -765,8 +765,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">PostgreSQL as a message bus</title>
-    <link rel="alternate" href="http://til.icelab.com.au/postgres-listen-notify/"/>
-    <id>http://til.icelab.com.au/postgres-listen-notify/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/postgres-listen-notify/"/>
+    <id>https://til.icelab.com.au/postgres-listen-notify/</id>
     <published>2015-09-15T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -806,8 +806,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Manually add sitemaps to Google’s Webmaster Tools</title>
-    <link rel="alternate" href="http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/"/>
-    <id>http://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/"/>
+    <id>https://til.icelab.com.au/manually-add-sitemaps-to-googles-webmaster-tools/</id>
     <published>2015-09-15T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -824,8 +824,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Pushing all branches</title>
-    <link rel="alternate" href="http://til.icelab.com.au/pushing-all-branches/"/>
-    <id>http://til.icelab.com.au/pushing-all-branches/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/pushing-all-branches/"/>
+    <id>https://til.icelab.com.au/pushing-all-branches/</id>
     <published>2015-09-02T10:00:00+10:00</published>
     <updated>2016-05-24T14:24:11+10:00</updated>
     <author>
@@ -844,8 +844,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Show Open Graph image on first Facebook share</title>
-    <link rel="alternate" href="http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/"/>
-    <id>http://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/"/>
+    <id>https://til.icelab.com.au/show-opengraph-image-on-first-facebook-share/</id>
     <published>2015-09-02T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -868,8 +868,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Facebook image display when posting a link</title>
-    <link rel="alternate" href="http://til.icelab.com.au/clear-facebook-share-data/"/>
-    <id>http://til.icelab.com.au/clear-facebook-share-data/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/clear-facebook-share-data/"/>
+    <id>https://til.icelab.com.au/clear-facebook-share-data/</id>
     <published>2015-08-20T10:00:00+10:00</published>
     <updated>2016-05-23T10:13:58+10:00</updated>
     <author>
@@ -888,8 +888,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">CSS dropdown menus</title>
-    <link rel="alternate" href="http://til.icelab.com.au/css-dropdown-menus/"/>
-    <id>http://til.icelab.com.au/css-dropdown-menus/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/css-dropdown-menus/"/>
+    <id>https://til.icelab.com.au/css-dropdown-menus/</id>
     <published>2015-08-17T10:00:00+10:00</published>
     <updated>2016-05-24T14:24:11+10:00</updated>
     <author>
@@ -965,8 +965,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Displaying booleans in Active Admin</title>
-    <link rel="alternate" href="http://til.icelab.com.au/displaying-booleans-in-active-admin/"/>
-    <id>http://til.icelab.com.au/displaying-booleans-in-active-admin/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/displaying-booleans-in-active-admin/"/>
+    <id>https://til.icelab.com.au/displaying-booleans-in-active-admin/</id>
     <published>2015-08-13T10:00:00+10:00</published>
     <updated>2016-05-24T14:24:11+10:00</updated>
     <author>
@@ -983,8 +983,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Table columns should be typed</title>
-    <link rel="alternate" href="http://til.icelab.com.au/table-columns-should-be-typed/"/>
-    <id>http://til.icelab.com.au/table-columns-should-be-typed/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/table-columns-should-be-typed/"/>
+    <id>https://til.icelab.com.au/table-columns-should-be-typed/</id>
     <published>2015-08-13T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -1007,8 +1007,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Using namespaced components in React</title>
-    <link rel="alternate" href="http://til.icelab.com.au/namespaced-components/"/>
-    <id>http://til.icelab.com.au/namespaced-components/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/namespaced-components/"/>
+    <id>https://til.icelab.com.au/namespaced-components/</id>
     <published>2015-08-13T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -1041,8 +1041,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Formatting strings with C-like formatting codes.</title>
-    <link rel="alternate" href="http://til.icelab.com.au/string-format/"/>
-    <id>http://til.icelab.com.au/string-format/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/string-format/"/>
+    <id>https://til.icelab.com.au/string-format/</id>
     <published>2015-08-12T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -1088,8 +1088,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Creating and pushing a git tag</title>
-    <link rel="alternate" href="http://til.icelab.com.au/creating-and-pushing-a-tag/"/>
-    <id>http://til.icelab.com.au/creating-and-pushing-a-tag/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/creating-and-pushing-a-tag/"/>
+    <id>https://til.icelab.com.au/creating-and-pushing-a-tag/</id>
     <published>2015-08-12T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
@@ -1110,8 +1110,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Dynamic classnames in Slim</title>
-    <link rel="alternate" href="http://til.icelab.com.au/dynamic-classnames-in-slim/"/>
-    <id>http://til.icelab.com.au/dynamic-classnames-in-slim/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/dynamic-classnames-in-slim/"/>
+    <id>https://til.icelab.com.au/dynamic-classnames-in-slim/</id>
     <published>2015-08-12T10:00:00+10:00</published>
     <updated>2016-05-20T23:01:50+10:00</updated>
     <author>
@@ -1134,8 +1134,8 @@ When &lt;paths&gt; or &amp;ndash;patch are given, git checkout does not switch b
   </entry>
   <entry>
     <title type="html">Using &lt;code&gt;Class.new&lt;/code&gt; for dynamically adding class methods</title>
-    <link rel="alternate" href="http://til.icelab.com.au/dynamically-adding-class-methods/"/>
-    <id>http://til.icelab.com.au/dynamically-adding-class-methods/</id>
+    <link rel="alternate" href="https://til.icelab.com.au/dynamically-adding-class-methods/"/>
+    <id>https://til.icelab.com.au/dynamically-adding-class-methods/</id>
     <published>2015-08-09T10:00:00+10:00</published>
     <updated>2016-05-20T22:49:55+10:00</updated>
     <author>
